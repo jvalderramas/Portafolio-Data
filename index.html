@@ -314,6 +314,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    position: relative;
   }
   
   .shot img { 
@@ -355,6 +356,25 @@
     padding: 10px 16px; 
     border-top: 1px solid var(--line);
     background: rgba(0,0,0,0.3);
+    z-index: 2;
+  }
+
+  /* Iframe Container for Power BI */
+  .iframe-container {
+    padding-bottom: 60%; /* Relación de aspecto aproximada 16:9 con espacio para la barra de herramientas */
+    height: 0;
+    overflow: hidden;
+    position: relative;
+    border-style: solid;
+  }
+
+  .iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
   }
 
   /* Grid configuration for multiple photos */
@@ -447,8 +467,8 @@
   <header>
     <div class="eyebrow">Terminal Activa :: Portafolio Técnico</div>
     <h1>Juan Diego Valderrama Sulca</h1>
-    <p class="role-line">Postulación — <b>Datos, Automatización & BI </b>
-    <p class="sub">Ingeniero Industrial con experiencia en análisis de información, automatización de procesos y desarrollo de herramientas digitales para la gestión operacional. Este portafolio presenta proyectos desarrollados para resolver problemas reales de captura, consolidación y análisis de información, generando indicadores y herramientas de control orientadas a mejorar la eficiencia y reducir tiempos improductivos.</p>
+    <p class="role-line">Postulación — <b>Analista de Equipos de Frío</b> · Arca Continental Lindley</p>
+    <p class="sub">Ingeniero Industrial (UPN). Experiencia probada en Logística y Mejora Continua enfocado en la digitalización de operaciones: automatización de indicadores, maquetación de dashboards operativos y desarrollo de aplicativos integrados de captura de datos en campo. Selecciona una bahía para examinar los proyectos.</p>
   </header>
 
   <p class="board-label">Selector de Bahías [Proyectos]</p>
@@ -492,15 +512,15 @@
 <script>
 const DATA = {
   yms: {
-    title: "AppSheet - Aplicativo tipo YMS",
-    status: "● IMPLEMENTADO (Dinet S.A.)",
+    title: "YMS de Recepción — Control de Patio",
+    status: "● ACTIVO / EN EJECUCIÓN",
     chips: ["AppSheet", "Excel VBA", "Macros", "Data Modeling"],
     star: [
-      ["Situación", "Durante la planificación de capacidades operativas para la proyección 2030 de Cencosud, audité la base de datos histórica y encontré un registro manual carente de granularidad. Los operadores agrupaban múltiples transportes bajo un solo bloque de tiempo (ej. 5 camiones de Samsung promediados en 10 horas) e introducían errores de tipado, como escribir la palabra 'FECHA' en columnas numéricas. Esto imposibilitaba calcular la capacidad real de las rampas o el Touch Time individual por vehículo.", "asis"],
-      ["Tarea", "Diseñar un Sistema de Gestión de Patio (tipo YMS) que estandarizará el registro unitario por transporte, facilitará la captura ágil de tiempos en campo y alimentará automáticamente los indicadores de capacidad"],
+      ["Situación", "Durante la planificación de capacidades operativas para la proyección 2030 de Cencosud, la auditoría de la base de datos histórica reveló un registro manual carente de granularidad. Los operadores agrupaban múltiples transportes bajo un solo bloque de tiempo e introducían errores de tipado, imposibilitando calcular la capacidad real de las rampas o el Touch Time individual por vehículo.", "asis"],
+      ["Tarea", "Diseñar un Sistema de Gestión de Patio (YMS) que estandarizara el registro unitario por transporte, facilitara la captura ágil de tiempos en campo y alimentara automáticamente los indicadores de capacidad sin fricción operativa."],
       [
         "Acción", 
-        "Desarrollé una interfaz móvil en AppSheet para uso en patio, estructurando el flujo en estados restrictivos (1. PENDIENTE, 2. EN PLAYA, 3. EN RAMPA, 4. ATENDIDO). El aplicativo captura con precisión timestamps de hitos logísticos (llegada, inicio/fin de descarga) y volumetría (Paletas ingresadas). Para el back-office, construí un ecosistema de macros en Excel que genera plantillas estandarizadas y consolida la data estructurada de los estados para su análisis masivo.", 
+        "Implementé una interfaz en AppSheet con botones de registro rápido para hitos logísticos y estados restrictivos (PENDIENTE, EN PLAYA, EN RAMPA, ATENDIDO). Sustituí el flujo informal de reportes fotográficos por WhatsApp por una captura integrada que asocia las observaciones directamente al SKU. En el back-office, construí macros en Excel para consolidar plantillas y diseñé un dashboard interactivo en HTML para monitoreo visual en tiempo real.", 
         [
           { key: "accion_plantilla", label: "[ Back-office ] Plantilla de Control Excel" },
           { key: "status_plantilla", label: "[ Back-office ] Matriz Status Plantilla" }
@@ -508,7 +528,7 @@ const DATA = {
       ],
       [
         "Resultado", 
-        "Transición de un modelo de datos deficiente a uno con 100% de trazabilidad unitaria y cero errores de tipado. La automatización de los timestamps permitió medir el Touch Time real por rampa, proveyendo la data limpia y exacta requerida para sustentar el plan de expansión de capacidades Cencosud 2030.", 
+        "Transición a un modelo con 100% de trazabilidad unitaria y cero errores de tipeo. La estandarización de los timestamps permitió medir el Touch Time real por rampa, proveyendo la data limpia y exacta requerida para sustentar el plan de expansión de capacidades Cencosud 2030.", 
         [
           { key: "resultado_menu", label: "[ App UI ] Menú Principal" },
           { key: "resultado_locales", label: "[ App UI ] Pantalla de Locales" },
@@ -518,57 +538,56 @@ const DATA = {
     ]
   },
   calidad: {
-    title: "AppSheet — Aplicativo para captura de datos en campo",
+    title: "App de Calidad — Control de Vida Útil y Abarrotes",
     status: "● IMPLEMENTADO (Dinet S.A.)",
     chips: ["AppSheet", "Python (openpyxl)", "Automatización", "Data Relacional"],
     star: [
-      ["Situación", "La generación de reportes de calidad para la recepción de abarrotes era un proceso altamente manual y propenso a errores. Los inspectores invertían horas maquetando hojas de cálculo, redimensionando y alineando fotografías celda por celda. Además, las observaciones y averías se consolidaban en collages desordenados, perdiendo la trazabilidad relacional entre la incidencia, el lote específico, el código del producto y el contenedor original.", "asis"],
-      ["Tarea", "Digitalizar la captura de datos en campo para independizar el registro de lotes de la maquetación visual, garantizando que cada observación y fotografía quede estrictamente vinculada a su nivel jerárquico correspondiente (Contenedor > Importación > Orden de compra > SKU > Lote)."],
-      ["Acción", "Desplegué una aplicación móvil (AppSheet) que guía al inspector mediante flujos de captura estructurados: registro de cantidades por lote, detalles generales y observaciones precisas por contenedor. En el back-end, implementé un script en Python utilizando la librería openpyxl. El script lee la base relacional y renderiza automáticamente el reporte en Excel, inyectando y dimensionando las fotografías en sus celdas correspondientes sin intervención humana."],
+      ["Situación", "La generación de reportes de calidad dependía de un flujo altamente manual y administrativo. Los inspectores invertían horas maquetando hojas de cálculo, redimensionando y alineando fotografías celda por celda, mientras que las incidencias se acumulaban en collages desordenados, perdiendo la trazabilidad relacional entre la incidencia, el lote, el producto y el contenedor.", "asis"],
+      ["Tarea", "Digitalizar la captura de datos de calidad en rampa para independizar el registro en campo de la maquetación visual, garantizando que cada observación y fotografía quede estrictamente vinculada a su nivel jerárquico correspondiente."],
+      ["Acción", "Desplegué una aplicación móvil en AppSheet que guía al inspector mediante flujos estructurados para el registro de cantidades. En el back-end, implementé un script en Python utilizando la librería openpyxl que lee la base relacional y renderiza automáticamente el reporte en Excel, inyectando y dimensionando las fotografías en sus celdas correspondientes sin intervención humana."],
       [
         "Resultado", 
-        "Reducción del 100% del tiempo invertido en formateo manual de imágenes y eliminación del riesgo de pérdida de trazabilidad en las observaciones. El proceso pasó de ser una carga administrativa a un flujo de auditoría ágil, entregando reportes de calidad estructurados de forma inmediata tras finalizar la inspección en rampa.", 
+        "Reducción del 100% del tiempo invertido en formateo manual de imágenes y eliminación del riesgo de pérdida de trazabilidad. El proceso pasó de ser una carga administrativa a un flujo de auditoría ágil, entregando reportes estructurados de forma inmediata al finalizar la inspección.", 
         [
-          { key: "resultado_app", label: "[ APP UI ] Datos del contenedor" },
-          { key: "resultado_reporte", label: "[ APP UI ] Recepción distinguida por lotes" }
+          { key: "resultado_app", label: "[ App UI ] Captura en Campo" },
+          { key: "resultado_reporte", label: "[ Output ] Reporte Automatizado" }
         ]
       ]
     ]
   },
   reabasto: {
-    title: "Motor RE-ABASTO Reactivo ",
-    status: "● EN EJECUCIÓN (Dinet S.A.)",
-    chips: ["VBA Avanzado", "Slotting", "Análisis de Tiempos"],
+    title: "Motor RE-ABASTO Preventivo (In-Memory Allocation)",
+    status: "● VERSIÓN ESTABLE",
+    chips: ["Power BI", "VBA Avanzado", "In-Memory WMS", "Slotting"],
     star: [
       [
         "Situación", 
-        "Tras la desestabilización de la lógica del WMS, una parte relevante de los pedidos requería retiro desde ubicaciones en altura (aproximadamente 240 pallets por turno entre todas las categorías), lo que generaba un cuello de botella durante la primera hora de turno (7-8 AM), ya que mientras se completaba la generación de tareas y el bajado de pallets, los pickers quedaban a la espera. Además, el flujo de aprobación de pedidos, que incluye validación de stock, factores y eliminación de duplicidad, tomaba entre 45 minutos y 1 hora según la experiencia del operador, más 20 minutos adicionales de generación.", 
+        "La desestabilización lógica del WMS provocó que la atención de la ola de pedidos dependiera en un 40% de retiros directos desde ubicaciones en altura, degradando el ciclo de bajado hasta un 68% al extraer del 7° nivel frente al 2°. Esto generaba un severo 'valle de productividad' matutino donde los pickers esperaban paletas de emergencia, con flujos de tareas que tomaban hasta 1.5 horas.", 
         [
           { key: "asis_grafico", label: "[ Análisis ] Valle de Productividad LPNs/hr" }
         ]
       ],
-      ["Tarea", "Desarrollar un motor de priorización que determinara, antes de cada turno, qué pallets bajar a nivel de piso para las categorías con contrato de 20 L/HH, eliminando la espera inicial y sustentando la decisión con un método validable."],
+      ["Tarea", "Desarrollar un motor de priorización estático para el reabastecimiento preventivo del primer nivel (piso) en las categorías FOOD y ELECTRO, eliminando los tiempos muertos y alcanzando el SLA de 20 Líneas por Hora Hombre (L/HH)."],
       [
         "Acción", 
-        "Construí una herramienta en VBA que analiza la data del WMS y genera un listado priorizado de pallets a bajar por categoría. Validé la efectividad del modelo comparando, al día siguiente, mi listado contra las ubicaciones que el propio sistema seleccionó al generar las tareas de la ola de pedidos, obteniendo una coincidencia total. En paralelo, levanté un rediseño del slotting físico en las categorías FOOD y ELECTRO, colocando los productos más densos como atunes, aceites y conservas al inicio del pasillo y los más ligeros al final, para reducir el reacomodo de pallets.", 
+        "Programé un motor matemático en VBA que corre en memoria RAM para evaluar urgencia, frecuencia y volumen, aplicando reglas FEFO y jerarquía UM para generar hojas de trabajo dinámicas. Físicamente, se aplicaron técnicas de Slotting, bloqueando el almacenamiento de paletas completas en piso y ubicando los artículos de mayor peso al inicio de la ruta de picking para evitar cruces.", 
         [
-          { key: "accion_hoja1", label: "[ Output Macro ] Hoja de Trabajo 1 (CODIGOS PENDIENTES)" },
-          { key: "accion_hoja2", label: "[ Output Macro ] Hoja de Trabajo 2 (LISTA DE UBICACIONES A BAJAR)" }
+          { key: "accion_hoja1", label: "[ Output Macro ] Hoja de Trabajo 1" },
+          { key: "accion_hoja2", label: "[ Output Macro ] Hoja de Trabajo 2" }
         ]
       ],
       [
         "Resultado", 
-        "Logré reducir el volumen de pallets a bajar por turno de aproximadamente 240 a 140, aunque sigo refinando ese dato porque parte del conteo original correspondía a pedidos paletizados que no deberían contarse, ya que solo se bajan al final del turno para colocarles etiqueta; actualmente estoy ajustando la macro para que distinga y excluya automáticamente esos pallets. Confirmé una coincidencia total al validar mi listado contra la selección del sistema. A lo largo de este mes he monitoreado la participación piso/altura, pasando de un 60/40 a un 80/20, con datos que respaldan esa mejora particularmente en ELECTRO. En FOOD, el supervisor reportó un salto de aproximadamente 20 a 26-28 líneas por hora-hombre, llevando la productividad general ponderada (FOOD, NON FOOD, ELECTRO y ALTO VALOR) a un estimado de 23 L/HH.", 
+        "Evolución radical del ratio de atención: pasamos de 60/40 a <b>80% piso y 20% altura</b>. Se erradicó el valle productivo permitiendo iniciar el picking de inmediato a las 07:00 AM. La productividad general creció a <b>23 L/HH</b>, superando la meta contractual. Se diseñó el siguiente panel de Power BI para el monitoreo y seguimiento dinámico de estos indicadores operativos.", 
         [
-          { key: "resultado_food", label: "[ Impacto ] Participación Piso vs Altura (FOOD)" },
-          { key: "resultado_electro", label: "[ Impacto ] Participación Piso vs Altura (ELECTRO)" }
+          { key: "resultado_dashboard", label: "[ Impacto ] Dashboard Interactivo de Participación e Inventario", isIframe: true }
         ]
       ]
     ]
   }
 };
 
-// Rutas de imágenes
+// Rutas de imágenes y enlaces
 const IMAGES = {
   yms: { 
     asis: "./YMS/reporte_anterior.jpeg", 
@@ -587,8 +606,7 @@ const IMAGES = {
     asis_grafico: "./YMS/Creacion.jpeg",       
     accion_hoja1: "./YMS/REABASTO GENERAL.jpeg",       
     accion_hoja2: "./YMS/REABASTO TRABAJO.jpeg",       
-    resultado_food: "./YMS/FOOD.jpeg",     
-    resultado_electro: "./YMS/ELECTRO.jpeg"   
+    resultado_dashboard: "https://app.powerbi.com/view?r=eyJrIjoiOWEyN2JlMTktMDlhYS00MjA0LTgxMmEtZGQyMmUyZGM3YjE1IiwidCI6IjhiNThmMjM4LWFmOGEtNDE3Ny1hM2U0LTg3YTllY2YxMGRkMyIsImMiOjR9" 
   }
 };
 
@@ -609,9 +627,9 @@ function closeLightbox(e) {
   }
 }
 
-// Modificado para aceptar objetos individuales de configuración o strings simples
+// Generador dinámico (Imágenes o Iframes)
 function shotBlock(projectId, imgConfig){
-  let key, label;
+  let key, label, isIframe = false;
   
   if (typeof imgConfig === 'string') {
     key = imgConfig;
@@ -619,21 +637,30 @@ function shotBlock(projectId, imgConfig){
   } else {
     key = imgConfig.key;
     label = imgConfig.label;
+    isIframe = imgConfig.isIframe || false;
   }
 
   const src = IMAGES[projectId] && IMAGES[projectId][key];
 
   if (src) {
-    return `<div class="shot">
-              <img src="${src}" alt="${label}" onclick="openLightbox('${src}', '${label}')" title="Haz clic para ampliar">
-              <div class="cap">${label}</div>
-            </div>`;
+    if (isIframe) {
+      // Bloque especial para cargar Power BI interactivo
+      return `<div class="shot iframe-container" style="margin-top: 16px;">
+                <iframe src="${src}" allowFullScreen="true"></iframe>
+              </div>`;
+    } else {
+      // Bloque normal para imágenes estáticas con lupa
+      return `<div class="shot">
+                <img src="${src}" alt="${label}" onclick="openLightbox('${src}', '${label}')" title="Haz clic para ampliar">
+                <div class="cap">${label}</div>
+              </div>`;
+    }
   }
   return `<div class="shot">
             <div class="placeholder">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px; color:var(--text-dim);"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg><br>
               Requerimiento de Evidencia: ${label}<br>
-              <span style="opacity:0.6; font-size:11px; margin-top:4px; display:inline-block;">Asignar ruta en IMAGES.${projectId}.${key}</span>
+              <span style="opacity:0.6; font-size:11px; margin-top:4px; display:inline-block;">Asignar ruta/enlace en IMAGES.${projectId}.${key}</span>
             </div>
           </div>`;
 }
@@ -656,7 +683,7 @@ function render(id){
     let imagesHtml = '';
     if (kind) {
       if (Array.isArray(kind)) {
-        imagesHtml = `<div class="multi-shot">${kind.map(k => shotBlock(id, k)).join('')}</div>`;
+        imagesHtml = `<div class="multi-shot" style="display: ${kind.some(k => k.isIframe) ? 'block' : 'grid'}">${kind.map(k => shotBlock(id, k)).join('')}</div>`;
       } else {
         imagesHtml = shotBlock(id, kind);
       }
