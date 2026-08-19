@@ -467,7 +467,8 @@
   <header>
     <div class="eyebrow">Terminal Activa :: Portafolio Técnico</div>
     <h1>Juan Diego Valderrama Sulca</h1>
-    <p class="role-line">Postulación — <b>Datos, Automatización & BI </b>
+    <!-- Se retiró la mención de Arca Continental y se cerró correctamente la etiqueta -->
+    <p class="role-line">Portafolio Profesional — <b>Datos, Automatización & BI</b></p>
     <p class="sub">Ingeniero Industrial (UPN). Experiencia probada en Logística y Mejora Continua enfocado en la digitalización de operaciones: automatización de indicadores, maquetación de dashboards operativos y desarrollo de aplicativos integrados de captura de datos en campo. Selecciona una bahía para examinar los proyectos.</p>
   </header>
 
@@ -556,9 +557,9 @@ const DATA = {
     ]
   },
   reabasto: {
-    title: "Motor RE-ABASTO Preventivo (In-Memory Allocation)",
+    title: "Motor Lógico de Reabasto (Planificación y Simulación)",
     status: "● VERSIÓN ESTABLE",
-    chips: ["Power BI", "VBA Avanzado", "In-Memory WMS", "Slotting"],
+    chips: ["Python", "Selenium", "Pandas", "Power BI"],
     star: [
       [
         "Situación", 
@@ -570,10 +571,11 @@ const DATA = {
       ["Tarea", "Desarrollar un motor de priorización estático para el reabastecimiento preventivo del primer nivel (piso) en las categorías FOOD y ELECTRO, eliminando los tiempos muertos y alcanzando el SLA de 20 Líneas por Hora Hombre (L/HH)."],
       [
         "Acción", 
-        "Programé un motor matemático en VBA que corre en memoria RAM para evaluar urgencia, frecuencia y volumen, aplicando reglas FEFO y jerarquía UM para generar hojas de trabajo dinámicas. Físicamente, se aplicaron técnicas de Slotting, bloqueando el almacenamiento de paletas completas en piso y ubicando los artículos de mayor peso al inicio de la ruta de picking para evitar cruces.", 
+        "Diseñado para que los planificadores simulen escenarios de bajada de paletas en segundos, separando la descarga web del procesamiento de datos:<br><br>• <b>Script de Extracción (Selenium):</b> Automatiza la navegación en el portal web (modo headless). Filtra el CD Huachipa, selecciona la cuenta y descarga el reporte de saldos manejando esperas dinámicas (AJAX).<br>• <b>Script de Simulación (Pandas):</b> Lee el Maestro de Artículos, limpia ubicaciones Implant/Tránsito, y calcula un <b>FEFO Inteligente</b> comparando vencimientos entre Piso y Altura. Prioriza pedidos matemáticamente según su urgencia y volumen.<br>• <b>Inyección:</b> El resultado final se inyecta en una macro (.xlsm) usando <i>openpyxl (keep_vba=True)</i>, limpiando la data anterior pero conservando intactos los formatos y botones operativos.", 
         [
-          { key: "accion_hoja1", label: "[ Output Macro ] Hoja de Trabajo 1" },
-          { key: "accion_hoja2", label: "[ Output Macro ] Hoja de Trabajo 2" }
+          { key: "accion_script1", label: "[ Fase 1 ] Script de Extracción Selenium" },
+          { key: "accion_script2", label: "[ Fase 2 ] FEFO Inteligente con Pandas" },
+          { key: "accion_plantilla", label: "[ Output ] Plantilla Final Inyectada" }
         ]
       ],
       [
@@ -604,8 +606,9 @@ const IMAGES = {
   },
   reabasto: { 
     asis_grafico: "./YMS/Creacion.jpeg",       
-    accion_hoja1: "./YMS/REABASTO GENERAL.jpeg",       
-    accion_hoja2: "./YMS/REABASTO TRABAJO.jpeg",       
+    accion_script1: "./YMS/Reabasto ejecución.png", // Agrega aquí la ruta a la captura de tu código Selenium       
+    accion_script2: "./YMS/Hoja de trabajo.png", // Agrega aquí la ruta a la captura de tu código Pandas       
+    accion_plantilla: "./YMS/HOJA_TRABAJO.jpeg", // Ruta de la plantilla interactiva inyectada      
     resultado_dashboard: "https://app.powerbi.com/view?r=eyJrIjoiOWEyN2JlMTktMDlhYS00MjA0LTgxMmEtZGQyMmUyZGM3YjE1IiwidCI6IjhiNThmMjM4LWFmOGEtNDE3Ny1hM2U0LTg3YTllY2YxMGRkMyIsImMiOjR9" 
   }
 };
