@@ -467,7 +467,6 @@
   <header>
     <div class="eyebrow">Terminal Activa :: Portafolio Técnico</div>
     <h1>Juan Diego Valderrama Sulca</h1>
-    <!-- Se retiró la mención de Arca Continental y se cerró correctamente la etiqueta -->
     <p class="role-line">Portafolio Profesional — <b>Datos, Automatización & BI</b></p>
     <p class="sub">Ingeniero Industrial (UPN). Experiencia probada en Logística y Mejora Continua enfocado en la digitalización de operaciones: automatización de indicadores, maquetación de dashboards operativos y desarrollo de aplicativos integrados de captura de datos en campo. Selecciona una bahía para examinar los proyectos.</p>
   </header>
@@ -575,7 +574,8 @@ const DATA = {
         [
           { key: "accion_script1", label: "[ Script ] Rebastecimiento" },
           { key: "accion_script2", label: "[ Output ] Plantilla Final Inyectada" },
-          { key: "accion_plantilla", label: "[ Output ] Hoja De Trabajo" }
+          { key: "accion_plantilla", label: "[ Output ] Hoja De Trabajo" },
+          { key: "accion_paletas", label: "[ Operación ] Paletas Reabastecidas" } // Nuevo espacio agregado
         ]
       ],
       [
@@ -606,9 +606,10 @@ const IMAGES = {
   },
   reabasto: { 
     asis_grafico: "./YMS/Creacion.jpeg",       
-    accion_script1: "./YMS/Reabasto ejecución.png", // Agrega aquí la ruta a la captura de tu código Selenium       
-    accion_script2: "./YMS/Hoja de trabajo.png", // Agrega aquí la ruta a la captura de tu código Pandas       
-    accion_plantilla: "./YMS/HOJA_TRABAJO.jpeg", // Ruta de la plantilla interactiva inyectada      
+    accion_script1: "./YMS/Reabasto ejecución.png",       
+    accion_script2: "./YMS/Hoja de trabajo.png",       
+    accion_plantilla: "./YMS/HOJA_TRABAJO.jpeg",       
+    accion_paletas: "./YMS/Reabastecimiento.jpeg", // Agrega aquí la ruta de la foto de las paletas reabastecidas
     resultado_dashboard: "https://app.powerbi.com/view?r=eyJrIjoiOWEyN2JlMTktMDlhYS00MjA0LTgxMmEtZGQyMmUyZGM3YjE1IiwidCI6IjhiNThmMjM4LWFmOGEtNDE3Ny1hM2U0LTg3YTllY2YxMGRkMyIsImMiOjR9" 
   }
 };
