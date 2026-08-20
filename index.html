@@ -573,9 +573,9 @@ const DATA = {
         "Acción", 
         "Diseñado para que los planificadores simulen escenarios de bajada de paletas en segundos, separando la descarga web del procesamiento de datos:<br><br>• <b>Script de Extracción (Selenium):</b> Automatiza la navegación en el portal web (modo headless). Filtra el CD Huachipa, selecciona la cuenta y descarga el reporte de saldos manejando esperas dinámicas (AJAX).<br>• <b>Script de Simulación (Pandas):</b> Lee el Maestro de Artículos, limpia ubicaciones Implant/Tránsito, y calcula un <b>FEFO Inteligente</b> comparando vencimientos entre Piso y Altura. Prioriza pedidos matemáticamente según su urgencia y volumen.<br>• <b>Inyección:</b> El resultado final se inyecta en una macro (.xlsm) usando <i>openpyxl (keep_vba=True)</i>, limpiando la data anterior pero conservando intactos los formatos y botones operativos.", 
         [
-          { key: "accion_script1", label: "[ Fase 1 ] Script de Extracción Selenium" },
-          { key: "accion_script2", label: "[ Fase 2 ] FEFO Inteligente con Pandas" },
-          { key: "accion_plantilla", label: "[ Output ] Plantilla Final Inyectada" }
+          { key: "accion_script1", label: "[ Script ] Rebastecimiento" },
+          { key: "accion_script2", label: "[ Output ] Plantilla Final Inyectada" },
+          { key: "accion_plantilla", label: "[ Output ] Hoja De Trabajo" }
         ]
       ],
       [
