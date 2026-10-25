@@ -439,7 +439,7 @@
   }
 
   /* =========================================================
-     SECTION DIVIDERS (PASO 1: ANIMACIÓN / PASO 2: CONTROL)
+     SECTION DIVIDERS
      ========================================================= */
   .stage-header {
     display: flex;
@@ -491,7 +491,7 @@
     background: #0B111E;
     overflow: hidden;
     box-shadow: var(--shadow-md);
-    margin-bottom: 28px;
+    margin-bottom: 20px;
   }
 
   .mg-header {
@@ -685,44 +685,6 @@
   }
 
   /* =========================================================
-     POWER BI DASHBOARD CONTAINER (ETAPA DE CONTROL)
-     ========================================================= */
-  .dashboard-box {
-    border: 1px solid var(--border-strong);
-    border-radius: 12px;
-    overflow: hidden;
-    background: #fff;
-    box-shadow: var(--shadow-sm);
-  }
-
-  .dashboard-bar {
-    padding: 10px 16px;
-    background: var(--surface-subtle);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 12px;
-    color: var(--text-secondary);
-  }
-
-  .iframe-container {
-    position: relative;
-    width: 100%;
-    padding-bottom: 58%;
-    height: 0;
-    background: #F8FAFC;
-  }
-
-  .iframe-container iframe {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  /* =========================================================
      VISUAL WORKFLOW DIAGRAM (FOR YMS & CALIDAD)
      ========================================================= */
   .flow-grid {
@@ -769,12 +731,12 @@
   }
 
   /* =========================================================
-     GALLERY GRID (FOR APPSHEET / YMS SCREENSHOTS)
+     GALLERY GRID (EXTRACTED IMAGES FROM ORIGINAL CODE)
      ========================================================= */
   .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
   }
 
   .shot-card {
@@ -783,7 +745,9 @@
     overflow: hidden;
     background: var(--surface-subtle);
     transition: var(--transition);
-    cursor: pointer;
+    cursor: zoom-in;
+    display: flex;
+    flex-direction: column;
   }
 
   .shot-card:hover {
@@ -794,35 +758,41 @@
 
   .shot-card img {
     width: 100%;
-    height: 170px;
-    object-fit: cover;
+    height: auto;
+    max-height: 240px;
+    object-fit: contain;
     display: block;
-    background: #E2E8F0;
+    flex: 1;
+    background: #F1F5F9;
+    padding: 6px;
   }
 
   .shot-cap {
-    padding: 9px 12px;
-    font-size: 11.5px;
+    padding: 10px 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
     font-weight: 600;
     color: var(--navy);
     border-top: 1px solid var(--border);
     background: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
 
-  /* Collapsible Field Photos Drawer (Optional for Reabasto) */
+  /* Collapsible Field Photos Drawer (For Reabasto) */
   details.evidence-drawer {
     margin-top: 18px;
     border: 1px solid var(--border);
     border-radius: 10px;
     background: var(--surface-subtle);
-    padding: 10px 16px;
+    padding: 12px 16px;
   }
 
   details.evidence-drawer summary {
     cursor: pointer;
-    font-size: 12.5px;
+    font-size: 13px;
     font-weight: 700;
-    color: var(--text-secondary);
+    color: var(--navy);
     list-style: none;
     display: flex;
     align-items: center;
@@ -860,9 +830,12 @@
 
   #lightbox .lb-caption {
     margin-top: 12px;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 13px;
     font-weight: 600;
     color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
 
   #lightbox .lb-close {
@@ -911,7 +884,7 @@
         <span class="bay-indicator"></span>
       </div>
       <div class="bay-title">Simulador WMS & Reabasto</div>
-      <div class="bay-desc">Asignación inteligente, cruce en turno (P / R) y control de inventario en Power BI.</div>
+      <div class="bay-desc">Asignación inteligente, cruce en turno (P / R) y optimización de productividad (L/HH).</div>
     </button>
 
     <button class="bay" data-id="yms">
@@ -958,7 +931,33 @@
 
 <script>
 // =========================================================
-// DATA EJECUTIVA (SIN MUROS DE TEXTO STAR)
+// RUTAS DE IMÁGENES EXTRAÍDAS DE TU CÓDIGO ORIGINAL DE GITHUB
+// =========================================================
+const IMAGES = {
+  yms: { 
+    asis: "./YMS/reporte_anterior.jpeg", 
+    accion_plantilla: "./YMS/plantilla_local.png", 
+    status_plantilla: "./YMS/STATUS.jpeg",
+    resultado_menu: "./YMS/Menu Principal.png",      
+    resultado_locales: "./YMS/REGISTRO LOCALES.png",   
+    resultado_detalles: "./YMS/Detalle_locales.png"   
+  },
+  calidad: { 
+    asis: "./YMS/Ingreso Calidad.png", 
+    resultado_app: "./YMS/REGISTRO CONTENEDORES.png",      
+    resultado_reporte: "./YMS/REGISTRO CANTIDADES.png"   
+  },
+  reabasto: { 
+    asis_grafico: "./YMS/Creacion.jpeg",       
+    accion_script1: "./YMS/Reabasto ejecución.png",       
+    accion_script2: "./YMS/Hoja de trabajo.png",       
+    accion_plantilla: "./YMS/HOJA_TRABAJO.jpeg",       
+    accion_paletas: "./YMS/Reabastecimiento.jpeg"
+  }
+};
+
+// =========================================================
+// DATA EJECUTIVA (SIN MUROS DE TEXTO STAR NI IFRAME PÚBLICO)
 // =========================================================
 const PROJECTS = {
   reabasto: {
@@ -986,20 +985,19 @@ const PROJECTS = {
       }
     ],
     type: "reabasto",
-    dashboardUrl: "https://app.powerbi.com/view?r=eyJrIjoiYmI1NzYyODgtZTU5NS00MGY2LTk1MTktYWM0ZDU1ZmQyMDM0IiwidCI6IjhiNThmMjM4LWFmOGEtNDE3Ny1hM2U0LTg3YTllY2YxMGRkMyIsImMiOjR9",
     photos: [
-      { src: "./YMS/Creacion.jpeg", label: "Diagnóstico As-Is: Valle de Productividad" },
-      { src: "./YMS/Reabasto ejecución.png", label: "Simulador: Ejecución del Motor" },
-      { src: "./YMS/Hoja de trabajo.png", label: "Reporte Hoja TRABAJO (.xlsm)" },
-      { src: "./YMS/HOJA_TRABAJO.jpeg", label: "Impresión de Hojas y Etiquetas en Piso" },
-      { src: "./YMS/Reabastecimiento.jpeg", label: "Operación Real: Paletas Conciliadas" }
+      { src: IMAGES.reabasto.asis_grafico, label: "[ Análisis ] Valle de Productividad LPNs/hr" },
+      { src: IMAGES.reabasto.accion_script1, label: "[ Script ] Reabastecimiento" },
+      { src: IMAGES.reabasto.accion_script2, label: "[ Output ] Plantilla Final Inyectada" },
+      { src: IMAGES.reabasto.accion_plantilla, label: "[ Output ] Hoja De Trabajo" },
+      { src: IMAGES.reabasto.accion_paletas, label: "[ Operación ] Paletas Reabastecidas" }
     ]
   },
 
   yms: {
     title: "YMS de Recepción — Control de Patio y Medición de Touch Time",
     subtitle: "Planificación de Capacidades Cencosud 2030 • Herramientas: AppSheet, Excel VBA (Macros) & Tablero de Control",
-    status: "● ACTIVO EN OPERACIÓN",
+    status: "● ACTIVO / EN EJECUCIÓN",
     kpis: [
       { val: "100%", lbl: "Trazabilidad Unitaria", note: "Registro individual por transporte", color: "emerald" },
       { val: "0%", lbl: "Errores de Tipeo", note: "Estados restrictivos en AppSheet", color: "primary" },
@@ -1027,18 +1025,19 @@ const PROJECTS = {
       { step: "ETAPA 03 • CONTROL", title: "Monitoreo de Touch Time", desc: "Matriz de estatus en vivo y cálculo de capacidad real por rampa para el plan Cencosud 2030." }
     ],
     photos: [
-      { src: "./YMS/Menu Principal.png", label: "App UI: Menú Principal YMS" },
-      { src: "./YMS/REGISTRO LOCALES.png", label: "App UI: Registro de Unidades" },
-      { src: "./YMS/Detalle_locales.png", label: "App UI: Tiempos y Estados Restrictivos" },
-      { src: "./YMS/plantilla_local.png", label: "Control: Plantilla Automatizada Excel" },
-      { src: "./YMS/STATUS.jpeg", label: "Control: Matriz de Status de Patio" }
+      { src: IMAGES.yms.asis, label: "[ PRE-IMPLEMENTACIÓN ] As-is" },
+      { src: IMAGES.yms.accion_plantilla, label: "[ Back-office ] Plantilla de Control Excel" },
+      { src: IMAGES.yms.status_plantilla, label: "[ Back-office ] Matriz Status Plantilla" },
+      { src: IMAGES.yms.resultado_menu, label: "[ App UI ] Menú Principal" },
+      { src: IMAGES.yms.resultado_locales, label: "[ App UI ] Pantalla de Locales" },
+      { src: IMAGES.yms.resultado_detalles, label: "[ App UI ] Captura de Detalles" }
     ]
   },
 
   calidad: {
-    title: "App de Calidad en Rampa — Trazabilidad y Reportes Automatizados",
+    title: "App de Calidad en Rampa — Control de Vida Útil y Abarrotes",
     subtitle: "Control de Vida Útil y Abarrotes (Dinet S.A.) • Herramientas: AppSheet, Modelo Relacional & Automatización en Excel",
-    status: "● IMPLEMENTADO",
+    status: "● IMPLEMENTADO (Dinet S.A.)",
     kpis: [
       { val: "-100%", lbl: "Maquetación Manual", note: "Cero horas cuadrando fotos en celdas", color: "emerald" },
       { val: "100%", lbl: "Trazabilidad Relacional", note: "Contenedor ➔ Producto ➔ Lote ➔ Foto", color: "primary" },
@@ -1066,9 +1065,9 @@ const PROJECTS = {
       { step: "ETAPA 03 • CONTROL", title: "Reporte de Auditoría Instantáneo", desc: "Documento estandarizado emitido al instante para control de calidad y proveedores." }
     ],
     photos: [
-      { src: "./YMS/REGISTRO CONTENEDORES.png", label: "App UI: Registro de Contenedores" },
-      { src: "./YMS/REGISTRO CANTIDADES.png", label: "App UI: Control de Vida Útil y Cantidades" },
-      { src: "./YMS/Ingreso Calidad.png", label: "Control: Reporte Estandarizado de Calidad" }
+      { src: IMAGES.calidad.asis, label: "[ PRE-IMPLEMENTACIÓN ] As-is" },
+      { src: IMAGES.calidad.resultado_app, label: "[ App UI ] Captura en Campo" },
+      { src: IMAGES.calidad.resultado_reporte, label: "[ Output ] Reporte Automatizado" }
     ]
   }
 };
@@ -1125,35 +1124,16 @@ function renderProject(id) {
 
   if (p.type === 'reabasto') {
     contentHtml = `
-      <!-- ETAPA 1: ANIMACIÓN EXPLICATIVA -->
+      <!-- ANIMACIÓN EXPLICATIVA -->
       <div class="stage-header">
         <div class="stage-title">
-          <span class="stage-step">PASO 01 • DINÁMICA OPERATIVA</span>
+          <span class="stage-step">DINÁMICA OPERATIVA</span>
           <span>Explicación Interactiva del Proyecto (Motion Graphics)</span>
         </div>
         <span class="stage-caption">5 escenas interactivas • Puedes pausar o saltar a cualquier etapa</span>
       </div>
 
       <div id="mg-mount"></div>
-
-      <!-- ETAPA 2: CONTROL EN POWER BI -->
-      <div class="stage-header">
-        <div class="stage-title">
-          <span class="stage-step green">PASO 02 • ETAPA DE CONTROL</span>
-          <span>Monitoreo Directivo de Inventario y Productividad (Power BI en Vivo)</span>
-        </div>
-        <span class="stage-caption">Interactúa con los filtros del reporte para auditar los indicadores</span>
-      </div>
-
-      <div class="dashboard-box">
-        <div class="dashboard-bar">
-          <span><strong>📊 Tablero de Control Operativo</strong> — Seguimiento de Participación Piso vs. Altura y Permanencia</span>
-          <span class="mono" style="font-size:11px; color:var(--emerald); font-weight:700;">● CONECTADO A POWER BI SERVICE</span>
-        </div>
-        <div class="iframe-container">
-          <iframe src="${p.dashboardUrl}" allowFullScreen="true"></iframe>
-        </div>
-      </div>
 
       <details class="evidence-drawer">
         <summary>
@@ -1162,8 +1142,8 @@ function renderProject(id) {
         </summary>
         <div class="gallery-grid" style="margin-top:14px;">
           ${p.photos.map(ph => `
-            <div class="shot-card" onclick="openLightbox('${ph.src}', '${ph.label}')">
-              <img src="${ph.src}" alt="${ph.label}" onerror="this.closest('.shot-card').style.display='none'">
+            <div class="shot-card" onclick="openLightbox('${ph.src}', '${ph.label}')" title="Haz clic para ampliar">
+              <img src="${ph.src}" alt="${ph.label}">
               <div class="shot-cap">${ph.label}</div>
             </div>
           `).join('')}
@@ -1198,8 +1178,8 @@ function renderProject(id) {
 
       <div class="gallery-grid">
         ${p.photos.map(ph => `
-          <div class="shot-card" onclick="openLightbox('${ph.src}', '${ph.label}')">
-            <img src="${ph.src}" alt="${ph.label}" onerror="this.style.height='90px'; this.style.objectFit='contain'; this.alt='Vista disponible en el repositorio GitHub (' + '${ph.src}' + ')'">
+          <div class="shot-card" onclick="openLightbox('${ph.src}', '${ph.label}')" title="Haz clic para ampliar">
+            <img src="${ph.src}" alt="${ph.label}">
             <div class="shot-cap">${ph.label}</div>
           </div>
         `).join('')}
