@@ -3,625 +3,1796 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Juan Diego Valderrama Sulca — Portafolio Técnico</title>
+<title>Juan Diego Valderrama Sulca — Portafolio de Proyectos e Ingeniería Industrial</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0B101A;
-    --surface: #121A25;
-    --surface-2: #1A2433;
-    --line: #2A364B;
-    --text: #F1F4F9;
-    --text-dim: #94A3B8;
-    --frost: #5FD4E8;
-    --frost-dim: #21616E;
-    --amber: #F59E0B;
-    --ok: #10B981;
-    --radius: 8px;
-    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --bg: #F4F7FB;
+    --surface: #FFFFFF;
+    --surface-subtle: #F8FAFC;
+    --border: #E2E8F0;
+    --border-strong: #CBD5E1;
+    --navy: #0C2D48;
+    --primary: #0284C7;
+    --primary-light: #E0F2FE;
+    --emerald: #059669;
+    --emerald-light: #D1FAE5;
+    --amber: #D97706;
+    --amber-light: #FEF3C7;
+    --rose: #E11D48;
+    --rose-light: #FFE4E6;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+    --radius-lg: 14px;
+    --radius-md: 10px;
+    --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+    --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.07), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+    --transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
-  * { box-sizing: border-box; }
-  
-  html, body { 
-    margin: 0; 
-    padding: 0; 
-    background-color: var(--bg);
-  }
-  
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
   body {
-    background: radial-gradient(circle at 50% 0%, rgba(95, 212, 232, 0.05) 0%, transparent 60%), var(--bg);
+    background-color: var(--bg);
+    background-image: radial-gradient(at 0% 0%, rgba(2, 132, 199, 0.06) 0px, transparent 50%),
+                      radial-gradient(at 100% 0%, rgba(12, 45, 72, 0.05) 0px, transparent 50%);
     color: var(--text);
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
+    line-height: 1.5;
   }
-  
+
   .mono { font-family: 'IBM Plex Mono', monospace; }
-  
-  .wrap { 
-    max-width: 960px; 
-    margin: 0 auto; 
-    padding: 48px 24px 80px; 
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 36px 24px 72px;
   }
 
-  /* Header Section */
-  header { margin-bottom: 48px; }
-  
-  .eyebrow {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px; 
-    letter-spacing: 0.15em; 
-    text-transform: uppercase;
-    color: var(--frost); 
-    display: flex; 
-    align-items: center; 
-    gap: 10px; 
-    margin-bottom: 16px;
-  }
-  
-  .eyebrow::before {
-    content: ''; 
-    width: 8px; 
-    height: 8px; 
-    border-radius: 50%;
-    background: var(--frost); 
-    box-shadow: 0 0 10px 2px rgba(95, 212, 232, 0.6);
-  }
-  
-  h1 { 
-    font-size: clamp(32px, 5vw, 44px); 
-    margin: 0 0 8px; 
-    font-weight: 700; 
-    letter-spacing: -0.02em; 
-  }
-  
-  .role-line { 
-    color: var(--text-dim); 
-    font-size: 16px; 
-    margin: 0 0 12px; 
-  }
-  
-  .role-line b { 
-    color: var(--text); 
-    font-weight: 600; 
-  }
-  
-  .sub { 
-    color: var(--text-dim); 
-    font-size: 15px; 
-    line-height: 1.6; 
-    max-width: 75ch; 
-    margin-top: 16px; 
-  }
-
-  /* Bay Selector (Navigation) */
-  .board-label {
-    font-family: 'IBM Plex Mono', monospace; 
-    font-size: 12px; 
-    letter-spacing: 0.12em;
-    text-transform: uppercase; 
-    color: var(--text-dim); 
-    margin: 0 0 16px;
-    display: flex; 
-    align-items: center; 
-    gap: 12px;
-  }
-  
-  .board-label::after { 
-    content: ''; 
-    flex: 1; 
-    height: 1px; 
-    background: var(--line); 
-  }
-
-  .bays {
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 16px; 
-    margin-bottom: 40px;
-  }
-  
-  @media (max-width: 720px) { .bays { grid-template-columns: 1fr; } }
-
-  .bay {
+  /* =========================================================
+     EXECUTIVE HEADER
+     ========================================================= */
+  .hero {
     background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 20px;
-    cursor: pointer;
-    text-align: left;
-    color: var(--text);
-    font-family: inherit;
-    transition: var(--transition);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
     position: relative;
     overflow: hidden;
   }
-  
-  .bay:hover { 
-    border-color: #4B5E7C; 
-    transform: translateY(-2px); 
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--navy), var(--primary), var(--emerald));
   }
-  
-  .bay:focus-visible { 
-    outline: 2px solid var(--frost); 
-    outline-offset: 2px; 
+
+  .hero-left { flex: 1; min-width: 280px; }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--primary);
+    background: var(--primary-light);
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 10px;
   }
-  
-  .bay .row1 { 
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between; 
-    margin-bottom: 12px; 
+
+  .eyebrow-dot {
+    width: 7px; height: 7px;
+    background: var(--primary);
+    border-radius: 50%;
   }
-  
-  .bay .code { 
-    font-family: 'IBM Plex Mono', monospace; 
-    font-size: 12px; 
-    color: var(--text-dim); 
-    letter-spacing: 0.08em; 
+
+  h1 {
+    font-size: clamp(24px, 3.5vw, 32px);
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 6px;
   }
-  
-  .bay .light { 
-    width: 10px; 
-    height: 10px; 
-    border-radius: 50%; 
-    background: #334155; 
-    transition: var(--transition); 
+
+  .role-line {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    font-weight: 500;
   }
-  
-  .bay .title { 
-    font-size: 17px; 
-    font-weight: 600; 
-    margin: 0 0 8px; 
-    line-height: 1.3; 
+
+  .role-line strong {
+    color: var(--text);
+    font-weight: 700;
   }
-  
-  .bay .tag { 
-    font-size: 13px; 
-    color: var(--text-dim); 
-    line-height: 1.5; 
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .btn-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 15px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    border: 1px solid var(--border-strong);
+    color: var(--text);
+    background: var(--surface-subtle);
+  }
+
+  .btn-contact:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: #fff;
+    transform: translateY(-1px);
+  }
+
+  .btn-contact.primary {
+    background: var(--navy);
+    color: #fff;
+    border-color: var(--navy);
+  }
+
+  .btn-contact.primary:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+  }
+
+  /* =========================================================
+     PROJECT SELECTOR TABS
+     ========================================================= */
+  .nav-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .bays {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 780px) {
+    .bays { grid-template-columns: 1fr; }
+  }
+
+  .bay {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 16px 18px;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+  }
+
+  .bay:hover {
+    border-color: #94A3B8;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .bay-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .bay-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--surface-subtle);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+  }
+
+  .bay-indicator {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--border-strong);
+    transition: var(--transition);
+  }
+
+  .bay-title {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .bay-desc {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    line-height: 1.4;
   }
 
   .bay.active {
-    background: linear-gradient(180deg, rgba(95,212,232,0.1), rgba(95,212,232,0.02));
-    border-color: var(--frost-dim);
+    border-color: var(--primary);
+    background: linear-gradient(180deg, #F0F9FF 0%, #FFFFFF 100%);
+    box-shadow: 0 8px 20px -4px rgba(2, 132, 199, 0.15);
   }
-  
-  .bay.active .light { 
-    background: var(--frost); 
-    box-shadow: 0 0 12px 3px rgba(95, 212, 232, 0.4); 
-  }
-  
-  .bay.active .code { color: var(--frost); }
 
-  /* Readout Panel (Data Display) */
-  .panel {
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    background: var(--surface);
-    overflow: hidden;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 0.4s ease-out;
+  .bay.active .bay-tag {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
   }
-  
+
+  .bay.active .bay-indicator {
+    background: var(--emerald);
+    box-shadow: 0 0 0 4px var(--emerald-light);
+  }
+
+  /* =========================================================
+     MAIN PROJECT CARD
+     ========================================================= */
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    animation: fadeIn 0.3s ease-out;
+  }
+
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(6px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
   .panel-head {
-    padding: 20px 24px;
-    border-bottom: 1px solid var(--line);
-    background: var(--surface-2);
-    display: flex; 
-    flex-wrap: wrap; 
-    align-items: center; 
-    justify-content: space-between; 
-    gap: 12px 20px;
-  }
-  
-  .panel-head h2 { 
-    margin: 0; 
-    font-size: 20px; 
-    font-weight: 700; 
-  }
-  
-  .panel-head .status {
-    font-family: 'IBM Plex Mono', monospace; 
-    font-size: 12px; 
-    letter-spacing: 0.1em;
-    color: var(--frost); 
-    text-transform: uppercase;
+    padding: 22px 28px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-subtle);
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .panel-title-wrap h2 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.25;
+  }
+
+  .panel-sub {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+
+  .status-pill {
+    display: inline-flex;
     align-items: center;
     gap: 6px;
-  }
-
-  .chips { 
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 8px; 
-    padding: 20px 24px 0; 
-  }
-  
-  .chip {
-    font-family: 'IBM Plex Mono', monospace; 
-    font-size: 12px; 
-    color: var(--frost);
-    border: 1px solid var(--frost-dim); 
-    background: rgba(95, 212, 232, 0.08);
-    padding: 4px 12px; 
-    border-radius: 100px; 
-    letter-spacing: 0.02em;
-  }
-
-  /* STAR Content Formatting */
-  .star { padding: 12px 24px 24px; }
-  
-  .star-row {
-    display: grid; 
-    grid-template-columns: 140px 1fr; 
-    gap: 24px;
-    padding: 20px 0; 
-    border-bottom: 1px solid var(--line);
-  }
-  
-  .star-row:last-child { border-bottom: none; }
-  
-  @media (max-width: 600px) { .star-row { grid-template-columns: 1fr; gap: 8px; } }
-  
-  .star-label {
-    font-family: 'IBM Plex Mono', monospace; 
-    font-size: 12px; 
-    letter-spacing: 0.1em;
-    color: var(--text-dim); 
-    text-transform: uppercase; 
-    padding-top: 4px;
-  }
-  
-  .star-label b { 
-    display: block; 
-    color: var(--amber); 
-    font-size: 16px; 
-    letter-spacing: 0; 
-    font-family: 'IBM Plex Sans', sans-serif; 
-    font-weight: 600; 
-    margin-bottom: 4px; 
-  }
-  
-  .star-text { 
-    font-size: 15px; 
-    line-height: 1.7; 
-    color: var(--text); 
-  }
-  
-  /* Destacado visual para métricas clave */
-  .star-text b {
-    color: var(--amber);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
     font-weight: 600;
+    color: var(--emerald);
+    background: var(--emerald-light);
+    padding: 5px 12px;
+    border-radius: 999px;
   }
 
-  /* Image Placeholders and Multi-shot grid */
-  .shot {
-    margin-top: 16px; 
-    border: 1px dashed var(--line); 
-    border-radius: var(--radius);
-    background: var(--surface-2); 
-    overflow: hidden;
+  .panel-body {
+    padding: 24px 28px 32px;
+  }
+
+  /* =========================================================
+     1. KPI IMPACT STRIP (ULTRA-VISUAL, NO TEXT WALL)
+     ========================================================= */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 820px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .kpi-card {
+    background: var(--surface-subtle);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--primary);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+
+  .kpi-card.emerald { border-left-color: var(--emerald); }
+  .kpi-card.amber { border-left-color: var(--amber); }
+  .kpi-card.navy { border-left-color: var(--navy); }
+
+  .kpi-val {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 3px;
+  }
+
+  .kpi-card.emerald .kpi-val { color: var(--emerald); }
+  .kpi-card.primary .kpi-val { color: var(--primary); }
+
+  .kpi-lbl {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .kpi-note {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* =========================================================
+     2. 3-PILLAR EXECUTIVE BRIEF (REPLACES DENSE STAR WALL)
+     ========================================================= */
+  .brief-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  @media (max-width: 820px) {
+    .brief-grid { grid-template-columns: 1fr; }
+  }
+
+  .brief-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    background: #fff;
+  }
+
+  .brief-head {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 11.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+
+  .brief-head.prob { color: var(--rose); }
+  .brief-head.sol { color: var(--primary); }
+  .brief-head.ctrl { color: var(--emerald); }
+
+  .brief-badge {
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+  }
+
+  .brief-head.prob .brief-badge { background: var(--rose-light); }
+  .brief-head.sol .brief-badge { background: var(--primary-light); }
+  .brief-head.ctrl .brief-badge { background: var(--emerald-light); }
+
+  .brief-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .brief-text strong {
+    color: var(--text);
+    font-weight: 700;
+  }
+
+  /* =========================================================
+     SECTION DIVIDERS (PASO 1: ANIMACIÓN / PASO 2: CONTROL)
+     ========================================================= */
+  .stage-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 26px 0 12px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .stage-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--navy);
+  }
+
+  .stage-step {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 6px;
+    background: var(--navy);
+    color: #fff;
+  }
+
+  .stage-step.green {
+    background: var(--emerald);
+  }
+
+  .stage-caption {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  /* =========================================================
+     MOTION GRAPHICS PLAYER (CLEAN EMBEDDED STAGE)
+     ========================================================= */
+  .mg-wrapper {
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    background: #0B111E;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 28px;
+  }
+
+  .mg-header {
+    padding: 10px 18px;
+    background: #111827;
+    border-bottom: 1px solid #1E293B;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .mg-header-left {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: #38BDF8;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mg-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: #FBBF24;
+    background: rgba(245, 158, 11, 0.14);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    padding: 2px 10px;
+    border-radius: 4px;
+  }
+
+  .mg-stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: radial-gradient(circle at 50% 35%, #16243D 0%, #090D16 78%);
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .mg-stage svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    user-select: none;
+  }
+
+  .mg-sub-wrap {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 860px;
+    pointer-events: none;
+    text-align: center;
+  }
+
+  .mg-sub {
+    display: inline-block;
+    background: rgba(9, 13, 22, 0.92);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    backdrop-filter: blur(8px);
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: clamp(12px, 1.45vw, 14.5px);
+    line-height: 1.45;
+    color: #F8FAFC;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  }
+
+  .mg-sub b { color: #38BDF8; font-weight: 600; }
+  .mg-sub em { color: #FBBF24; font-style: normal; font-weight: 600; }
+
+  .mg-scrubber {
+    width: 100%;
+    height: 6px;
+    background: #1E293B;
+    cursor: pointer;
     position: relative;
   }
-  
-  .shot img { 
-    display: block; 
-    width: 100%; 
-    height: auto; 
-    flex: 1; 
-    object-fit: contain; 
-    background: rgba(0,0,0,0.2); 
-    cursor: zoom-in;
+
+  .mg-scrubber-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #0284C7, #10B981);
+    transition: width 0.08s linear;
+  }
+
+  .mg-controls {
+    padding: 12px 18px;
+    background: #F8FAFC;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .mg-ctrl-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .mg-btn {
+    background: #fff;
+    border: 1px solid var(--border-strong);
+    color: var(--navy);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 6px 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     transition: var(--transition);
   }
-  
-  .shot img:hover {
-    opacity: 0.9;
-  }
-  
-  .shot .placeholder {
-    padding: 40px 20px; 
-    text-align: center; 
-    color: var(--text-dim);
-    font-family: 'IBM Plex Mono', monospace; 
-    font-size: 13px; 
-    letter-spacing: 0.04em;
-    line-height: 1.5;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .shot .cap {
-    font-family: 'IBM Plex Mono', monospace; 
-    font-size: 11px; 
-    letter-spacing: 0.08em;
-    text-transform: uppercase; 
-    color: var(--frost); 
-    padding: 10px 16px; 
-    border-top: 1px solid var(--line);
-    background: rgba(0,0,0,0.3);
-    z-index: 2;
+
+  .mg-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
   }
 
-  /* Iframe Container for Power BI */
-  .iframe-container {
-    padding-bottom: 60%; /* Relación de aspecto aproximada 16:9 con espacio para la barra de herramientas */
-    height: 0;
+  .mg-btn.play {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: #fff;
+  }
+
+  .mg-btn.play:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+  }
+
+  .mg-pills {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+
+  @media (max-width: 720px) {
+    .mg-pills { grid-template-columns: 1fr 1fr; }
+  }
+
+  .mg-pill {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 7px 10px;
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text);
+  }
+
+  .mg-pill:hover {
+    border-color: var(--primary);
+  }
+
+  .mg-pill.active {
+    border-color: var(--primary);
+    background: var(--primary-light);
+  }
+
+  .mg-pill .p-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  .mg-pill.active .p-num { color: var(--primary); }
+
+  .mg-pill .p-title {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--navy);
+    display: block;
+    white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* =========================================================
+     POWER BI DASHBOARD CONTAINER (ETAPA DE CONTROL)
+     ========================================================= */
+  .dashboard-box {
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .dashboard-bar {
+    padding: 10px 16px;
+    background: var(--surface-subtle);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  .iframe-container {
     position: relative;
-    border-style: solid;
+    width: 100%;
+    padding-bottom: 58%;
+    height: 0;
+    background: #F8FAFC;
   }
 
   .iframe-container iframe {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     width: 100%;
     height: 100%;
     border: none;
   }
 
-  /* Grid configuration for multiple photos */
-  .multi-shot {
+  /* =========================================================
+     VISUAL WORKFLOW DIAGRAM (FOR YMS & CALIDAD)
+     ========================================================= */
+  .flow-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 16px;
-    margin-top: 16px;
-  }
-  .multi-shot .shot {
-    margin-top: 0; 
-    height: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 20px;
   }
 
-  /* Lightbox Modal Styles */
+  @media (max-width: 780px) {
+    .flow-grid { grid-template-columns: 1fr; }
+  }
+
+  .flow-step {
+    background: var(--surface-subtle);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    position: relative;
+  }
+
+  .flow-step-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--primary);
+    background: var(--primary-light);
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  .flow-step h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .flow-step p {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+  }
+
+  /* =========================================================
+     GALLERY GRID (FOR APPSHEET / YMS SCREENSHOTS)
+     ========================================================= */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+
+  .shot-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--surface-subtle);
+    transition: var(--transition);
+    cursor: pointer;
+  }
+
+  .shot-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .shot-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    display: block;
+    background: #E2E8F0;
+  }
+
+  .shot-cap {
+    padding: 9px 12px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--navy);
+    border-top: 1px solid var(--border);
+    background: #fff;
+  }
+
+  /* Collapsible Field Photos Drawer (Optional for Reabasto) */
+  details.evidence-drawer {
+    margin-top: 18px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface-subtle);
+    padding: 10px 16px;
+  }
+
+  details.evidence-drawer summary {
+    cursor: pointer;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  details.evidence-drawer summary:hover {
+    color: var(--primary);
+  }
+
+  /* Lightbox */
   #lightbox {
     position: fixed;
     z-index: 9999;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(11, 16, 26, 0.92);
+    inset: 0;
+    background: rgba(15, 23, 42, 0.88);
     display: none;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 24px;
-    backdrop-filter: blur(5px);
-  }
-  
-  #lightbox.active {
-    display: flex;
-  }
-  
-  #lightbox img {
-    max-width: 90vw;
-    max-height: 80vh;
-    object-fit: contain;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-  }
-  
-  #lightbox .lb-caption {
-    margin-top: 16px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    color: var(--frost);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    text-align: center;
-  }
-  
-  #lightbox .lb-close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    background: var(--surface-2);
-    border: 1px solid var(--line);
-    color: var(--text);
-    font-size: 24px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: var(--transition);
-  }
-  
-  #lightbox .lb-close:hover {
-    border-color: var(--frost);
-    color: var(--frost);
+    backdrop-filter: blur(4px);
   }
 
-  footer { 
-    margin-top: 40px; 
-    color: var(--text-dim); 
-    font-size: 13px; 
+  #lightbox.active { display: flex; }
+
+  #lightbox img {
+    max-width: 90vw;
+    max-height: 82vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    background: #fff;
+  }
+
+  #lightbox .lb-caption {
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  #lightbox .lb-close {
+    position: absolute;
+    top: 20px; right: 28px;
+    background: #fff;
+    border: none;
+    color: var(--navy);
+    font-size: 22px;
+    font-weight: 700;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  footer {
+    margin-top: 32px;
     text-align: center;
-    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--text-muted);
   }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <header>
-    <div class="eyebrow">Terminal Activa :: Portafolio Técnico</div>
-    <h1>Juan Diego Valderrama Sulca</h1>
-    <p class="role-line">Portafolio Profesional — <b>Datos, Automatización & BI</b></p>
-    <p class="sub">Ingeniero Industrial (UPN). Experiencia probada en Logística y Mejora Continua enfocado en la digitalización de operaciones: automatización de indicadores, maquetación de dashboards operativos y desarrollo de aplicativos integrados de captura de datos en campo. Selecciona una bahía para examinar los proyectos.</p>
+  <!-- HEADER EJECUTIVO -->
+  <header class="hero">
+    <div class="hero-left">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> Portafolio de Proyectos e Ingeniería</div>
+      <h1>Juan Diego Valderrama Sulca</h1>
+      <p class="role-line">Bachiller en Ingeniería Industrial — <strong>Excelencia Operacional, Proyectos, Kardex & Analítica (Power BI / Excel VBA)</strong></p>
+    </div>
+    <div class="hero-actions">
+      <a class="btn-contact" href="mailto:valderramasulcajd@gmail.com">✉️ Contacto</a>
+      <a class="btn-contact primary" href="https://linkedin.com/in/juan-diego-valderrama" target="_blank">🔗 LinkedIn</a>
+    </div>
   </header>
 
-  <p class="board-label">Selector de Bahías [Proyectos]</p>
+  <!-- SELECTOR DE PROYECTOS -->
+  <div class="nav-label">Proyectos Implementados en Operación (Selecciona para explorar)</div>
   <div class="bays" id="bays">
-    <button class="bay active" data-id="yms">
-      <div class="row1"><span class="code">BAHÍA 01</span><span class="light"></span></div>
-      <p class="title">YMS de Recepción</p>
-      <p class="tag">Control de patio en tiempo real, estados restrictivos y alertas masivas.</p>
+    <button class="bay active" data-id="reabasto">
+      <div class="bay-top">
+        <span class="bay-tag">PROYECTO 01 ★ DESTACADO</span>
+        <span class="bay-indicator"></span>
+      </div>
+      <div class="bay-title">Simulador WMS & Reabasto</div>
+      <div class="bay-desc">Asignación inteligente, cruce en turno (P / R) y control de inventario en Power BI.</div>
     </button>
+
+    <button class="bay" data-id="yms">
+      <div class="bay-top">
+        <span class="bay-tag">PROYECTO 02</span>
+        <span class="bay-indicator"></span>
+      </div>
+      <div class="bay-title">YMS Control de Patio</div>
+      <div class="bay-desc">Digitalización de recepción en AppSheet, medición de Touch Time y control de rampas.</div>
+    </button>
+
     <button class="bay" data-id="calidad">
-      <div class="row1"><span class="code">BAHÍA 02</span><span class="light"></span></div>
-      <p class="title">App de Calidad</p>
-      <p class="tag">Control estricto de vida útil y generación automatizada de reportes.</p>
-    </button>
-    <button class="bay" data-id="reabasto">
-      <div class="row1"><span class="code">BAHÍA 03</span><span class="light"></span></div>
-      <p class="title">Motor RE-ABASTO</p>
-      <p class="tag">Asignación FEFO en memoria RAM y optimización de productividad (L/HH).</p>
+      <div class="bay-top">
+        <span class="bay-tag">PROYECTO 03</span>
+        <span class="bay-indicator"></span>
+      </div>
+      <div class="bay-title">App de Calidad en Rampa</div>
+      <div class="bay-desc">Captura móvil relacional e inyección automatizada de evidencias fotográficas en Excel.</div>
     </button>
   </div>
 
-  <div class="panel" id="main-panel">
+  <!-- PANEL PRINCIPAL -->
+  <main class="panel" id="main-panel">
     <div class="panel-head">
-      <h2 id="p-title">Cargando...</h2>
-      <span class="status" id="p-status"></span>
+      <div class="panel-title-wrap">
+        <h2 id="p-title">Cargando...</h2>
+        <div class="panel-sub" id="p-sub"></div>
+      </div>
+      <span class="status-pill" id="p-status"></span>
     </div>
-    <div class="chips" id="p-chips"></div>
-    <div class="star" id="p-star"></div>
-  </div>
 
-  <footer>{ Sistema Operativo: Metodología STAR — Situación · Tarea · Acción · Resultado }</footer>
+    <div class="panel-body" id="p-body"></div>
+  </main>
+
+  <footer>Portafolio de Ingeniería Industrial — Juan Diego Valderrama Sulca • Diseño orientado a Procesos, Mejora Continua y Control de Gestión</footer>
 </div>
 
-<!-- Lightbox Modal Container -->
+<!-- Lightbox Modal -->
 <div id="lightbox" onclick="closeLightbox(event)">
   <button class="lb-close" onclick="closeLightbox()">&times;</button>
-  <img id="lb-img" src="" alt="Zoom">
-  <div class="lb-caption" id="lb-cap"></div>
+  <img id="lb-img" src="" alt="Vista ampliada">
+  <div id="lb-cap" class="lb-caption"></div>
 </div>
 
 <script>
-const DATA = {
-  yms: {
-    title: "YMS de Recepción — Control de Patio",
-    status: "● ACTIVO / EN EJECUCIÓN",
-    chips: ["AppSheet", "Excel VBA", "Macros", "Data Modeling"],
-    star: [
-      ["Situación", "Durante la planificación de capacidades operativas para la proyección 2030 de Cencosud, la auditoría de la base de datos histórica reveló un registro manual carente de granularidad. Los operadores agrupaban múltiples transportes bajo un solo bloque de tiempo e introducían errores de tipado, imposibilitando calcular la capacidad real de las rampas o el Touch Time individual por vehículo.", "asis"],
-      ["Tarea", "Diseñar un Sistema de Gestión de Patio (YMS) que estandarizara el registro unitario por transporte, facilitara la captura ágil de tiempos en campo y alimentara automáticamente los indicadores de capacidad sin fricción operativa."],
-      [
-        "Acción", 
-        "Implementé una interfaz en AppSheet con botones de registro rápido para hitos logísticos y estados restrictivos (PENDIENTE, EN PLAYA, EN RAMPA, ATENDIDO). Sustituí el flujo informal de reportes fotográficos por WhatsApp por una captura integrada que asocia las observaciones directamente al SKU. En el back-office, construí macros en Excel para consolidar plantillas y diseñé un dashboard interactivo en HTML para monitoreo visual en tiempo real.", 
-        [
-          { key: "accion_plantilla", label: "[ Back-office ] Plantilla de Control Excel" },
-          { key: "status_plantilla", label: "[ Back-office ] Matriz Status Plantilla" }
-        ]
-      ],
-      [
-        "Resultado", 
-        "Transición a un modelo con 100% de trazabilidad unitaria y cero errores de tipeo. La estandarización de los timestamps permitió medir el Touch Time real por rampa, proveyendo la data limpia y exacta requerida para sustentar el plan de expansión de capacidades Cencosud 2030.", 
-        [
-          { key: "resultado_menu", label: "[ App UI ] Menú Principal" },
-          { key: "resultado_locales", label: "[ App UI ] Pantalla de Locales" },
-          { key: "resultado_detalles", label: "[ App UI ] Captura de Detalles" }
-        ]
-      ]
-    ]
-  },
-  calidad: {
-    title: "App de Calidad — Control de Vida Útil y Abarrotes",
-    status: "● IMPLEMENTADO (Dinet S.A.)",
-    chips: ["AppSheet", "Data Relacional", "Automatización","Python" ],
-    star: [
-      ["Situación", "La generación de reportes de calidad dependía de un flujo altamente manual y administrativo. Los inspectores invertían horas maquetando hojas de cálculo, redimensionando y alineando fotografías celda por celda, mientras que las incidencias se acumulaban en collages desordenados, perdiendo la trazabilidad relacional entre la incidencia, el lote, el producto y el contenedor.", "asis"],
-      ["Tarea", "Digitalizar la captura de datos de calidad en rampa para independizar el registro en campo de la maquetación visual, garantizando que cada observación y fotografía quede estrictamente vinculada a su nivel jerárquico correspondiente."],
-      ["Acción", "Desplegué una aplicación móvil en AppSheet que guía al inspector mediante flujos estructurados para el registro de cantidades. En el back-end, implementé un script en Python utilizando la librería openpyxl que lee la base relacional y renderiza automáticamente el reporte en Excel, inyectando y dimensionando las fotografías en sus celdas correspondientes sin intervención humana."],
-      [
-        "Resultado", 
-        "Reducción del 100% del tiempo invertido en formateo manual de imágenes y eliminación del riesgo de pérdida de trazabilidad. El proceso pasó de ser una carga administrativa a un flujo de auditoría ágil, entregando reportes estructurados de forma inmediata al finalizar la inspección.", 
-        [
-          { key: "resultado_app", label: "[ App UI ] Captura en Campo" },
-          { key: "resultado_reporte", label: "[ Output ] Reporte Automatizado" }
-        ]
-      ]
-    ]
-  },
+// =========================================================
+// DATA EJECUTIVA (SIN MUROS DE TEXTO STAR)
+// =========================================================
+const PROJECTS = {
   reabasto: {
-    title: "Motor Lógico de Reabasto (Planificación y Simulación)",
-    status: "● VERSIÓN ESTABLE",
-    chips: ["Python", "Excel VBA", "Power BI"],
-    star: [
-      [
-        "Situación", 
-        "La desestabilización lógica del WMS provocó que la atención de la ola de pedidos dependiera en un <b>40%</b> de retiros directos desde ubicaciones en altura, obligando al picker a interrumpir su flujo continuo para movimientos verticales no planificados en cada pedido. Sin un mecanismo preventivo que bajara el stock antes del inicio de turno, esto generaba un severo <b>'valle de productividad'</b> matutino, con pickers en espera de paletas de emergencia y flujos de tarea que se extendían hasta <b>1.5 horas</b>.", 
-        [
-          { key: "asis_grafico", label: "[ Análisis ] Valle de Productividad LPNs/hr" }
-        ]
-      ],
-      ["Tarea", "Desarrollar un motor de priorización estático para el <b>reabastecimiento preventivo del primer nivel (piso)</b> en las categorías <b>FOOD</b> y <b>ELECTRO</b>, eliminando los tiempos muertos del arranque de turno y alcanzando el <b>SLA de 20 Líneas por Hora Hombre (L/HH)</b>."],
-      [
-        "Acción", 
-        "Diseñado para que los planificadores simulen escenarios de bajada de paletas en segundos, separando la descarga web del procesamiento de datos:<br><br>• <b>Script de Extracción (Selenium):</b> Automatiza la navegación en el portal web (modo headless). Filtra el CD Huachipa, selecciona la cuenta y descarga el reporte de saldos manejando esperas dinámicas (AJAX).<br>• <b>Script de Simulación (Pandas):</b> Lee el Maestro de Artículos, limpia ubicaciones Implant/Tránsito, y calcula un <b>FEFO Inteligente</b> comparando vencimientos entre Piso y Altura. Prioriza pedidos matemáticamente según su urgencia y volumen.<br>• <b>Plantilla de Salida (.xlsm):</b> Diseñé la macro receptora, con botones operativos que generan directamente la <b>hoja de trabajo</b> y las <b>etiquetas de ubicación/SKU (Code 128)</b> listas para imprimir, cerrando el ciclo entre el cálculo y la ejecución en piso.<br>• <b>Inyección:</b> El resultado final se inyecta en la plantilla usando <i>openpyxl</i>, limpiando la data anterior pero conservando intactos los formatos y botones operativos.", 
-        [
-          { key: "accion_script1", label: "[ Script ] Rebastecimiento" },
-          { key: "accion_script2", label: "[ Output ] Plantilla Final Inyectada" },
-          { key: "accion_plantilla", label: "[ Output ] Hoja De Trabajo" },
-          { key: "accion_paletas", label: "[ Operación ] Paletas Reabastecidas" }
-        ]
-      ],
-      [
-        "Resultado", 
-        "Evolución radical del ratio de atención: pasamos de 60/40 a <b>80% piso y 20% altura</b>. Se erradicó el valle productivo permitiendo iniciar el picking de inmediato a las 07:00 AM. La productividad general creció a <b>23 L/HH</b>, superando la meta contractual. Se diseñó el siguiente panel de Power BI para el monitoreo y seguimiento dinámico de estos indicadores operativos.", 
-        [
-          { key: "resultado_dashboard", label: "[ Impacto ] Dashboard Interactivo de Participación e Inventario", isIframe: true }
-        ]
-      ]
+    title: "Simulador de Asignación WMS, Reabasto Preventivo & Conciliación Residual",
+    subtitle: "Centro de Distribución CD10 Cencosud / Dinet (Bloque D) • Herramientas: Excel VBA (.xlsm), Lógica asistida por IA & Power BI",
+    status: "● EN PRODUCCIÓN ESTABLE",
+    kpis: [
+      { val: "60% ➔ 80%", lbl: "Picking en Piso", note: "Elimina valle matutino de 1.5 h", color: "emerald" },
+      { val: "23 L/HH", lbl: "Productividad Operativa", note: "Superando meta SLA de 20 L/HH", color: "primary" },
+      { val: "-32%", lbl: "Doble Manipulación", note: "Cruce MONTACARGA × REABASTO", color: "amber" },
+      { val: "-35%", lbl: "Recorrido en Bloque D", note: "Orden de creación RFID eCommerce", color: "navy" }
+    ],
+    brief: [
+      {
+        type: "prob", icon: "⚠️", title: "1. El Problema (As-Is)",
+        text: "Al inicio del turno nadie sabía qué ubicaciones asignaría el WMS hasta generar tareas (40% en altura = <strong>1.5 h de espera</strong>). En <strong>NON FOOD</strong>, las paletas bajadas (>50% volumen) se re-elevaban sin saber si servían para otros pedidos pendientes."
+      },
+      {
+        type: "sol", icon: "⚙️", title: "2. La Solución (Simulador + Plantilla)",
+        text: "Hoja <code>TRABAJO</code> que proyecta ubicaciones y cajas requeridas para <strong>adelantar el reabasto</strong>, y plantilla de cruce (<code>MONTACARGA × REABASTO</code>) que emite etiquetas de turno (<code>P 10 UND | R 3 CJ</code>) para extraer el saldo exacto a Mini Rack o Selectivo Simple."
+      },
+      {
+        type: "ctrl", icon: "📊", title: "3. Etapa de Control (Power BI)",
+        text: "Monitoreo directivo de <strong>participación de inventario (Piso vs. Altura)</strong>, cumplimiento de FEFO, permanencia de stock y productividad horaria para sostener el estándar de <strong>80% picking en piso</strong>."
+      }
+    ],
+    type: "reabasto",
+    dashboardUrl: "https://app.powerbi.com/view?r=eyJrIjoiOGQyZTQwNDUtZjRkOS00YzI3LWJlMzYtMTljZTA2NWNmYThlIiwidCI6IjhiNThmMjM4LWFmOGEtNDE3Ny1hM2U0LTg3YTllY2YxMGRkMyIsImMiOjR9",
+    photos: [
+      { src: "./YMS/Creacion.jpeg", label: "Diagnóstico As-Is: Valle de Productividad" },
+      { src: "./YMS/Reabasto ejecución.png", label: "Simulador: Ejecución del Motor" },
+      { src: "./YMS/Hoja de trabajo.png", label: "Reporte Hoja TRABAJO (.xlsm)" },
+      { src: "./YMS/HOJA_TRABAJO.jpeg", label: "Impresión de Hojas y Etiquetas en Piso" },
+      { src: "./YMS/Reabastecimiento.jpeg", label: "Operación Real: Paletas Conciliadas" }
+    ]
+  },
+
+  yms: {
+    title: "YMS de Recepción — Control de Patio y Medición de Touch Time",
+    subtitle: "Planificación de Capacidades Cencosud 2030 • Herramientas: AppSheet, Excel VBA (Macros) & Tablero de Control",
+    status: "● ACTIVO EN OPERACIÓN",
+    kpis: [
+      { val: "100%", lbl: "Trazabilidad Unitaria", note: "Registro individual por transporte", color: "emerald" },
+      { val: "0%", lbl: "Errores de Tipeo", note: "Estados restrictivos en AppSheet", color: "primary" },
+      { val: "Real-Time", lbl: "Medición Touch Time", note: "Timestamps exactos por rampa", color: "amber" },
+      { val: "Plan 2030", lbl: "Data de Capacidad", note: "Base para expansión de rampas", color: "navy" }
+    ],
+    brief: [
+      {
+        type: "prob", icon: "⚠️", title: "1. El Problema (As-Is)",
+        text: "El registro manual agrupaba varios camiones en un solo bloque horario con errores de tipeo y fotos sueltas por WhatsApp, impidiendo medir el <strong>Touch Time real</strong> por rampa."
+      },
+      {
+        type: "sol", icon: "📱", title: "2. La Solución (AppSheet + VBA)",
+        text: "App móvil con botones de hitos y <strong>estados restrictivos</strong> (<code>PENDIENTE ➔ EN PLAYA ➔ EN RAMPA ➔ ATENDIDO</code>) que captura fotos por SKU y consolida tiempos mediante macros en Excel."
+      },
+      {
+        type: "ctrl", icon: "📊", title: "3. Etapa de Control (Matriz Status)",
+        text: "Tablero de control en back-office que monitorea en tiempo real la ocupación de muelles, cuellos de botella en recepción y capacidad efectiva por turno."
+      }
+    ],
+    type: "gallery",
+    flow: [
+      { step: "ETAPA 01 • CAMPO", title: "Captura en AppSheet", desc: "Registro de llegada, asignación de muelle y sellos de tiempo con un toque desde tablet/móvil." },
+      { step: "ETAPA 02 • BACK-OFFICE", title: "Consolidación VBA", desc: "Macros automatizadas que estructuran la base histórica sin intervención manual." },
+      { step: "ETAPA 03 • CONTROL", title: "Monitoreo de Touch Time", desc: "Matriz de estatus en vivo y cálculo de capacidad real por rampa para el plan Cencosud 2030." }
+    ],
+    photos: [
+      { src: "./YMS/Menu Principal.png", label: "App UI: Menú Principal YMS" },
+      { src: "./YMS/REGISTRO LOCALES.png", label: "App UI: Registro de Unidades" },
+      { src: "./YMS/Detalle_locales.png", label: "App UI: Tiempos y Estados Restrictivos" },
+      { src: "./YMS/plantilla_local.png", label: "Control: Plantilla Automatizada Excel" },
+      { src: "./YMS/STATUS.jpeg", label: "Control: Matriz de Status de Patio" }
+    ]
+  },
+
+  calidad: {
+    title: "App de Calidad en Rampa — Trazabilidad y Reportes Automatizados",
+    subtitle: "Control de Vida Útil y Abarrotes (Dinet S.A.) • Herramientas: AppSheet, Modelo Relacional & Automatización en Excel",
+    status: "● IMPLEMENTADO",
+    kpis: [
+      { val: "-100%", lbl: "Maquetación Manual", note: "Cero horas cuadrando fotos en celdas", color: "emerald" },
+      { val: "100%", lbl: "Trazabilidad Relacional", note: "Contenedor ➔ Producto ➔ Lote ➔ Foto", color: "primary" },
+      { val: "Inmediato", lbl: "Emisión de Reporte", note: "Al finalizar la inspección en rampa", color: "amber" },
+      { val: "FEFO / BPM", lbl: "Control de Vida Útil", note: "Auditoría estandarizada en recepción", color: "navy" }
+    ],
+    brief: [
+      {
+        type: "prob", icon: "⚠️", title: "1. El Problema (As-Is)",
+        text: "Los inspectores invertían horas redimensionando y pegando fotografías manualmente en Excel, perdiendo el vínculo entre la incidencia, el lote y el contenedor."
+      },
+      {
+        type: "sol", icon: "📱", title: "2. La Solución (App Relacional)",
+        text: "Aplicación en <strong>AppSheet</strong> para captura jerárquica en rampa conectada a un flujo automatizado (<code>OpenPyXL</code>) que inyecta y dimensiona cada foto en su celda exacta."
+      },
+      {
+        type: "ctrl", icon: "📊", title: "3. Etapa de Control (Auditoría)",
+        text: "Generación instantánea del <strong>Reporte Oficial de Calidad y Vida Útil</strong> listo para reclamos a proveedores y bloqueo preventivo de lotes con desviación."
+      }
+    ],
+    type: "gallery",
+    flow: [
+      { step: "ETAPA 01 • RECEPCIÓN", title: "Inspección Guiada en AppSheet", desc: "Registro estructurado de contenedor, SKU, fecha de vencimiento y captura fotográfica." },
+      { step: "ETAPA 02 • PROCESAMIENTO", title: "Inyección Automática de Fotos", desc: "Script que lee la base relacional y coloca cada evidencia fotográfica en la plantilla oficial." },
+      { step: "ETAPA 03 • CONTROL", title: "Reporte de Auditoría Instantáneo", desc: "Documento estandarizado emitido al instante para control de calidad y proveedores." }
+    ],
+    photos: [
+      { src: "./YMS/REGISTRO CONTENEDORES.png", label: "App UI: Registro de Contenedores" },
+      { src: "./YMS/REGISTRO CANTIDADES.png", label: "App UI: Control de Vida Útil y Cantidades" },
+      { src: "./YMS/Ingreso Calidad.png", label: "Control: Reporte Estandarizado de Calidad" }
     ]
   }
 };
 
-// Rutas de imágenes y enlaces
-const IMAGES = {
-  yms: { 
-    asis: "./YMS/reporte_anterior.jpeg", 
-    accion_plantilla: "./YMS/plantilla_local.png", 
-    status_plantilla: "./YMS/STATUS.jpeg",
-    resultado_menu: "./YMS/Menu Principal.png",      
-    resultado_locales: "./YMS/REGISTRO LOCALES.png",   
-    resultado_detalles: "./YMS/Detalle_locales.png"   
-  },
-  calidad: { 
-    asis: "./YMS/Ingreso Calidad.png", 
-    resultado_app: "./YMS/REGISTRO CONTENEDORES.png",      
-    resultado_reporte: "./YMS/REGISTRO CANTIDADES.png"   
-  },
-  reabasto: { 
-    asis_grafico: "./YMS/Creacion.jpeg",       
-    accion_script1: "./YMS/Reabasto ejecución.png",       
-    accion_script2: "./YMS/Hoja de trabajo.png",       
-    accion_plantilla: "./YMS/HOJA_TRABAJO.jpeg",       
-    accion_paletas: "./YMS/Reabastecimiento.jpeg", 
-    resultado_dashboard: "https://app.powerbi.com/view?r=eyJrIjoiOGQyZTQwNDUtZjRkOS00YzI3LWJlMzYtMTljZTA2NWNmYThlIiwidCI6IjhiNThmMjM4LWFmOGEtNDE3Ny1hM2U0LTg3YTllY2YxMGRkMyIsImMiOjR9" 
-  }
-};
+// =========================================================
+// RENDERIZADOR PRINCIPAL
+// =========================================================
+const MG_SCENE_DUR = 11;
+const MG_TOTAL_DUR = 55;
+let mgElapsed = 0;
+let mgPlaying = true;
+let mgLastTime = performance.now();
+let mgMounted = false;
 
-// Funcionalidad de Lightbox (Zoom)
+const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+const lerp = (a, b, t) => a + (b - a) * clamp(t, 0, 1);
+const easeOut = t => 1 - Math.pow(1 - clamp(t, 0, 1), 3);
+
+function renderProject(id) {
+  const p = PROJECTS[id];
+  document.getElementById('p-title').textContent = p.title;
+  document.getElementById('p-sub').textContent = p.subtitle;
+  document.getElementById('p-status').textContent = p.status;
+
+  document.querySelectorAll('.bay').forEach(b => b.classList.toggle('active', b.dataset.id === id));
+
+  const kpiHtml = `
+    <div class="kpi-grid">
+      ${p.kpis.map(k => `
+        <div class="kpi-card ${k.color}">
+          <div class="kpi-val">${k.val}</div>
+          <div class="kpi-lbl">${k.lbl}</div>
+          <div class="kpi-note">${k.note}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  const briefHtml = `
+    <div class="brief-grid">
+      ${p.brief.map(b => `
+        <div class="brief-card">
+          <div class="brief-head ${b.type}">
+            <span class="brief-badge">${b.icon}</span>
+            <span>${b.title}</span>
+          </div>
+          <div class="brief-text">${b.text}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  let contentHtml = '';
+
+  if (p.type === 'reabasto') {
+    contentHtml = `
+      <!-- ETAPA 1: ANIMACIÓN EXPLICATIVA -->
+      <div class="stage-header">
+        <div class="stage-title">
+          <span class="stage-step">PASO 01 • DINÁMICA OPERATIVA</span>
+          <span>Explicación Interactiva del Proyecto (Motion Graphics)</span>
+        </div>
+        <span class="stage-caption">5 escenas interactivas • Puedes pausar o saltar a cualquier etapa</span>
+      </div>
+
+      <div id="mg-mount"></div>
+
+      <!-- ETAPA 2: CONTROL EN POWER BI -->
+      <div class="stage-header">
+        <div class="stage-title">
+          <span class="stage-step green">PASO 02 • ETAPA DE CONTROL</span>
+          <span>Monitoreo Directivo de Inventario y Productividad (Power BI en Vivo)</span>
+        </div>
+        <span class="stage-caption">Interactúa con los filtros del reporte para auditar los indicadores</span>
+      </div>
+
+      <div class="dashboard-box">
+        <div class="dashboard-bar">
+          <span><strong>📊 Tablero de Control Operativo</strong> — Seguimiento de Participación Piso vs. Altura y Permanencia</span>
+          <span class="mono" style="font-size:11px; color:var(--emerald); font-weight:700;">● CONECTADO A POWER BI SERVICE</span>
+        </div>
+        <div class="iframe-container">
+          <iframe src="${p.dashboardUrl}" allowFullScreen="true"></iframe>
+        </div>
+      </div>
+
+      <details class="evidence-drawer">
+        <summary>
+          <span>📷 Ver capturas y fotografías reales de la implementación en piso (${p.photos.length} evidencias)</span>
+          <span>▼</span>
+        </summary>
+        <div class="gallery-grid" style="margin-top:14px;">
+          ${p.photos.map(ph => `
+            <div class="shot-card" onclick="openLightbox('${ph.src}', '${ph.label}')">
+              <img src="${ph.src}" alt="${ph.label}" onerror="this.closest('.shot-card').style.display='none'">
+              <div class="shot-cap">${ph.label}</div>
+            </div>
+          `).join('')}
+        </div>
+      </details>
+    `;
+  } else {
+    contentHtml = `
+      <div class="stage-header">
+        <div class="stage-title">
+          <span class="stage-step">ARQUITECTURA DEL PROCESO</span>
+          <span>Flujo de Digitalización y Etapa de Control</span>
+        </div>
+      </div>
+
+      <div class="flow-grid">
+        ${p.flow.map(f => `
+          <div class="flow-step">
+            <span class="flow-step-num">${f.step}</span>
+            <h4>${f.title}</h4>
+            <p>${f.desc}</p>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="stage-header">
+        <div class="stage-title">
+          <span class="stage-step green">EVIDENCIA & CONTROL</span>
+          <span>Interfaces en AppSheet y Reportes Automatizados (Haz clic para ampliar)</span>
+        </div>
+      </div>
+
+      <div class="gallery-grid">
+        ${p.photos.map(ph => `
+          <div class="shot-card" onclick="openLightbox('${ph.src}', '${ph.label}')">
+            <img src="${ph.src}" alt="${ph.label}" onerror="this.style.height='90px'; this.style.objectFit='contain'; this.alt='Vista disponible en el repositorio GitHub (' + '${ph.src}' + ')'">
+            <div class="shot-cap">${ph.label}</div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  document.getElementById('p-body').innerHTML = kpiHtml + briefHtml + contentHtml;
+
+  if (p.type === 'reabasto') {
+    mgElapsed = 0;
+    mgPlaying = true;
+    mountMotionGraphics();
+  } else {
+    mgMounted = false;
+  }
+}
+
+// =========================================================
+// MOTOR MOTION GRAPHICS (5 ESCENAS)
+// =========================================================
+function mountMotionGraphics() {
+  const mount = document.getElementById('mg-mount');
+  if (!mount) return;
+  mount.innerHTML = `
+    <div class="mg-wrapper">
+      <div class="mg-header">
+        <div class="mg-header-left">
+          <span>🎬</span>
+          <span>STORYTELLING OPERATIVO: DEL REPORTE "TRABAJO" AL CRUCE EN TURNO (R 3 CJ)</span>
+        </div>
+        <span class="mg-badge" id="mg-scene-badge">ESCENA 1 / 5</span>
+      </div>
+
+      <div class="mg-stage" onclick="mgTogglePlay()">
+        <svg viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="rackGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1E293B"/>
+              <stop offset="100%" stop-color="#0F172A"/>
+            </linearGradient>
+            <linearGradient id="yellowLabel" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#FACC15"/>
+              <stop offset="100%" stop-color="#EAB308"/>
+            </linearGradient>
+            <linearGradient id="whiteLabel" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#FFFFFF"/>
+              <stop offset="100%" stop-color="#E2E8F0"/>
+            </linearGradient>
+            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="4" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+          </defs>
+          <g stroke="#1E293B" stroke-width="0.6" opacity="0.45">
+            <line x1="0" y1="90" x2="960" y2="90"/><line x1="0" y1="180" x2="960" y2="180"/>
+            <line x1="0" y1="270" x2="960" y2="270"/><line x1="0" y1="360" x2="960" y2="360"/>
+            <line x1="0" y1="450" x2="960" y2="450"/>
+            <line x1="160" y1="0" x2="160" y2="540"/><line x1="320" y1="0" x2="320" y2="540"/>
+            <line x1="480" y1="0" x2="480" y2="540"/><line x1="640" y1="0" x2="640" y2="540"/>
+            <line x1="800" y1="0" x2="800" y2="540"/>
+          </g>
+          <g id="mg-scene-layer"></g>
+        </svg>
+        <div class="mg-sub-wrap">
+          <div class="mg-sub" id="mg-sub-text">Cargando animación...</div>
+        </div>
+      </div>
+
+      <div class="mg-scrubber" id="mg-scrubber" onclick="mgSeek(event)">
+        <div class="mg-scrubber-fill" id="mg-scrubber-fill"></div>
+      </div>
+
+      <div class="mg-controls">
+        <div class="mg-ctrl-top">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <button class="mg-btn play" id="mg-play-btn" onclick="mgTogglePlay()">⏸ Pausar</button>
+            <button class="mg-btn" onclick="mgRestart()">↺ Reiniciar</button>
+            <span class="mono" id="mg-time" style="font-size:12px; color:var(--text-muted); margin-left:6px;">00:00 / 00:55</span>
+          </div>
+          <span style="font-size:11.5px; color:var(--text-muted); font-weight:600;">Selecciona cualquier escena para saltar directo 👇</span>
+        </div>
+        <div class="mg-pills">
+          <button class="mg-pill active" id="mg-pill-0" onclick="mgJump(0)">
+            <span class="p-num">01. EL PROBLEMA</span>
+            <span class="p-title">Ceguera al Inicio Turno</span>
+          </button>
+          <button class="mg-pill" id="mg-pill-1" onclick="mgJump(1)">
+            <span class="p-num">02. EL SIMULADOR</span>
+            <span class="p-title">Hoja TRABAJO (.xlsm)</span>
+          </button>
+          <button class="mg-pill" id="mg-pill-2" onclick="mgJump(2)">
+            <span class="p-num">03. REABASTO PURO</span>
+            <span class="p-title">Adelanto & Etiqueta Amarilla</span>
+          </button>
+          <button class="mg-pill" id="mg-pill-3" onclick="mgJump(3)">
+            <span class="p-num">04. CRUCE TURNO</span>
+            <span class="p-title">MONTACARGA × REABASTO</span>
+          </button>
+          <button class="mg-pill" id="mg-pill-4" onclick="mgJump(4)">
+            <span class="p-num">05. ECOMMERCE</span>
+            <span class="p-title">Orden Creación RFID</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+  mgMounted = true;
+  mgRenderFrame(mgElapsed);
+}
+
+function mgRenderFrame(totalSec) {
+  if (!mgMounted) return;
+  const sceneIdx = Math.min(4, Math.floor(totalSec / MG_SCENE_DUR));
+  const localSec = totalSec - sceneIdx * MG_SCENE_DUR;
+  const p = clamp(localSec / MG_SCENE_DUR, 0, 1);
+
+  const badge = document.getElementById('mg-scene-badge');
+  const fill = document.getElementById('mg-scrubber-fill');
+  const timeEl = document.getElementById('mg-time');
+  const layer = document.getElementById('mg-scene-layer');
+  const sub = document.getElementById('mg-sub-text');
+  if (!layer || !sub) return;
+
+  badge.textContent = `ESCENA ${sceneIdx + 1} / 5`;
+  fill.style.width = `${(totalSec / MG_TOTAL_DUR) * 100}%`;
+  timeEl.textContent = `00:${String(Math.floor(totalSec)).padStart(2, '0')} / 00:55`;
+
+  for (let i = 0; i < 5; i++) {
+    const pill = document.getElementById('mg-pill-' + i);
+    if (pill) pill.classList.toggle('active', i === sceneIdx);
+  }
+
+  if (sceneIdx === 0) mgScene1(layer, sub, p, localSec);
+  else if (sceneIdx === 1) mgScene2(layer, sub, p, localSec);
+  else if (sceneIdx === 2) mgScene3(layer, sub, p, localSec);
+  else if (sceneIdx === 3) mgScene4(layer, sub, p, localSec);
+  else mgScene5(layer, sub, p, localSec);
+}
+
+function mgScene1(layer, sub, p, sec) {
+  sub.innerHTML = p < 0.45
+    ? `<b>07:00 AM:</b> Al inicio del turno de picking, <em>nadie sabía qué ubicaciones asignaría el WMS hasta la generación de tareas</em>.`
+    : `Recién al generar tareas se descubría que el <em>40% requería bajar de ALTURA</em>, provocando un <b>valle improductivo de 1.5 horas</b> y re-elevaciones a ciegas.`;
+
+  const waveIn = easeOut(p * 2.5);
+  const alertPulse = 0.6 + 0.4 * Math.sin(sec * 5);
+  const valleyHeight = easeOut(clamp((p - 0.3) * 2, 0, 1));
+
+  layer.innerHTML = `
+    <text x="48" y="48" fill="#F8FAFC" font-size="21" font-weight="700">1. El Problema: Ceguera de Ubicaciones hasta la Generación de Tareas</text>
+    <text x="48" y="72" fill="#94A3B8" font-size="12.5" font-family="monospace">SITUACIÓN AS-IS :: VALLE MATUTINO (1.5 H) Y DESCONOCIMIENTO DE DEMANDA FUTURA</text>
+
+    <g transform="translate(${lerp(-120, 48, waveIn)}, 115)">
+      <rect x="0" y="0" width="225" height="260" rx="12" fill="#111827" stroke="#475569" stroke-width="2"/>
+      <text x="112" y="32" text-anchor="middle" fill="#38BDF8" font-size="13" font-weight="700" font-family="monospace">BOLSA DE PENDIENTES</text>
+      <text x="112" y="50" text-anchor="middle" fill="#94A3B8" font-size="10.5">(Antes de generar tareas en WMS)</text>
+      <rect x="18" y="68" width="188" height="36" rx="6" fill="#1E293B" stroke="#334155"/>
+      <text x="28" y="90" fill="#E2E8F0" font-size="11.5" font-family="monospace">FOOD / ELECTRO / NF</text>
+      <text x="190" y="90" text-anchor="end" fill="#F59E0B" font-size="12" font-weight="700" font-family="monospace">¿Ubic?</text>
+      <rect x="18" y="114" width="188" height="36" rx="6" fill="#1E293B" stroke="#334155"/>
+      <text x="28" y="136" fill="#E2E8F0" font-size="11.5" font-family="monospace">¿Piso o Altura?</text>
+      <text x="190" y="136" text-anchor="end" fill="#F59E0B" font-size="12" font-weight="700" font-family="monospace">???</text>
+      <rect x="18" y="160" width="188" height="82" rx="6" fill="#EF4444" fill-opacity="0.12" stroke="#EF4444" stroke-dasharray="4 3"/>
+      <text x="112" y="185" text-anchor="middle" fill="#FCA5A5" font-size="11" font-weight="700">PROBLEMA EN NON FOOD:</text>
+      <text x="112" y="203" text-anchor="middle" fill="#E2E8F0" font-size="10.5">Si baja una paleta (&gt;50% vol),</text>
+      <text x="112" y="218" text-anchor="middle" fill="#E2E8F0" font-size="10.5">¿servirá para otros pedidos?</text>
+      <text x="112" y="233" text-anchor="middle" fill="#FCA5A5" font-size="10" font-weight="700">No puede quedarse en piso</text>
+    </g>
+
+    <g transform="translate(310, 105)">
+      <rect x="0" y="0" width="275" height="275" rx="10" fill="url(#rackGrad)" stroke="#475569" stroke-width="2"/>
+      <line x1="14" y1="100" x2="261" y2="100" stroke="#F59E0B" stroke-width="3"/>
+      <line x1="14" y1="185" x2="261" y2="185" stroke="#F59E0B" stroke-width="3"/>
+      <text x="22" y="26" fill="#EF4444" font-size="11.5" font-weight="700" font-family="monospace">NIVELES ALTURA (.002 - .006)</text>
+      <rect x="24" y="38" width="105" height="50" rx="6" fill="#EF4444" fill-opacity="${0.22 * alertPulse}" stroke="#EF4444" stroke-width="2"/>
+      <text x="76" y="60" text-anchor="middle" fill="#FCA5A5" font-size="11" font-weight="700">40% EN ALTURA</text>
+      <text x="76" y="76" text-anchor="middle" fill="#FCA5A5" font-size="10">Bajada tardía</text>
+      <rect x="145" y="38" width="105" height="50" rx="6" fill="#F59E0B" fill-opacity="0.18" stroke="#F59E0B" stroke-width="2"/>
+      <text x="197" y="60" text-anchor="middle" fill="#FDE68A" font-size="10.5" font-weight="700">PALETA &gt;50%</text>
+      <text x="197" y="76" text-anchor="middle" fill="#FDE68A" font-size="9.5">Sube y baja 2 veces</text>
+      <text x="22" y="206" fill="#10B981" font-size="11.5" font-weight="700" font-family="monospace">NIVEL PISO (.001 / PICKING FACE)</text>
+      <rect x="24" y="216" width="226" height="44" rx="6" fill="#1E293B" stroke="#64748B" stroke-dasharray="5 4"/>
+      <text x="137" y="242" text-anchor="middle" fill="#94A3B8" font-size="11">60% Picking en Piso | Operarios esperando grúa</text>
+    </g>
+
+    <g transform="translate(620, 115)" opacity="${valleyHeight}">
+      <rect x="0" y="0" width="292" height="260" rx="12" fill="#111827" stroke="#EF4444" stroke-width="2"/>
+      <text x="146" y="32" text-anchor="middle" fill="#FCA5A5" font-size="13" font-weight="700" font-family="monospace">IMPACTO EN TURNO (AS-IS)</text>
+      <line x1="36" y1="190" x2="262" y2="190" stroke="#475569" stroke-width="1.5"/>
+      <line x1="36" y1="70" x2="36" y2="190" stroke="#475569" stroke-width="1.5"/>
+      <path d="M 40 175 L 95 172 L 135 165 L 175 95 L 250 85" fill="none" stroke="#EF4444" stroke-width="3.5"/>
+      <rect x="42" y="115" width="90" height="50" rx="4" fill="#EF4444" fill-opacity="0.2" stroke="#EF4444" stroke-dasharray="3 3"/>
+      <text x="87" y="137" text-anchor="middle" fill="#FCA5A5" font-size="10" font-weight="700">VALLE 1.5 HRS</text>
+      <text x="87" y="152" text-anchor="middle" fill="#E2E8F0" font-size="9.5">07:00 - 08:30</text>
+      <text x="146" y="222" text-anchor="middle" fill="#F8FAFC" font-size="12" font-weight="700">Productividad estancada &lt; 20 L/HH</text>
+      <text x="146" y="241" text-anchor="middle" fill="#94A3B8" font-size="11">Re-elevaciones innecesarias al rack</text>
+    </g>
+  `;
+}
+
+function mgScene2(layer, sub, p, sec) {
+  if (p < 0.38) {
+    sub.innerHTML = `<b>El Simulador (Reabasto Corrida.xlsm):</b> Procesa las pestañas <code>PENDIENTE TR</code>, <code>SALDO</code> y <code>KARDEX</code> aplicando 5 reglas operativas.`;
+  } else if (p < 0.72) {
+    sub.innerHTML = `Genera la hoja <b>TRABAJO</b> con el detalle exacto: <em>UBICACIÓN</em>, <em>CAJAS UBICACIÓN</em>, <em>CAJAS REQUERIDAS</em> y <em>SALDO</em>.`;
+  } else {
+    sub.innerHTML = `A la derecha incluye <b>3 botones de macro</b> (Imprimir Hoja, Etiqueta Amarilla y Filtro) y sirve de insumo para la plantilla de cruce.`;
+  }
+
+  const rowAnim = easeOut(clamp((p - 0.12) * 2.2, 0, 1));
+
+  layer.innerHTML = `
+    <text x="48" y="46" fill="#F8FAFC" font-size="20" font-weight="700">2. El Reporte del Simulador: Hoja "TRABAJO" (Detalle por Ubicación)</text>
+    <text x="48" y="69" fill="#38BDF8" font-size="12" font-family="monospace">ARCHIVO: REABASTO CORRIDA 1.XLSM ➔ PESTAÑAS: [PENDIENTE TR] [SALDO] [KARDEX] [TRABAJO]</text>
+
+    <g transform="translate(48, 84)">
+      <rect x="0" y="0" width="864" height="42" rx="8" fill="#111827" stroke="#38BDF8" stroke-width="1.5"/>
+      <text x="16" y="26" fill="#38BDF8" font-size="11.5" font-weight="700" font-family="monospace">5 REGLAS:</text>
+      <text x="95" y="26" fill="#E2E8F0" font-size="11.5" font-family="monospace">1.Zonas Picking | 2.FEFO Multiformato | 3.Menor Saldo | 4.Cascada UM | 5.Nivel Piso/Altura</text>
+    </g>
+
+    <g transform="translate(48, 138)" opacity="${rowAnim}">
+      <rect x="0" y="0" width="765" height="275" rx="8" fill="#0F172A" stroke="#475569" stroke-width="2"/>
+      <rect x="0" y="0" width="765" height="32" rx="8" fill="#1E293B"/>
+      <g font-family="monospace" font-size="9.5" font-weight="700" fill="#F8FAFC">
+        <text x="10" y="20">CATEGORÍA</text>
+        <text x="82" y="20">SEC.</text>
+        <text x="120" y="20">UBICACIÓN</text>
+        <text x="235" y="20">DESCRIPCIÓN</text>
+        <text x="435" y="20">UM</text>
+        <text x="475" y="20" fill="#38BDF8">CAJAS UBIC.</text>
+        <text x="575" y="20" fill="#FBBF24">CAJAS REQ.</text>
+        <text x="675" y="20" fill="#10B981">SALDO</text>
+      </g>
+
+      <rect x="8" y="40" width="749" height="38" rx="4" fill="#1E293B"/>
+      <g font-family="monospace" font-size="10.5" fill="#E2E8F0">
+        <text x="12" y="63" fill="#FBBF24" font-weight="700">FOOD</text>
+        <text x="85" y="63">2</text>
+        <text x="120" y="63" font-weight="700">D08.030.005.002</text>
+        <text x="235" y="63">ACEITE VEGETAL MAXIMA 5L</text>
+        <text x="435" y="63">CAJA</text>
+        <text x="510" y="63" text-anchor="middle" fill="#38BDF8" font-weight="700">44</text>
+        <text x="610" y="63" text-anchor="middle" fill="#FBBF24" font-weight="700">44</text>
+        <text x="695" y="63" text-anchor="middle" fill="#94A3B8">0</text>
+      </g>
+
+      <rect x="8" y="84" width="749" height="38" rx="4" fill="#1E293B"/>
+      <g font-family="monospace" font-size="10.5" fill="#E2E8F0">
+        <text x="12" y="107" fill="#38BDF8" font-weight="700">ELECTRO</text>
+        <text x="85" y="107">5</text>
+        <text x="120" y="107" font-weight="700">D03.005.107.003</text>
+        <text x="235" y="107">TV LED 55" SMART 4K UHD</text>
+        <text x="435" y="107">CAJA</text>
+        <text x="510" y="107" text-anchor="middle" fill="#38BDF8" font-weight="700">12</text>
+        <text x="610" y="107" text-anchor="middle" fill="#FBBF24" font-weight="700">12</text>
+        <text x="695" y="107" text-anchor="middle" fill="#94A3B8">0</text>
+      </g>
+
+      <rect x="8" y="128" width="749" height="42" rx="4" fill="#064E3B" fill-opacity="0.45" stroke="#10B981" stroke-width="1.5"/>
+      <g font-family="monospace" font-size="10.5" fill="#E2E8F0">
+        <text x="12" y="153" fill="#6EE7B7" font-weight="700">NON FOOD</text>
+        <text x="85" y="153">6</text>
+        <text x="120" y="153" font-weight="700" fill="#FFFFFF">D02.006.118.002</text>
+        <text x="235" y="153" fill="#FFFFFF">PARLANTE RADIO VINTAGE</text>
+        <text x="435" y="153">CAJA</text>
+        <text x="510" y="153" text-anchor="middle" fill="#38BDF8" font-weight="700">18</text>
+        <text x="610" y="153" text-anchor="middle" fill="#FBBF24" font-weight="700">3</text>
+        <text x="695" y="153" text-anchor="middle" fill="#6EE7B7" font-weight="700">15</text>
+      </g>
+
+      <rect x="8" y="176" width="749" height="38" rx="4" fill="#1E293B"/>
+      <g font-family="monospace" font-size="10.5" fill="#E2E8F0">
+        <text x="12" y="199" fill="#6EE7B7" font-weight="700">NON FOOD</text>
+        <text x="85" y="199">8</text>
+        <text x="120" y="199" font-weight="700">D03.005.107.011</text>
+        <text x="235" y="199">CAJA ORG. C/TAPA 20L GR</text>
+        <text x="435" y="199">CAJA</text>
+        <text x="510" y="199" text-anchor="middle" fill="#38BDF8" font-weight="700">20</text>
+        <text x="610" y="199" text-anchor="middle" fill="#FBBF24" font-weight="700">1</text>
+        <text x="695" y="199" text-anchor="middle" fill="#6EE7B7" font-weight="700">19</text>
+      </g>
+
+      <rect x="0" y="245" width="765" height="30" rx="4" fill="#090D16"/>
+      <g font-family="monospace" font-size="10.5" font-weight="700">
+        <rect x="14" y="249" width="110" height="22" rx="3" fill="#1E293B"/>
+        <text x="69" y="264" text-anchor="middle" fill="#94A3B8">PENDIENTE TR</text>
+        <rect x="130" y="249" width="70" height="22" rx="3" fill="#1E293B"/>
+        <text x="165" y="264" text-anchor="middle" fill="#94A3B8">SALDO</text>
+        <rect x="206" y="249" width="75" height="22" rx="3" fill="#1E293B"/>
+        <text x="243" y="264" text-anchor="middle" fill="#94A3B8">KARDEX</text>
+        <rect x="287" y="249" width="85" height="22" rx="3" fill="#10B981"/>
+        <text x="329" y="264" text-anchor="middle" fill="#052E16">TRABAJO</text>
+      </g>
+    </g>
+
+    <g transform="translate(825, 145)" opacity="${rowAnim}">
+      <rect x="0" y="0" width="88" height="260" rx="10" fill="#111827" stroke="#38BDF8" stroke-width="1.5"/>
+      <text x="44" y="24" text-anchor="middle" fill="#38BDF8" font-size="9.5" font-weight="700" font-family="monospace">MACROS</text>
+      <rect x="14" y="38" width="60" height="54" rx="8" fill="#1E293B" stroke="#64748B"/>
+      <text x="44" y="65" text-anchor="middle" font-size="22">🖨️</text>
+      <text x="44" y="84" text-anchor="middle" fill="#E2E8F0" font-size="8.5" font-family="monospace">Hoja Trab.</text>
+      <rect x="14" y="106" width="60" height="54" rx="8" fill="#1E293B" stroke="#FACC15"/>
+      <text x="44" y="133" text-anchor="middle" font-size="22">🏷️</text>
+      <text x="44" y="152" text-anchor="middle" fill="#FDE68A" font-size="8.5" font-family="monospace">Etiq. Reab</text>
+      <rect x="14" y="174" width="60" height="54" rx="8" fill="#1E293B" stroke="#38BDF8"/>
+      <text x="44" y="201" text-anchor="middle" font-size="22">🔍</text>
+      <text x="44" y="220" text-anchor="middle" fill="#38BDF8" font-size="8.5" font-family="monospace">Filtrar</text>
+    </g>
+  `;
+}
+
+function mgScene3(layer, sub, p, sec) {
+  sub.innerHTML = p < 0.45
+    ? `<b>Uso 1 — Adelantar Reabasto Futuro:</b> Desde la hoja <code>TRABAJO</code> el operador imprime la Hoja de Trabajo y Etiqueta Amarilla para el <em>siguiente turno (noche o mañana sgte.)</em>.`
+    : `En <b>FOOD</b> (por <em>FEFO</em>) y <b>ELECTRO</b> (por <em>Menor Saldo / Cascada</em>), la paleta que baja se deja en piso hasta agotarse, subiendo el picking en piso de <b>60% a 80%</b>.`;
+
+  const slideIn = easeOut(clamp(p * 2, 0, 1));
+
+  layer.innerHTML = `
+    <text x="48" y="48" fill="#F8FAFC" font-size="21" font-weight="700">3. Uso 1: Adelanto de Reabasto para Turno Futuro (Todas las Categorías)</text>
+    <text x="48" y="72" fill="#10B981" font-size="12.5" font-family="monospace">IMPRESIÓN DIRECTA DESDE HOJA "TRABAJO" ➔ PREPARA EL PISO PARA EL TURNO NOCHE O DÍA SGTE.</text>
+
+    <g transform="translate(48, 100)" opacity="${slideIn}">
+      <rect x="0" y="0" width="380" height="315" rx="12" fill="url(#yellowLabel)" stroke="#FEF08A" stroke-width="3" filter="url(#glow)"/>
+      <text x="190" y="34" text-anchor="middle" fill="#0F172A" font-size="18" font-weight="900" font-family="monospace">D08.030.005.002</text>
+      <text x="190" y="54" text-anchor="middle" fill="#1E293B" font-size="10.5" font-weight="700" font-family="monospace">973623 - ACEITE VEGETAL DE SOYA MAXIMA X 5L</text>
+      <rect x="24" y="66" width="332" height="72" rx="6" fill="#FFFFFF"/>
+      <g fill="#0F172A" transform="translate(42, 74)">
+        <rect x="0" y="0" width="5" height="56"/><rect x="9" y="0" width="2" height="56"/><rect x="15" y="0" width="8" height="56"/>
+        <rect x="27" y="0" width="3" height="56"/><rect x="34" y="0" width="6" height="56"/><rect x="44" y="0" width="2" height="56"/>
+        <rect x="52" y="0" width="9" height="56"/><rect x="65" y="0" width="4" height="56"/><rect x="73" y="0" width="2" height="56"/>
+        <rect x="81" y="0" width="7" height="56"/><rect x="92" y="0" width="3" height="56"/><rect x="99" y="0" width="8" height="56"/>
+        <rect x="112" y="0" width="2" height="56"/><rect x="118" y="0" width="5" height="56"/><rect x="128" y="0" width="9" height="56"/>
+        <rect x="141" y="0" width="3" height="56"/><rect x="148" y="0" width="6" height="56"/><rect x="158" y="0" width="4" height="56"/>
+        <rect x="166" y="0" width="8" height="56"/><rect x="178" y="0" width="2" height="56"/><rect x="184" y="0" width="7" height="56"/>
+        <rect x="196" y="0" width="3" height="56"/><rect x="203" y="0" width="9" height="56"/><rect x="216" y="0" width="4" height="56"/>
+        <rect x="224" y="0" width="2" height="56"/><rect x="230" y="0" width="6" height="56"/><rect x="240" y="0" width="8" height="56"/>
+        <rect x="252" y="0" width="3" height="56"/><rect x="260" y="0" width="5" height="56"/><rect x="270" y="0" width="9" height="56"/>
+        <rect x="284" y="0" width="4" height="56"/><rect x="292" y="0" width="3" height="56"/>
+      </g>
+      <rect x="24" y="150" width="332" height="40" rx="6" fill="#0F172A"/>
+      <text x="190" y="176" text-anchor="middle" fill="#FACC15" font-size="20" font-weight="900" font-family="monospace">&gt;&gt; BAJAR: 44 CAJAS &lt;&lt;</text>
+      <text x="24" y="214" fill="#0F172A" font-size="11.5" font-weight="800" font-family="monospace">PARA: REABASTO PREVENTIVO (SGTE. TURNO)</text>
+      <rect x="24" y="228" width="332" height="68" rx="6" fill="#0F172A" fill-opacity="0.1"/>
+      <text x="36" y="248" fill="#0F172A" font-size="11" font-weight="700">✓ Emitida para todas las categorías desde "TRABAJO"</text>
+      <text x="36" y="266" fill="#0F172A" font-size="11" font-weight="700">✓ Adelanta el trabajo del turno noche o día sgte.</text>
+      <text x="36" y="284" fill="#0F172A" font-size="11" font-weight="700">✓ Elimina el valle de 1.5h (Picking Piso: 60% ➔ 80%)</text>
+    </g>
+
+    <g transform="translate(462, 100)">
+      <rect x="0" y="0" width="450" height="148" rx="10" fill="#111827" stroke="#10B981" stroke-width="2"/>
+      <text x="22" y="30" fill="#10B981" font-size="13.5" font-weight="700" font-family="monospace">CASO FOOD (ABARROTES): PALETA QUEDA EN PISO</text>
+      <text x="22" y="54" fill="#E2E8F0" font-size="12">Al bajar una paleta para trabajar el pendiente, <tspan fill="#6EE7B7" font-weight="700">se deja en piso</tspan></text>
+      <text x="22" y="73" fill="#E2E8F0" font-size="12">porque prima la regla <tspan fill="#FBBF24" font-weight="700">FEFO (consumir el lote más antiguo)</tspan></text>
+      <text x="22" y="92" fill="#94A3B8" font-size="11.5">hasta agotar la paleta por completo en los siguientes pedidos.</text>
+      <rect x="22" y="106" width="406" height="28" rx="5" fill="#064E3B"/>
+      <text x="225" y="124" text-anchor="middle" fill="#6EE7B7" font-size="11" font-weight="700" font-family="monospace">Resultado: 23 Líneas / HH (Superando SLA de 20 L/HH)</text>
+
+      <rect x="0" y="167" width="450" height="148" rx="10" fill="#111827" stroke="#38BDF8" stroke-width="2"/>
+      <text x="22" y="197" fill="#38BDF8" font-size="13.5" font-weight="700" font-family="monospace">CASO ELECTRO: PALETA QUEDA EN PISO</text>
+      <text x="22" y="221" fill="#E2E8F0" font-size="12">La paleta bajada también <tspan fill="#38BDF8" font-weight="700">se deja en piso</tspan> porque la regla</text>
+      <text x="22" y="240" fill="#E2E8F0" font-size="12">prioriza <tspan fill="#FBBF24" font-weight="700">consumir siempre el Menor Saldo</tspan> u obedecer el</text>
+      <text x="22" y="259" fill="#E2E8F0" font-size="12"><tspan fill="#38BDF8" font-weight="700">Picking en Cascada (según UM)</tspan> para liberar ubicaciones.</text>
+      <rect x="22" y="273" width="406" height="28" rx="5" fill="#0C4A6E"/>
+      <text x="225" y="291" text-anchor="middle" fill="#7DD3FC" font-size="11" font-weight="700" font-family="monospace">Objetivo: Liberar posiciones de reserva rápidamente</text>
+    </g>
+  `;
+}
+
+function mgScene4(layer, sub, p, sec) {
+  if (p < 0.35) {
+    sub.innerHTML = `<b>Uso 2 — Cruce en Turno (Plantilla Ubicaciones.xlsm):</b> Cruza la hoja <code>MONTACARGA</code> (ubicaciones a bajar por el turno) con <code>REABASTO</code> (data de mi reporte).`;
+  } else if (p < 0.7) {
+    sub.innerHTML = `Al hacer match en la hoja <b>RESUMEN</b>, imprimen la <em>Etiqueta Blanca de Turno</em> que indica <b>P 10 UND</b> (picking turno) y <b>R 3 CJ</b> (extraer para el pendiente).`;
+  } else {
+    sub.innerHTML = `En <b>NON FOOD</b> (donde una paleta &gt;50% no puede quedarse en piso), ese saldo <em>R 3 CJ</em> va a <b>Mini Rack</b> o <b>Selectivo Simple</b>, ahorrando el <b>32% de re-elevaciones</b>.`;
+  }
+
+  const matchGlow = 0.5 + 0.5 * Math.sin(sec * 6);
+
+  layer.innerHTML = `
+    <text x="48" y="46" fill="#F8FAFC" font-size="20" font-weight="700">4. Uso 2: Plantilla de Cruce en Turno y Etiqueta "P 10 UND | R 3 CJ"</text>
+    <text x="48" y="69" fill="#FBBF24" font-size="12" font-family="monospace">4. PLANTILLA UBICACIONES.XLSM (HOJA MONTACARGA × HOJA REABASTO ➔ HOJA RESUMEN)</text>
+
+    <g transform="translate(48, 88)">
+      <rect x="0" y="0" width="495" height="195" rx="10" fill="#111827" stroke="#38BDF8" stroke-width="2"/>
+      <rect x="0" y="0" width="495" height="30" rx="10" fill="#0F2942"/>
+      <text x="16" y="20" fill="#38BDF8" font-size="11.5" font-weight="700" font-family="monospace">📘 4. PLANTILLA UBICACIONES.xlsm — Cruce Automático con Botón [ Run ]</text>
+
+      <rect x="16" y="42" width="28" height="24" rx="3" fill="#CBD5E1" stroke="#475569"/>
+      <text x="30" y="59" text-anchor="middle" fill="#0F172A" font-size="13" font-weight="900">✕</text>
+      <rect x="50" y="42" width="88" height="24" rx="3" fill="#CBD5E1" stroke="#475569"/>
+      <text x="94" y="58" text-anchor="middle" fill="#0F172A" font-size="12" font-weight="700">Run</text>
+
+      <rect x="16" y="76" width="140" height="68" rx="6" fill="#1E293B" stroke="#64748B"/>
+      <text x="86" y="96" text-anchor="middle" fill="#F8FAFC" font-size="11" font-weight="700" font-family="monospace">Hoja MONTACARGA</text>
+      <text x="86" y="114" text-anchor="middle" fill="#94A3B8" font-size="9.5">Ubicaciones generadas</text>
+      <text x="86" y="128" text-anchor="middle" fill="#94A3B8" font-size="9.5">por WMS para el turno</text>
+
+      <text x="168" y="115" text-anchor="middle" fill="#FBBF24" font-size="18" font-weight="900">∩</text>
+
+      <rect x="180" y="76" width="140" height="68" rx="6" fill="#1E293B" stroke="#38BDF8"/>
+      <text x="250" y="96" text-anchor="middle" fill="#38BDF8" font-size="11" font-weight="700" font-family="monospace">Hoja REABASTO</text>
+      <text x="250" y="114" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Data pegada del</text>
+      <text x="250" y="128" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Reporte del Simulador</text>
+
+      <text x="333" y="115" text-anchor="middle" fill="#10B981" font-size="16" font-weight="900">➔</text>
+
+      <rect x="346" y="76" width="134" height="68" rx="6" fill="#064E3B" stroke="#10B981" stroke-width="2"/>
+      <text x="413" y="96" text-anchor="middle" fill="#6EE7B7" font-size="11" font-weight="800" font-family="monospace">Hoja RESUMEN</text>
+      <text x="413" y="114" text-anchor="middle" fill="#E2E8F0" font-size="9.5">¡Match! Detecta saldo</text>
+      <text x="413" y="128" text-anchor="middle" fill="#FDE68A" font-size="9.5" font-weight="700">extra para pendiente</text>
+
+      <g transform="translate(16, 158)" font-family="monospace" font-size="10">
+        <rect x="0" y="0" width="92" height="22" rx="3" fill="#1E293B"/>
+        <text x="46" y="15" text-anchor="middle" fill="#10B981" font-weight="700">MONTACARGA</text>
+        <rect x="96" y="0" width="78" height="22" rx="3" fill="#1E293B"/>
+        <text x="135" y="15" text-anchor="middle" fill="#38BDF8" font-weight="700">REABASTO</text>
+        <rect x="178" y="0" width="76" height="22" rx="3" fill="#10B981"/>
+        <text x="216" y="15" text-anchor="middle" fill="#064E3B" font-weight="800">RESUMEN</text>
+        <rect x="258" y="0" width="66" height="22" rx="3" fill="#1E293B"/>
+        <text x="291" y="15" text-anchor="middle" fill="#94A3B8">KARDEX</text>
+      </g>
+    </g>
+
+    <g transform="translate(48, 296)">
+      <rect x="0" y="0" width="495" height="130" rx="10" fill="#111827" stroke="#F59E0B" stroke-width="1.8"/>
+      <text x="18" y="25" fill="#FBBF24" font-size="12" font-weight="700" font-family="monospace">¿QUÉ HACE EL OPERADOR CON LAS CAJAS "R 3 CJ" EN NON FOOD?</text>
+      <text x="18" y="45" fill="#CBD5E1" font-size="11.5">Como una paleta con &gt;50% de volumen <tspan fill="#FCA5A5" font-weight="700">no puede quedarse en piso</tspan> (ocuparía el</text>
+      <text x="18" y="61" fill="#CBD5E1" font-size="11.5">picking face para los próximos códigos), se extraen las <tspan fill="#10B981" font-weight="700">3 cajas (R 3 CJ)</tspan> y van a:</text>
+
+      <rect x="18" y="72" width="220" height="44" rx="6" fill="#1E293B" stroke="#38BDF8"/>
+      <text x="128" y="91" text-anchor="middle" fill="#38BDF8" font-size="11.5" font-weight="700">➔ Ubicación Mini Rack (MR)</text>
+      <text x="128" y="107" text-anchor="middle" fill="#94A3B8" font-size="10">(Para saldos / pocas cajas)</text>
+
+      <rect x="254" y="72" width="222" height="44" rx="6" fill="#1E293B" stroke="#10B981"/>
+      <text x="365" y="91" text-anchor="middle" fill="#6EE7B7" font-size="11.5" font-weight="700">➔ Selectivo Simple en Piso</text>
+      <text x="365" y="107" text-anchor="middle" fill="#94A3B8" font-size="10">(Consumo 100% seguro en pendientes)</text>
+    </g>
+
+    <g transform="translate(568, 88)">
+      <rect x="0" y="0" width="344" height="338" rx="12" fill="url(#whiteLabel)" stroke="#38BDF8" stroke-width="3" filter="url(#glow)"/>
+      <rect x="16" y="14" width="312" height="24" rx="4" fill="#0F172A"/>
+      <text x="172" y="30" text-anchor="middle" fill="#38BDF8" font-size="10.5" font-weight="700" font-family="monospace">ETIQUETA IMPRESA DESDE HOJA "RESUMEN"</text>
+      <text x="172" y="62" text-anchor="middle" fill="#0F172A" font-size="13" font-weight="800" font-family="monospace">1024888 PARLANTE RADIO VINTAGE</text>
+
+      <g transform="translate(24, 76)">
+        <rect x="0" y="0" width="135" height="44" rx="6" fill="#0F172A" fill-opacity="0.08" stroke="#0F172A" stroke-width="1.5"/>
+        <text x="67" y="29" text-anchor="middle" fill="#0F172A" font-size="22" font-weight="900" font-family="monospace">P 10 UND</text>
+        <rect x="161" y="0" width="135" height="44" rx="6" fill="#10B981" fill-opacity="${0.25 + 0.15 * matchGlow}" stroke="#059669" stroke-width="2"/>
+        <text x="228" y="29" text-anchor="middle" fill="#064E3B" font-size="22" font-weight="900" font-family="monospace">R 3 CJ</text>
+      </g>
+
+      <text x="91" y="134" text-anchor="middle" fill="#334155" font-size="10" font-weight="700">Picking del Turno</text>
+      <text x="252" y="134" text-anchor="middle" fill="#047857" font-size="10" font-weight="800">¡Extraer para Pendiente!</text>
+
+      <g fill="#0F172A" transform="translate(42, 146)">
+        <rect x="0" y="0" width="4" height="58"/><rect x="7" y="0" width="2" height="58"/><rect x="12" y="0" width="6" height="58"/>
+        <rect x="22" y="0" width="3" height="58"/><rect x="28" y="0" width="8" height="58"/><rect x="40" y="0" width="2" height="58"/>
+        <rect x="46" y="0" width="5" height="58"/><rect x="55" y="0" width="3" height="58"/><rect x="62" y="0" width="7" height="58"/>
+        <rect x="73" y="0" width="2" height="58"/><rect x="79" y="0" width="4" height="58"/><rect x="87" y="0" width="6" height="58"/>
+        <rect x="97" y="0" width="3" height="58"/><rect x="104" y="0" width="8" height="58"/><rect x="116" y="0" width="2" height="58"/>
+        <rect x="122" y="0" width="5" height="58"/><rect x="131" y="0" width="4" height="58"/><rect x="139" y="0" width="7" height="58"/>
+        <rect x="150" y="0" width="2" height="58"/><rect x="156" y="0" width="6" height="58"/><rect x="166" y="0" width="3" height="58"/>
+        <rect x="173" y="0" width="8" height="58"/><rect x="185" y="0" width="2" height="58"/><rect x="191" y="0" width="5" height="58"/>
+        <rect x="200" y="0" width="4" height="58"/><rect x="208" y="0" width="7" height="58"/><rect x="219" y="0" width="3" height="58"/>
+        <rect x="226" y="0" width="6" height="58"/><rect x="236" y="0" width="2" height="58"/><rect x="242" y="0" width="8" height="58"/>
+        <rect x="254" y="0" width="4" height="58"/>
+      </g>
+
+      <text x="172" y="238" text-anchor="middle" fill="#0F172A" font-size="27" font-weight="900" font-family="monospace">D02.006.118.002</text>
+      <text x="172" y="264" text-anchor="middle" fill="#334155" font-size="12" font-weight="700" font-family="monospace">MAÑANA - 24/10/2026 13:02</text>
+
+      <rect x="16" y="282" width="312" height="42" rx="6" fill="#0F172A"/>
+      <text x="172" y="300" text-anchor="middle" fill="#6EE7B7" font-size="11" font-weight="700">Elimina ~32% de doble manipulación</text>
+      <text x="172" y="316" text-anchor="middle" fill="#CBD5E1" font-size="10">Aprovecha la bajada del turno sin re-elevar en vano</text>
+    </g>
+  `;
+}
+
+function mgScene5(layer, sub, p, sec) {
+  sub.innerHTML = p < 0.45
+    ? `<b>Uso 3 — eCommerce:</b> Por la colisión de pedidos que compartían SKU, se optó por crear <em>1 tarea (PK) por pedido</em> evitando colisión sistémica.`
+    : `Como el sistema asigna del más antiguo al más reciente (LIFO en RFID), <b>usamos el simulador para saber en qué orden generar las tareas</b> según sus ubicaciones (<em>-35% recorrido</em>).`;
+
+  const walkerX = lerp(90, 790, (sec % 4) / 4);
+
+  layer.innerHTML = `
+    <text x="48" y="48" fill="#F8FAFC" font-size="21" font-weight="700">5. Uso 3 en eCommerce: Orden de Creación de Tareas según Ubicaciones</text>
+    <text x="48" y="72" fill="#C084FC" font-size="12.5" font-family="monospace">1 TAREA POR PEDIDO (ANTI-COLISIÓN) + ORDEN DE GENERACIÓN DICTADO POR EL SIMULADOR</text>
+
+    <g transform="translate(48, 100)">
+      <rect x="0" y="0" width="265" height="185" rx="10" fill="#111827" stroke="#A855F7" stroke-width="2"/>
+      <text x="18" y="28" fill="#C084FC" font-size="12" font-weight="700" font-family="monospace">1. TAREA ÚNICA POR PEDIDO</text>
+      <text x="18" y="48" fill="#CBD5E1" font-size="11">Para evitar colisión sistémica por SKU,</text>
+      <text x="18" y="64" fill="#CBD5E1" font-size="11">se genera 1 picking individual por pedido:</text>
+      <rect x="18" y="78" width="228" height="26" rx="5" fill="#1E293B"/>
+      <text x="28" y="95" fill="#E2E8F0" font-size="11" font-family="monospace">Pedido Cliente A ➔ Tarea PK-01</text>
+      <rect x="18" y="110" width="228" height="26" rx="5" fill="#1E293B"/>
+      <text x="28" y="127" fill="#E2E8F0" font-size="11" font-family="monospace">Pedido Cliente B ➔ Tarea PK-02</text>
+      <rect x="18" y="142" width="228" height="26" rx="5" fill="#1E293B"/>
+      <text x="28" y="159" fill="#E2E8F0" font-size="11" font-family="monospace">Pedido Cliente C ➔ Tarea PK-03</text>
+    </g>
+
+    <g transform="translate(345, 100)">
+      <rect x="0" y="0" width="270" height="185" rx="10" fill="#111827" stroke="#38BDF8" stroke-width="2"/>
+      <text x="18" y="28" fill="#38BDF8" font-size="12" font-weight="700" font-family="monospace">2. SIMULADOR DEFINE EL ORDEN</text>
+      <text x="18" y="48" fill="#CBD5E1" font-size="11">Al saber qué ubicación tendrá cada tarea,</text>
+      <text x="18" y="64" fill="#CBD5E1" font-size="11">indica en qué orden crearlas en el sistema:</text>
+      <rect x="18" y="78" width="234" height="26" rx="5" fill="#1E293B" stroke="#475569"/>
+      <text x="26" y="95" fill="#94A3B8" font-size="11" font-family="monospace">1° Crear (Antiguo): Ubic. D-12</text>
+      <rect x="18" y="110" width="234" height="26" rx="5" fill="#1E293B" stroke="#475569"/>
+      <text x="26" y="127" fill="#94A3B8" font-size="11" font-family="monospace">2° Crear (Medio):   Ubic. D-06</text>
+      <rect x="18" y="142" width="234" height="26" rx="5" fill="#38BDF8" fill-opacity="0.2" stroke="#38BDF8"/>
+      <text x="26" y="159" fill="#38BDF8" font-size="11" font-weight="700" font-family="monospace">3° Crear (Reciente): min(D-01)</text>
+    </g>
+
+    <g transform="translate(647, 100)">
+      <rect x="0" y="0" width="265" height="185" rx="10" fill="#111827" stroke="#10B981" stroke-width="2"/>
+      <text x="18" y="28" fill="#10B981" font-size="12" font-weight="700" font-family="monospace">3. SECUENCIA EN TERMINAL RFID</text>
+      <text x="18" y="48" fill="#CBD5E1" font-size="11">El RFID (LIFO) presenta al operario una</text>
+      <text x="18" y="64" fill="#CBD5E1" font-size="11">ruta física ascendente y continua:</text>
+      <rect x="18" y="78" width="228" height="28" rx="5" fill="#10B981" fill-opacity="0.2" stroke="#10B981"/>
+      <text x="26" y="96" fill="#6EE7B7" font-size="11" font-weight="700" font-family="monospace">▶ 1° Tarea a Pickear: D-01</text>
+      <rect x="18" y="112" width="228" height="26" rx="5" fill="#1E293B"/>
+      <text x="26" y="129" fill="#E2E8F0" font-size="11" font-family="monospace">  2° Tarea a Pickear: D-06</text>
+      <rect x="18" y="144" width="228" height="26" rx="5" fill="#1E293B"/>
+      <text x="26" y="161" fill="#E2E8F0" font-size="11" font-family="monospace">  3° Tarea a Pickear: D-12</text>
+    </g>
+
+    <g transform="translate(48, 305)">
+      <rect x="0" y="0" width="864" height="118" rx="12" fill="#0F172A" stroke="#334155" stroke-width="2"/>
+      <text x="24" y="28" fill="#6EE7B7" font-size="13" font-weight="700" font-family="monospace">RECORRIDO FÍSICO CONTINUO EN BLOQUE D (-35% TIEMPO DE DESPLAZAMIENTO | 0% COLISIÓN DE SKUs):</text>
+      <line x1="80" y1="74" x2="800" y2="74" stroke="#10B981" stroke-width="4" stroke-dasharray="8 4"/>
+      <rect x="65" y="56" width="90" height="34" rx="6" fill="#1E293B" stroke="#10B981"/>
+      <text x="110" y="78" text-anchor="middle" fill="#F8FAFC" font-size="12" font-family="monospace">Inicio D-01</text>
+      <rect x="390" y="56" width="90" height="34" rx="6" fill="#1E293B" stroke="#38BDF8"/>
+      <text x="435" y="78" text-anchor="middle" fill="#F8FAFC" font-size="12" font-family="monospace">Paso D-06</text>
+      <rect x="725" y="56" width="90" height="34" rx="6" fill="#1E293B" stroke="#10B981"/>
+      <text x="770" y="78" text-anchor="middle" fill="#F8FAFC" font-size="12" font-family="monospace">Fin D-12</text>
+      <circle cx="${walkerX}" cy="73" r="16" fill="#10B981" filter="url(#glow)"/>
+      <text x="${walkerX}" y="78" text-anchor="middle" font-size="14">🏃</text>
+    </g>
+  `;
+}
+
+function mgTick(now) {
+  const dt = (now - mgLastTime) / 1000;
+  mgLastTime = now;
+  if (mgMounted && mgPlaying) {
+    mgElapsed += dt;
+    if (mgElapsed >= MG_TOTAL_DUR) mgElapsed = 0;
+    mgRenderFrame(mgElapsed);
+  }
+  requestAnimationFrame(mgTick);
+}
+requestAnimationFrame(mgTick);
+
+function mgTogglePlay() {
+  mgPlaying = !mgPlaying;
+  const btn = document.getElementById('mg-play-btn');
+  if (btn) btn.textContent = mgPlaying ? "⏸ Pausar" : "▶ Reproducir";
+}
+
+function mgRestart() {
+  mgElapsed = 0;
+  mgPlaying = true;
+  const btn = document.getElementById('mg-play-btn');
+  if (btn) btn.textContent = "⏸ Pausar";
+  mgRenderFrame(mgElapsed);
+}
+
+function mgJump(idx) {
+  mgElapsed = idx * MG_SCENE_DUR + 0.05;
+  mgRenderFrame(mgElapsed);
+}
+
+function mgSeek(e) {
+  const rect = document.getElementById('mg-scrubber').getBoundingClientRect();
+  const clickX = clamp(e.clientX - rect.left, 0, rect.width);
+  mgElapsed = (clickX / rect.width) * MG_TOTAL_DUR;
+  mgRenderFrame(mgElapsed);
+}
+
+// =========================================================
+// LIGHTBOX
+// =========================================================
 function openLightbox(src, caption) {
   const lb = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lb-img');
-  const lbCap = document.getElementById('lb-cap');
-  
-  lbImg.src = src;
-  lbCap.textContent = caption;
+  document.getElementById('lb-img').src = src;
+  document.getElementById('lb-cap').textContent = caption;
   lb.classList.add('active');
 }
 
@@ -631,85 +1802,11 @@ function closeLightbox(e) {
   }
 }
 
-// Generador dinámico (Imágenes o Iframes)
-function shotBlock(projectId, imgConfig){
-  let key, label, isIframe = false;
-  
-  if (typeof imgConfig === 'string') {
-    key = imgConfig;
-    label = key === "asis" ? "[ PRE-IMPLEMENTACIÓN ] As-is" : "[ ESTADO FINAL ] To-be";
-  } else {
-    key = imgConfig.key;
-    label = imgConfig.label;
-    isIframe = imgConfig.isIframe || false;
-  }
+document.querySelectorAll('.bay').forEach(b => {
+  b.addEventListener('click', () => renderProject(b.dataset.id));
+});
 
-  const src = IMAGES[projectId] && IMAGES[projectId][key];
-
-  if (src) {
-    if (isIframe) {
-      // Bloque especial para cargar Power BI interactivo
-      return `<div class="shot iframe-container" style="margin-top: 16px;">
-                <iframe src="${src}" allowFullScreen="true"></iframe>
-              </div>`;
-    } else {
-      // Bloque normal para imágenes estáticas con lupa
-      return `<div class="shot">
-                <img src="${src}" alt="${label}" onclick="openLightbox('${src}', '${label}')" title="Haz clic para ampliar">
-                <div class="cap">${label}</div>
-              </div>`;
-    }
-  }
-  return `<div class="shot">
-            <div class="placeholder">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px; color:var(--text-dim);"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg><br>
-              Requerimiento de Evidencia: ${label}<br>
-              <span style="opacity:0.6; font-size:11px; margin-top:4px; display:inline-block;">Asignar ruta/enlace en IMAGES.${projectId}.${key}</span>
-            </div>
-          </div>`;
-}
-
-const bays = document.querySelectorAll('.bay');
-const panel = document.getElementById('main-panel');
-
-function render(id){
-  panel.style.animation = 'none';
-  panel.offsetHeight; 
-  panel.style.animation = 'fadeIn 0.4s ease-out';
-  
-  const d = DATA[id];
-  document.getElementById('p-title').textContent = d.title;
-  document.getElementById('p-status').textContent = d.status;
-  document.getElementById('p-chips').innerHTML = d.chips.map(c => `<span class="chip">${c}</span>`).join('');
-  
-  // Procesamiento de las imágenes (Grid o Individual)
-  document.getElementById('p-star').innerHTML = d.star.map(([label, text, kind]) => {
-    let imagesHtml = '';
-    if (kind) {
-      if (Array.isArray(kind)) {
-        imagesHtml = `<div class="multi-shot" style="display: ${kind.some(k => k.isIframe) ? 'block' : 'grid'}">${kind.map(k => shotBlock(id, k)).join('')}</div>`;
-      } else {
-        imagesHtml = shotBlock(id, kind);
-      }
-    }
-
-    return `
-      <div class="star-row">
-        <div class="star-label"><b>${label.charAt(0)}</b>${label.toUpperCase().substring(1)}</div>
-        <div>
-          <div class="star-text">${text}</div>
-          ${imagesHtml}
-        </div>
-      </div>`;
-  }).join('');
-    
-  bays.forEach(b => b.classList.toggle('active', b.dataset.id === id));
-}
-
-bays.forEach(b => b.addEventListener('click', () => render(b.dataset.id)));
-
-// Auto-init
-render('yms');
+renderProject('reabasto');
 </script>
 </body>
 </html>
