@@ -55,7 +55,7 @@
   }
 
   /* =========================================================
-     EXECUTIVE HEADER
+     EXECUTIVE HEADER & CONTACT POPOVER
      ========================================================= */
   .hero {
     background: var(--surface);
@@ -70,7 +70,6 @@
     align-items: center;
     gap: 20px;
     position: relative;
-    overflow: hidden;
   }
 
   .hero::before {
@@ -78,6 +77,7 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 4px;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     background: linear-gradient(90deg, var(--navy), var(--primary), var(--emerald));
   }
 
@@ -128,6 +128,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    position: relative;
   }
 
   .btn-contact {
@@ -143,9 +144,11 @@
     border: 1px solid var(--border-strong);
     color: var(--text);
     background: var(--surface-subtle);
+    cursor: pointer;
+    font-family: inherit;
   }
 
-  .btn-contact:hover {
+  .btn-contact:hover, .btn-contact.open {
     border-color: var(--primary);
     color: var(--primary);
     background: #fff;
@@ -162,6 +165,157 @@
     background: var(--primary);
     border-color: var(--primary);
     color: #fff;
+  }
+
+  /* Contact Popover Card */
+  .contact-popover {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 340px;
+    background: #FFFFFF;
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    box-shadow: 0 18px 36px -6px rgba(15, 23, 42, 0.16), 0 4px 10px -2px rgba(15, 23, 42, 0.08);
+    padding: 16px;
+    z-index: 200;
+    display: none;
+    animation: popIn 0.18s ease-out;
+  }
+
+  .contact-popover.active {
+    display: block;
+  }
+
+  @keyframes popIn {
+    from { opacity: 0; transform: translateY(-6px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .cp-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cp-title {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--navy);
+  }
+
+  .cp-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .cp-close:hover {
+    background: var(--surface-subtle);
+    color: var(--text);
+  }
+
+  .cp-block {
+    background: var(--surface-subtle);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 11px 12px;
+    margin-bottom: 10px;
+  }
+
+  .cp-block:last-child {
+    margin-bottom: 0;
+  }
+
+  .cp-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 3px;
+  }
+
+  .cp-value {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 9px;
+    word-break: break-all;
+  }
+
+  .cp-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .cp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid var(--border-strong);
+    background: #fff;
+    color: var(--navy);
+    transition: var(--transition);
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .cp-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  .cp-btn.call {
+    background: var(--navy);
+    color: #fff;
+    border-color: var(--navy);
+  }
+
+  .cp-btn.call:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+  }
+
+  .cp-btn.wa {
+    background: #059669;
+    color: #fff;
+    border-color: #059669;
+  }
+
+  .cp-btn.wa:hover {
+    background: #047857;
+    border-color: #047857;
+  }
+
+  .cp-btn.mail {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+    grid-column: span 2;
+  }
+
+  .cp-btn.mail:hover {
+    background: var(--navy);
+    border-color: var(--navy);
   }
 
   /* =========================================================
@@ -376,10 +530,11 @@
     font-size: 11px;
     color: var(--text-muted);
     margin-top: 2px;
+    line-height: 1.35;
   }
 
   /* =========================================================
-     2. 3-PILLAR EXECUTIVE BRIEF (REPLACES DENSE STAR WALL)
+     2. 3-PILLAR EXECUTIVE BRIEF
      ========================================================= */
   .brief-grid {
     display: grid;
@@ -483,7 +638,7 @@
   }
 
   /* =========================================================
-     MOTION GRAPHICS PLAYER (CLEAN EMBEDDED STAGE)
+     MOTION GRAPHICS PLAYER
      ========================================================= */
   .mg-wrapper {
     border: 1px solid var(--border-strong);
@@ -731,7 +886,7 @@
   }
 
   /* =========================================================
-     GALLERY GRID (EXTRACTED IMAGES FROM ORIGINAL CODE)
+     GALLERY GRID
      ========================================================= */
   .gallery-grid {
     display: grid;
@@ -803,52 +958,111 @@
     color: var(--primary);
   }
 
-  /* Lightbox */
+  /* =========================================================
+     LIGHTBOX WITH ARROWS & ESCAPE SUPPORT
+     ========================================================= */
   #lightbox {
     position: fixed;
     z-index: 9999;
     inset: 0;
-    background: rgba(15, 23, 42, 0.88);
+    background: rgba(15, 23, 42, 0.92);
     display: none;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 24px;
-    backdrop-filter: blur(4px);
+    padding: 24px 72px;
+    backdrop-filter: blur(5px);
+    user-select: none;
   }
 
   #lightbox.active { display: flex; }
 
   #lightbox img {
-    max-width: 90vw;
-    max-height: 82vh;
+    max-width: 86vw;
+    max-height: 78vh;
     object-fit: contain;
     border-radius: 8px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.6);
     background: #fff;
   }
 
+  .lb-meta {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+  }
+
   #lightbox .lb-caption {
-    margin-top: 12px;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 13px;
     font-weight: 600;
-    color: #fff;
+    color: #38BDF8;
     text-transform: uppercase;
     letter-spacing: 0.06em;
   }
 
+  .lb-hint {
+    font-size: 11.5px;
+    color: #94A3B8;
+  }
+
   #lightbox .lb-close {
     position: absolute;
-    top: 20px; right: 28px;
-    background: #fff;
-    border: none;
-    color: var(--navy);
+    top: 22px; right: 28px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
     font-size: 22px;
     font-weight: 700;
-    width: 38px; height: 38px;
+    width: 42px; height: 42px;
     border-radius: 50%;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+  }
+
+  #lightbox .lb-close:hover {
+    background: #fff;
+    color: var(--navy);
+  }
+
+  .lb-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    color: #fff;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 26px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+  }
+
+  .lb-nav:hover {
+    background: #fff;
+    color: var(--navy);
+    transform: translateY(-50%) scale(1.06);
+  }
+
+  .lb-nav.prev { left: 22px; }
+  .lb-nav.next { right: 22px; }
+
+  @media (max-width: 640px) {
+    #lightbox { padding: 16px; }
+    .lb-nav.prev { left: 10px; }
+    .lb-nav.next { right: 10px; }
   }
 
   footer {
@@ -870,8 +1084,35 @@
       <p class="role-line">Bachiller en Ingeniería Industrial — <strong>Excelencia Operacional, Proyectos, Kardex & Analítica (Power BI / Excel VBA)</strong></p>
     </div>
     <div class="hero-actions">
-      <a class="btn-contact" href="mailto:valderramasulcajd@gmail.com">✉️ Contacto</a>
+      <button type="button" class="btn-contact" id="contact-btn" onclick="toggleContactPopover(event)">
+        ✉️ Contacto ▾
+      </button>
       <a class="btn-contact primary" href="https://linkedin.com/in/juan-diego-valderrama" target="_blank">🔗 LinkedIn</a>
+
+      <!-- Popover de Contacto con Teléfono (Llamada + WhatsApp) y Correo (mailto:) -->
+      <div class="contact-popover" id="contact-popover" onclick="event.stopPropagation()">
+        <div class="cp-header">
+          <span class="cp-title">Canales de Contacto Directo</span>
+          <button type="button" class="cp-close" onclick="closeContactPopover()" title="Cerrar">&times;</button>
+        </div>
+
+        <div class="cp-block">
+          <div class="cp-label">📱 Teléfono Móvil / WhatsApp</div>
+          <div class="cp-value">+51 924 957 185</div>
+          <div class="cp-actions">
+            <a class="cp-btn call" href="tel:+51924957185">📞 Llamar</a>
+            <a class="cp-btn wa" href="https://wa.me/51924957185" target="_blank" rel="noopener">💬 WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="cp-block">
+          <div class="cp-label">✉️ Correo Electrónico</div>
+          <div class="cp-value">valderramasulcajd@gmail.com</div>
+          <div class="cp-actions">
+            <a class="cp-btn mail" href="mailto:valderramasulcajd@gmail.com">✉️ Enviar Correo (mailto:)</a>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -884,7 +1125,7 @@
         <span class="bay-indicator"></span>
       </div>
       <div class="bay-title">Simulador WMS & Reabasto</div>
-      <div class="bay-desc">Asignación inteligente, cruce en turno (P / R) y optimización de productividad (L/HH).</div>
+      <div class="bay-desc">Adelanto de reabasto, extracción anticipada para pedidos pendientes y productividad (L/HH).</div>
     </button>
 
     <button class="bay" data-id="yms">
@@ -922,11 +1163,16 @@
   <footer>Portafolio de Ingeniería Industrial — Juan Diego Valderrama Sulca • Diseño orientado a Procesos, Mejora Continua y Control de Gestión</footer>
 </div>
 
-<!-- Lightbox Modal -->
+<!-- Lightbox Modal con Navegación por Flechas y Tecla Esc -->
 <div id="lightbox" onclick="closeLightbox(event)">
-  <button class="lb-close" onclick="closeLightbox()">&times;</button>
-  <img id="lb-img" src="" alt="Vista ampliada">
-  <div id="lb-cap" class="lb-caption"></div>
+  <button type="button" class="lb-close" onclick="closeLightbox()" title="Cerrar (Esc)">&times;</button>
+  <button type="button" class="lb-nav prev" onclick="stepLightbox(-1, event)" title="Imagen anterior (←)">&#8249;</button>
+  <img id="lb-img" src="" alt="Vista ampliada" onclick="event.stopPropagation()">
+  <button type="button" class="lb-nav next" onclick="stepLightbox(1, event)" title="Imagen siguiente (→)">&#8250;</button>
+  <div class="lb-meta" onclick="event.stopPropagation()">
+    <div id="lb-cap" class="lb-caption"></div>
+    <div class="lb-hint">Usa las flechas <strong>← / →</strong> para cambiar de imagen o presiona <strong>Esc</strong> para volver</div>
+  </div>
 </div>
 
 <script>
@@ -957,7 +1203,7 @@ const IMAGES = {
 };
 
 // =========================================================
-// DATA EJECUTIVA (SIN MUROS DE TEXTO STAR NI IFRAME PÚBLICO)
+// DATA EJECUTIVA
 // =========================================================
 const PROJECTS = {
   reabasto: {
@@ -967,7 +1213,7 @@ const PROJECTS = {
     kpis: [
       { val: "60% ➔ 80%", lbl: "Picking en Piso", note: "Elimina valle matutino de 1.5 h", color: "emerald" },
       { val: "23 L/HH", lbl: "Productividad Operativa", note: "Superando meta SLA de 20 L/HH", color: "primary" },
-      { val: "-32%", lbl: "Doble Manipulación", note: "Cruce MONTACARGA × REABASTO", color: "amber" },
+      { val: "-32%", lbl: "Re-elevación de Paletas", note: "Adelanta pedidos pendientes aprovechando la bajada del turno", color: "amber" },
       { val: "-35%", lbl: "Recorrido en Bloque D", note: "Orden de creación RFID eCommerce", color: "navy" }
     ],
     brief: [
@@ -977,7 +1223,7 @@ const PROJECTS = {
       },
       {
         type: "sol", icon: "⚙️", title: "2. La Solución (Simulador + Plantilla)",
-        text: "Hoja <code>TRABAJO</code> que proyecta ubicaciones y cajas requeridas para <strong>adelantar el reabasto</strong>, y plantilla de cruce (<code>MONTACARGA × REABASTO</code>) que emite etiquetas de turno (<code>P 10 UND | R 3 CJ</code>) para extraer el saldo exacto a Mini Rack o Selectivo Simple."
+        text: "Hoja <code>TRABAJO</code> para <strong>adelantar el reabasto futuro</strong> y plantilla que cruza las paletas que bajan en el turno con la bolsa de pendientes, emitiendo etiquetas (<code>P 10 UND | R 3 CJ</code>) para extraer de una sola vez el saldo adicional hacia Mini Rack o Selectivo Simple."
       },
       {
         type: "ctrl", icon: "📊", title: "3. Etapa de Control (Power BI)",
@@ -1073,6 +1319,28 @@ const PROJECTS = {
 };
 
 // =========================================================
+// CONTACT POPOVER LOGIC
+// =========================================================
+function toggleContactPopover(e) {
+  e.stopPropagation();
+  const pop = document.getElementById('contact-popover');
+  const btn = document.getElementById('contact-btn');
+  const isOpen = pop.classList.toggle('active');
+  btn.classList.toggle('open', isOpen);
+}
+
+function closeContactPopover() {
+  const pop = document.getElementById('contact-popover');
+  const btn = document.getElementById('contact-btn');
+  if (pop) pop.classList.remove('active');
+  if (btn) btn.classList.remove('open');
+}
+
+document.addEventListener('click', () => {
+  closeContactPopover();
+});
+
+// =========================================================
 // RENDERIZADOR PRINCIPAL
 // =========================================================
 const MG_SCENE_DUR = 11;
@@ -1081,12 +1349,14 @@ let mgElapsed = 0;
 let mgPlaying = true;
 let mgLastTime = performance.now();
 let mgMounted = false;
+let currentProjectId = 'reabasto';
 
 const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
 const lerp = (a, b, t) => a + (b - a) * clamp(t, 0, 1);
 const easeOut = t => 1 - Math.pow(1 - clamp(t, 0, 1), 3);
 
 function renderProject(id) {
+  currentProjectId = id;
   const p = PROJECTS[id];
   document.getElementById('p-title').textContent = p.title;
   document.getElementById('p-sub').textContent = p.subtitle;
@@ -1141,8 +1411,8 @@ function renderProject(id) {
           <span>▼</span>
         </summary>
         <div class="gallery-grid" style="margin-top:14px;">
-          ${p.photos.map(ph => `
-            <div class="shot-card" onclick="openLightbox('${ph.src}', '${ph.label}')" title="Haz clic para ampliar">
+          ${p.photos.map((ph, idx) => `
+            <div class="shot-card" onclick="openLightbox(${idx})" title="Haz clic para ampliar">
               <img src="${ph.src}" alt="${ph.label}">
               <div class="shot-cap">${ph.label}</div>
             </div>
@@ -1177,8 +1447,8 @@ function renderProject(id) {
       </div>
 
       <div class="gallery-grid">
-        ${p.photos.map(ph => `
-          <div class="shot-card" onclick="openLightbox('${ph.src}', '${ph.label}')" title="Haz clic para ampliar">
+        ${p.photos.map((ph, idx) => `
+          <div class="shot-card" onclick="openLightbox(${idx})" title="Haz clic para ampliar">
             <img src="${ph.src}" alt="${ph.label}">
             <div class="shot-cap">${ph.label}</div>
           </div>
@@ -1325,15 +1595,15 @@ function mgScene1(layer, sub, p, sec) {
     ? `<b>07:00 AM:</b> Al inicio del turno de picking, <em>nadie sabía qué ubicaciones asignaría el WMS hasta la generación de tareas</em>.`
     : `Recién al generar tareas se descubría que el <em>40% requería bajar de ALTURA</em>, provocando un <b>valle improductivo de 1.5 horas</b> y re-elevaciones a ciegas.`;
 
-  const waveIn = easeOut(p * 2.5);
+  const waveIn = easeOut(clamp(p * 10, 0.5, 1));
   const alertPulse = 0.6 + 0.4 * Math.sin(sec * 5);
-  const valleyHeight = easeOut(clamp((p - 0.3) * 2, 0, 1));
+  const valleyHeight = easeOut(clamp(p * 8, 0.4, 1));
 
   layer.innerHTML = `
     <text x="48" y="48" fill="#F8FAFC" font-size="21" font-weight="700">1. El Problema: Ceguera de Ubicaciones hasta la Generación de Tareas</text>
     <text x="48" y="72" fill="#94A3B8" font-size="12.5" font-family="monospace">SITUACIÓN AS-IS :: VALLE MATUTINO (1.5 H) Y DESCONOCIMIENTO DE DEMANDA FUTURA</text>
 
-    <g transform="translate(${lerp(-120, 48, waveIn)}, 115)">
+    <g transform="translate(${lerp(20, 48, waveIn)}, 115)">
       <rect x="0" y="0" width="225" height="260" rx="12" fill="#111827" stroke="#475569" stroke-width="2"/>
       <text x="112" y="32" text-anchor="middle" fill="#38BDF8" font-size="13" font-weight="700" font-family="monospace">BOLSA DE PENDIENTES</text>
       <text x="112" y="50" text-anchor="middle" fill="#94A3B8" font-size="10.5">(Antes de generar tareas en WMS)</text>
@@ -1354,7 +1624,7 @@ function mgScene1(layer, sub, p, sec) {
       <rect x="0" y="0" width="275" height="275" rx="10" fill="url(#rackGrad)" stroke="#475569" stroke-width="2"/>
       <line x1="14" y1="100" x2="261" y2="100" stroke="#F59E0B" stroke-width="3"/>
       <line x1="14" y1="185" x2="261" y2="185" stroke="#F59E0B" stroke-width="3"/>
-      <text x="22" y="26" fill="#EF4444" font-size="11.5" font-weight="700" font-family="monospace">NIVELES ALTURA (.002 - .006)</text>
+      <text x="22" y="26" fill="#EF4444" font-size="11.5" font-weight="700" font-family="monospace">NIVELES ALTURA (.002 - .009)</text>
       <rect x="24" y="38" width="105" height="50" rx="6" fill="#EF4444" fill-opacity="${0.22 * alertPulse}" stroke="#EF4444" stroke-width="2"/>
       <text x="76" y="60" text-anchor="middle" fill="#FCA5A5" font-size="11" font-weight="700">40% EN ALTURA</text>
       <text x="76" y="76" text-anchor="middle" fill="#FCA5A5" font-size="10">Bajada tardía</text>
@@ -1363,7 +1633,7 @@ function mgScene1(layer, sub, p, sec) {
       <text x="197" y="76" text-anchor="middle" fill="#FDE68A" font-size="9.5">Sube y baja 2 veces</text>
       <text x="22" y="206" fill="#10B981" font-size="11.5" font-weight="700" font-family="monospace">NIVEL PISO (.001 / PICKING FACE)</text>
       <rect x="24" y="216" width="226" height="44" rx="6" fill="#1E293B" stroke="#64748B" stroke-dasharray="5 4"/>
-      <text x="137" y="242" text-anchor="middle" fill="#94A3B8" font-size="11">60% Picking en Piso | Operarios esperando grúa</text>
+      <text x="137" y="242" text-anchor="middle" fill="#94A3B8" font-size="10.5">60% Picking en piso | Bajado de paletas</text>
     </g>
 
     <g transform="translate(620, 115)" opacity="${valleyHeight}">
@@ -1390,7 +1660,7 @@ function mgScene2(layer, sub, p, sec) {
     sub.innerHTML = `A la derecha incluye <b>3 botones de macro</b> (Imprimir Hoja, Etiqueta Amarilla y Filtro) y sirve de insumo para la plantilla de cruce.`;
   }
 
-  const rowAnim = easeOut(clamp((p - 0.12) * 2.2, 0, 1));
+  const rowAnim = easeOut(clamp(p * 12, 0.5, 1));
 
   layer.innerHTML = `
     <text x="48" y="46" fill="#F8FAFC" font-size="20" font-weight="700">2. El Reporte del Simulador: Hoja "TRABAJO" (Detalle por Ubicación)</text>
@@ -1498,7 +1768,7 @@ function mgScene3(layer, sub, p, sec) {
     ? `<b>Uso 1 — Adelantar Reabasto Futuro:</b> Desde la hoja <code>TRABAJO</code> el operador imprime la Hoja de Trabajo y Etiqueta Amarilla para el <em>siguiente turno (noche o mañana sgte.)</em>.`
     : `En <b>FOOD</b> (por <em>FEFO</em>) y <b>ELECTRO</b> (por <em>Menor Saldo / Cascada</em>), la paleta que baja se deja en piso hasta agotarse, subiendo el picking en piso de <b>60% a 80%</b>.`;
 
-  const slideIn = easeOut(clamp(p * 2, 0, 1));
+  const slideIn = easeOut(clamp(p * 12, 0.5, 1));
 
   layer.innerHTML = `
     <text x="48" y="48" fill="#F8FAFC" font-size="21" font-weight="700">3. Uso 1: Adelanto de Reabasto para Turno Futuro (Todas las Categorías)</text>
@@ -1767,13 +2037,32 @@ function mgSeek(e) {
 }
 
 // =========================================================
-// LIGHTBOX
+// LIGHTBOX CON FLECHAS LATERALES Y SOPORTE DE TECLADO (ESC, ←, →)
 // =========================================================
-function openLightbox(src, caption) {
-  const lb = document.getElementById('lightbox');
-  document.getElementById('lb-img').src = src;
-  document.getElementById('lb-cap').textContent = caption;
-  lb.classList.add('active');
+let lbIndex = 0;
+
+function updateLightboxView() {
+  const photos = PROJECTS[currentProjectId].photos || [];
+  if (!photos.length) return;
+  const item = photos[lbIndex];
+  document.getElementById('lb-img').src = item.src;
+  document.getElementById('lb-cap').textContent = `(${lbIndex + 1} / ${photos.length}) ${item.label}`;
+}
+
+function openLightbox(idx) {
+  const photos = PROJECTS[currentProjectId].photos || [];
+  if (!photos.length) return;
+  lbIndex = ((idx % photos.length) + photos.length) % photos.length;
+  updateLightboxView();
+  document.getElementById('lightbox').classList.add('active');
+}
+
+function stepLightbox(dir, e) {
+  if (e) e.stopPropagation();
+  const photos = PROJECTS[currentProjectId].photos || [];
+  if (!photos.length) return;
+  lbIndex = (lbIndex + dir + photos.length) % photos.length;
+  updateLightboxView();
 }
 
 function closeLightbox(e) {
@@ -1781,6 +2070,24 @@ function closeLightbox(e) {
     document.getElementById('lightbox').classList.remove('active');
   }
 }
+
+document.addEventListener('keydown', (e) => {
+  const lb = document.getElementById('lightbox');
+  const isLbOpen = lb && lb.classList.contains('active');
+
+  if (e.key === 'Escape') {
+    if (isLbOpen) {
+      lb.classList.remove('active');
+    }
+    closeContactPopover();
+  } else if (isLbOpen && e.key === 'ArrowRight') {
+    e.preventDefault();
+    stepLightbox(1);
+  } else if (isLbOpen && e.key === 'ArrowLeft') {
+    e.preventDefault();
+    stepLightbox(-1);
+  }
+});
 
 document.querySelectorAll('.bay').forEach(b => {
   b.addEventListener('click', () => renderProject(b.dataset.id));
