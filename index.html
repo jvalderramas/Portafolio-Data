@@ -729,27 +729,22 @@
   }
 
   .mg-sub-wrap {
-    position: absolute;
-    bottom: 14px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 92%;
-    max-width: 860px;
-    pointer-events: none;
+    padding: 11px 18px;
+    background: #090D16;
+    border-top: 1px solid #1E293B;
     text-align: center;
   }
 
   .mg-sub {
     display: inline-block;
-    background: rgba(9, 13, 22, 0.92);
-    border: 1px solid rgba(56, 189, 248, 0.35);
-    backdrop-filter: blur(8px);
-    padding: 9px 18px;
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 8px 16px;
     border-radius: 8px;
-    font-size: clamp(12px, 1.45vw, 14.5px);
+    font-size: clamp(12px, 1.4vw, 14px);
     line-height: 1.45;
     color: #F8FAFC;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    max-width: 900px;
   }
 
   .mg-sub b { color: #38BDF8; font-weight: 600; }
@@ -1113,6 +1108,247 @@
     .lb-nav.next { right: 10px; }
   }
 
+  /* =========================================================
+     MOBILE RESPONSIVE ENHANCEMENTS (< 720px)
+     ========================================================= */
+  @media (max-width: 720px) {
+    .wrap {
+      padding: 16px 12px 64px;
+    }
+    .hero {
+      padding: 18px 16px;
+      margin-bottom: 16px;
+      gap: 14px;
+    }
+    .eyebrow {
+      font-size: 10.5px;
+      padding: 3px 10px;
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-size: 21px;
+    }
+    .role-line {
+      font-size: 13px;
+    }
+    .hero-actions {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .hero-actions .btn-contact {
+      padding: 8px 10px;
+      font-size: 12px;
+      justify-content: center;
+      text-align: center;
+    }
+    .hero-actions .btn-contact:first-child {
+      grid-column: span 2;
+    }
+    .contact-popover {
+      width: calc(100vw - 24px);
+      right: -12px;
+      top: calc(100% + 8px);
+    }
+    .bays {
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .bay {
+      padding: 12px 14px;
+    }
+    .bay-title {
+      font-size: 14.5px;
+    }
+    .bay-desc {
+      font-size: 11.5px;
+    }
+    .panel-head {
+      padding: 14px 16px;
+      gap: 8px;
+    }
+    .panel-title-wrap h2 {
+      font-size: 16px;
+    }
+    .panel-sub {
+      font-size: 12px;
+    }
+    .panel-body {
+      padding: 16px 12px 24px;
+    }
+    .kpi-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .kpi-card {
+      padding: 10px 12px;
+    }
+    .kpi-val {
+      font-size: 18px;
+    }
+    .kpi-lbl {
+      font-size: 11px;
+    }
+    .kpi-note {
+      font-size: 10px;
+    }
+    .brief-grid {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .brief-card {
+      padding: 12px 14px;
+    }
+    .brief-head {
+      font-size: 11px;
+      margin-bottom: 6px;
+    }
+    .brief-text {
+      font-size: 12px;
+    }
+    .change-mgmt-bar {
+      font-size: 11.5px;
+      padding: 10px 12px;
+      margin-top: -8px;
+      margin-bottom: 18px;
+    }
+    .stage-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      margin: 18px 0 10px;
+    }
+    .stage-title {
+      font-size: 14px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .stage-step {
+      font-size: 10px;
+      padding: 2px 7px;
+    }
+    .stage-caption {
+      font-size: 11px;
+    }
+
+    /* MOTION GRAPHICS MOBILE PLAYER */
+    .mg-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+    .mg-header {
+      padding: 8px 12px;
+    }
+    .mg-header-left {
+      font-size: 10.5px;
+      gap: 6px;
+    }
+    .mg-badge {
+      font-size: 10px;
+      padding: 2px 7px;
+    }
+    .mg-stage {
+      aspect-ratio: 16 / 9;
+    }
+    /* El subtítulo ya no tapa el SVG: se acopla limpiamente debajo del canvas */
+    .mg-sub-wrap {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      transform: none;
+      width: 100%;
+      max-width: 100%;
+      padding: 10px 12px;
+      background: #090D16;
+      border-top: 1px solid #1E293B;
+      pointer-events: auto;
+      text-align: left;
+    }
+    .mg-sub {
+      display: block;
+      background: transparent;
+      border: none;
+      backdrop-filter: none;
+      padding: 0;
+      border-radius: 0;
+      font-size: 12px;
+      line-height: 1.45;
+      color: #F8FAFC;
+      box-shadow: none;
+    }
+    .mg-controls {
+      padding: 10px 12px;
+      gap: 8px;
+    }
+    .mg-ctrl-top {
+      gap: 6px;
+    }
+    .mg-ctrl-top > span {
+      display: none;
+    }
+    .mg-btn {
+      padding: 5px 9px;
+      font-size: 11.5px;
+    }
+    #mg-time {
+      font-size: 11px;
+      white-space: nowrap;
+    }
+    /* Pestañas horizontales swipeables como en YouTube o Instagram */
+    .mg-pills {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 8px;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+    .mg-pills::-webkit-scrollbar {
+      display: none;
+    }
+    .mg-pill {
+      flex: 0 0 165px;
+      scroll-snap-align: start;
+      padding: 6px 9px;
+    }
+    .mg-pill .p-num {
+      font-size: 9px;
+    }
+    .mg-pill .p-title {
+      font-size: 11px;
+      white-space: normal;
+      line-height: 1.25;
+    }
+
+    /* Workflow y Galería */
+    .flow-grid {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .flow-step {
+      padding: 12px 14px;
+    }
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .shot-card img {
+      max-height: 200px;
+    }
+    .shot-cap {
+      font-size: 10.5px;
+      padding: 8px 10px 2px;
+    }
+    .shot-desc {
+      font-size: 11px;
+      padding: 0 10px 8px;
+    }
+  }
+
   footer {
     margin-top: 32px;
     text-align: center;
@@ -1160,7 +1396,7 @@
           <div class="cp-label">✉️ Correo Electrónico</div>
           <div class="cp-value">valderramasulcajd@gmail.com</div>
           <div class="cp-actions">
-            <a class="cp-btn mail" href="mailto:valderramasulcajd@gmail.com">✉️ Enviar Correo</a>
+            <a class="cp-btn mail" href="mailto:valderramasulcajd@gmail.com">✉️ Enviar Correo (mailto:)</a>
           </div>
         </div>
       </div>
@@ -1626,7 +1862,7 @@ function mountMotionGraphics() {
       <div class="mg-header">
         <div class="mg-header-left">
           <span>🎬</span>
-          <span>STORYTELLING OPERATIVO</span>
+          <span>STORYTELLING OPERATIVO: DEL REPORTE "TRABAJO" AL CRUCE EN TURNO (R 3 CJ)</span>
         </div>
         <span class="mg-badge" id="mg-scene-badge">ESCENA 1 / 5</span>
       </div>
@@ -1661,9 +1897,9 @@ function mountMotionGraphics() {
           </g>
           <g id="mg-scene-layer"></g>
         </svg>
-        <div class="mg-sub-wrap">
-          <div class="mg-sub" id="mg-sub-text">Cargando animación...</div>
-        </div>
+      </div>
+      <div class="mg-sub-wrap">
+        <div class="mg-sub" id="mg-sub-text">Cargando animación...</div>
       </div>
 
       <div class="mg-scrubber" id="mg-scrubber" onclick="mgSeek(event)">
@@ -1748,7 +1984,7 @@ function mgScene1(layer, sub, p, sec) {
 
   layer.innerHTML = `
     <text x="48" y="48" fill="#F8FAFC" font-size="21" font-weight="700">1. El Problema: Ceguera de Ubicaciones hasta la Generación de Tareas</text>
-    <text x="48" y="72" fill="#94A3B8" font-size="12.5" font-family="monospace">SITUACIÓN AS-IS :: VALLE MATUTINO (1.5 H) Y DESCONOCIMIENTO UBICACIONES QUE SURTIRÁN LA DEMANDA FUTURA</text>
+    <text x="48" y="72" fill="#94A3B8" font-size="12.5" font-family="monospace">SITUACIÓN AS-IS :: VALLE MATUTINO (1.5 H) Y DESCONOCIMIENTO DE DEMANDA FUTURA</text>
 
     <g transform="translate(${lerp(20, 48, waveIn)}, 115)">
       <rect x="0" y="0" width="225" height="260" rx="12" fill="#111827" stroke="#475569" stroke-width="2"/>
@@ -1793,14 +2029,14 @@ function mgScene1(layer, sub, p, sec) {
       <text x="87" y="137" text-anchor="middle" fill="#FCA5A5" font-size="10" font-weight="700">VALLE 1.5 HRS</text>
       <text x="87" y="152" text-anchor="middle" fill="#E2E8F0" font-size="9.5">07:00 - 08:30</text>
       <text x="146" y="222" text-anchor="middle" fill="#F8FAFC" font-size="12" font-weight="700">Productividad estancada &lt; 20 L/HH</text>
-      <text x="146" y="241" text-anchor="middle" fill="#94A3B8" font-size="11">Bajado de paletas para el turno</text>
+      <text x="146" y="241" text-anchor="middle" fill="#94A3B8" font-size="11">Re-elevaciones innecesarias al rack</text>
     </g>
   `;
 }
 
 function mgScene2(layer, sub, p, sec) {
   if (p < 0.38) {
-    sub.innerHTML = `<b>El Simulador (Reabasto Corrida.xlsm):</b> Procesa las pestañas <code>PENDIENTE TR</code> y <code>SALDO</code> aplicando 5 reglas operativas.`;
+    sub.innerHTML = `<b>El Simulador (Reabasto Corrida.xlsm):</b> Procesa las pestañas <code>PENDIENTE TR</code>, <code>SALDO</code> y <code>KARDEX</code> aplicando 5 reglas operativas.`;
   } else if (p < 0.72) {
     sub.innerHTML = `Genera la hoja <b>TRABAJO</b> con el detalle exacto: <em>UBICACIÓN</em>, <em>CAJAS UBICACIÓN</em>, <em>CAJAS REQUERIDAS</em> y <em>SALDO</em>.`;
   } else {
@@ -1811,12 +2047,12 @@ function mgScene2(layer, sub, p, sec) {
 
   layer.innerHTML = `
     <text x="48" y="46" fill="#F8FAFC" font-size="20" font-weight="700">2. El Reporte del Simulador: Hoja "TRABAJO" (Detalle por Ubicación)</text>
-    <text x="48" y="69" fill="#38BDF8" font-size="12" font-family="monospace">ARCHIVO: REABASTO.XLSM ➔ PESTAÑAS: [PENDIENTE TR] [SALDO] [KARDEX] [TRABAJO]</text>
+    <text x="48" y="69" fill="#38BDF8" font-size="12" font-family="monospace">ARCHIVO: REABASTO CORRIDA 1.XLSM ➔ PESTAÑAS: [PENDIENTE TR] [SALDO] [KARDEX] [TRABAJO]</text>
 
     <g transform="translate(48, 84)">
       <rect x="0" y="0" width="864" height="42" rx="8" fill="#111827" stroke="#38BDF8" stroke-width="1.5"/>
       <text x="16" y="26" fill="#38BDF8" font-size="11.5" font-weight="700" font-family="monospace">5 REGLAS:</text>
-      <text x="95" y="26" fill="#E2E8F0" font-size="11.5" font-family="monospace">1.Zonas Picking | 2.FEFO 'DDMMYYYY' | 3.Saldo Menor | 4.Cascada UM | 5.Secuencia</text>
+      <text x="95" y="26" fill="#E2E8F0" font-size="11.5" font-family="monospace">1.Zonas Picking | 2.FEFO Multiformato | 3.Menor Saldo | 4.Cascada UM | 5.Nivel Piso/Altura</text>
     </g>
 
     <g transform="translate(48, 138)" opacity="${rowAnim}">
@@ -1913,7 +2149,7 @@ function mgScene2(layer, sub, p, sec) {
 function mgScene3(layer, sub, p, sec) {
   sub.innerHTML = p < 0.45
     ? `<b>Uso 1 — Adelantar Reabasto Futuro:</b> Desde la hoja <code>TRABAJO</code> el operador imprime la Hoja de Trabajo y Etiqueta Amarilla para el <em>siguiente turno (noche o mañana sgte.)</em>.`
-    : `En <b>FOOD</b> (por <em>FEFO</em>) y <b>ELECTRO</b> (por <em>Saldo Menor / Cascada</em>), la paleta que baja se deja en piso hasta agotarse, subiendo el picking en piso de <b>60% a 80%</b>.`;
+    : `En <b>FOOD</b> (por <em>FEFO</em>) y <b>ELECTRO</b> (por <em>Menor Saldo / Cascada</em>), la paleta que baja se deja en piso hasta agotarse, subiendo el picking en piso de <b>60% a 80%</b>.`;
 
   const slideIn = easeOut(clamp(p * 12, 0.5, 1));
 
