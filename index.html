@@ -1132,7 +1132,7 @@
       <p class="role-line">Bachiller en Ingeniería Industrial — <strong>Excelencia Operacional, Proyectos, Kardex & Analítica (Power BI / Excel VBA)</strong></p>
     </div>
     <div class="hero-actions">
-      <a class="btn-contact" href="./CV_Juan_Diego_Valderrama_Sulca_1P.pdf" target="_blank" download="CV_Juan_Diego_Valderrama_Sulca.pdf" title="Descargar CV Ejecutivo en PDF">
+      <a class="btn-contact" href="./CV_Juan_Diego_Valderrama_Sulca.pdf" target="_blank" download="CV_Juan_Diego_Valderrama_Sulca.pdf" title="Descargar CV Ejecutivo en PDF">
         📄 Descargar CV (PDF)
       </a>
       <button type="button" class="btn-contact" id="contact-btn" onclick="toggleContactPopover(event)">
@@ -1626,7 +1626,7 @@ function mountMotionGraphics() {
       <div class="mg-header">
         <div class="mg-header-left">
           <span>🎬</span>
-          <span>STORYTELLING OPERATIVO: DEL REPORTE "TRABAJO" AL CRUCE EN TURNO (R 3 CJ)</span>
+          <span>STORYTELLING OPERATIVO</span>
         </div>
         <span class="mg-badge" id="mg-scene-badge">ESCENA 1 / 5</span>
       </div>
@@ -1748,7 +1748,7 @@ function mgScene1(layer, sub, p, sec) {
 
   layer.innerHTML = `
     <text x="48" y="48" fill="#F8FAFC" font-size="21" font-weight="700">1. El Problema: Ceguera de Ubicaciones hasta la Generación de Tareas</text>
-    <text x="48" y="72" fill="#94A3B8" font-size="12.5" font-family="monospace">SITUACIÓN AS-IS :: VALLE MATUTINO (1.5 H) Y DESCONOCIMIENTO DE DEMANDA FUTURA</text>
+    <text x="48" y="72" fill="#94A3B8" font-size="12.5" font-family="monospace">SITUACIÓN AS-IS :: VALLE MATUTINO (1.5 H) Y DESCONOCIMIENTO UBICACIONES QUE SURTIRÁN LA DEMANDA FUTURA</text>
 
     <g transform="translate(${lerp(20, 48, waveIn)}, 115)">
       <rect x="0" y="0" width="225" height="260" rx="12" fill="#111827" stroke="#475569" stroke-width="2"/>
@@ -1800,7 +1800,7 @@ function mgScene1(layer, sub, p, sec) {
 
 function mgScene2(layer, sub, p, sec) {
   if (p < 0.38) {
-    sub.innerHTML = `<b>El Simulador (Reabasto Corrida.xlsm):</b> Procesa las pestañas <code>PENDIENTE TR</code>, <code>SALDO</code> y <code>KARDEX</code> aplicando 5 reglas operativas.`;
+    sub.innerHTML = `<b>El Simulador (Reabasto Corrida.xlsm):</b> Procesa las pestañas <code>PENDIENTE TR</code> y <code>SALDO</code> aplicando 5 reglas operativas.`;
   } else if (p < 0.72) {
     sub.innerHTML = `Genera la hoja <b>TRABAJO</b> con el detalle exacto: <em>UBICACIÓN</em>, <em>CAJAS UBICACIÓN</em>, <em>CAJAS REQUERIDAS</em> y <em>SALDO</em>.`;
   } else {
@@ -1811,12 +1811,12 @@ function mgScene2(layer, sub, p, sec) {
 
   layer.innerHTML = `
     <text x="48" y="46" fill="#F8FAFC" font-size="20" font-weight="700">2. El Reporte del Simulador: Hoja "TRABAJO" (Detalle por Ubicación)</text>
-    <text x="48" y="69" fill="#38BDF8" font-size="12" font-family="monospace">ARCHIVO: REABASTO CORRIDA 1.XLSM ➔ PESTAÑAS: [PENDIENTE TR] [SALDO] [KARDEX] [TRABAJO]</text>
+    <text x="48" y="69" fill="#38BDF8" font-size="12" font-family="monospace">ARCHIVO: REABASTO.XLSM ➔ PESTAÑAS: [PENDIENTE TR] [SALDO] [KARDEX] [TRABAJO]</text>
 
     <g transform="translate(48, 84)">
       <rect x="0" y="0" width="864" height="42" rx="8" fill="#111827" stroke="#38BDF8" stroke-width="1.5"/>
       <text x="16" y="26" fill="#38BDF8" font-size="11.5" font-weight="700" font-family="monospace">5 REGLAS:</text>
-      <text x="95" y="26" fill="#E2E8F0" font-size="11.5" font-family="monospace">1.Zonas Picking | 2.FEFO Multiformato | 3.Menor Saldo | 4.Cascada UM | 5.Nivel Piso/Altura</text>
+      <text x="95" y="26" fill="#E2E8F0" font-size="11.5" font-family="monospace">1.Zonas Picking | 2.FEFO 'DDMMYYYY' | 3.Saldo Menor | 4.Cascada UM | 5.Secuencia</text>
     </g>
 
     <g transform="translate(48, 138)" opacity="${rowAnim}">
@@ -1913,7 +1913,7 @@ function mgScene2(layer, sub, p, sec) {
 function mgScene3(layer, sub, p, sec) {
   sub.innerHTML = p < 0.45
     ? `<b>Uso 1 — Adelantar Reabasto Futuro:</b> Desde la hoja <code>TRABAJO</code> el operador imprime la Hoja de Trabajo y Etiqueta Amarilla para el <em>siguiente turno (noche o mañana sgte.)</em>.`
-    : `En <b>FOOD</b> (por <em>FEFO</em>) y <b>ELECTRO</b> (por <em>Menor Saldo / Cascada</em>), la paleta que baja se deja en piso hasta agotarse, subiendo el picking en piso de <b>60% a 80%</b>.`;
+    : `En <b>FOOD</b> (por <em>FEFO</em>) y <b>ELECTRO</b> (por <em>Saldo Menor / Cascada</em>), la paleta que baja se deja en piso hasta agotarse, subiendo el picking en piso de <b>60% a 80%</b>.`;
 
   const slideIn = easeOut(clamp(p * 12, 0.5, 1));
 
