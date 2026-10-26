@@ -594,6 +594,37 @@
   }
 
   /* =========================================================
+     CHANGE MANAGEMENT & LEADERSHIP BANNER
+     ========================================================= */
+  .change-mgmt-bar {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #F0F9FF;
+    border: 1px solid #BAE6FD;
+    border-left: 4px solid var(--primary);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-top: -14px;
+    margin-bottom: 24px;
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .change-mgmt-icon {
+    font-size: 16px;
+    line-height: 1.2;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .change-mgmt-bar strong {
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  /* =========================================================
      SECTION DIVIDERS
      ========================================================= */
   .stage-header {
@@ -923,15 +954,23 @@
   }
 
   .shot-cap {
-    padding: 10px 14px;
+    padding: 10px 14px 4px;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--navy);
     border-top: 1px solid var(--border);
     background: #fff;
     text-transform: uppercase;
     letter-spacing: 0.04em;
+  }
+
+  .shot-desc {
+    padding: 0 14px 11px;
+    font-size: 11.5px;
+    color: var(--text-secondary);
+    background: #fff;
+    line-height: 1.4;
   }
 
   /* Collapsible Field Photos Drawer (For Reabasto) */
@@ -998,15 +1037,24 @@
   #lightbox .lb-caption {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     color: #38BDF8;
     text-transform: uppercase;
     letter-spacing: 0.06em;
   }
 
+  #lightbox .lb-desc {
+    font-size: 13px;
+    color: #F1F5F9;
+    max-width: 720px;
+    line-height: 1.45;
+    margin-top: 2px;
+  }
+
   .lb-hint {
     font-size: 11.5px;
     color: #94A3B8;
+    margin-top: 4px;
   }
 
   #lightbox .lb-close {
@@ -1084,6 +1132,9 @@
       <p class="role-line">Bachiller en Ingeniería Industrial — <strong>Excelencia Operacional, Proyectos, Kardex & Analítica (Power BI / Excel VBA)</strong></p>
     </div>
     <div class="hero-actions">
+      <a class="btn-contact" href="./CV_Juan_Diego_Valderrama_Sulca_1P.pdf" target="_blank" download="CV_Juan_Diego_Valderrama_Sulca.pdf" title="Descargar CV Ejecutivo en PDF">
+        📄 Descargar CV (PDF)
+      </a>
       <button type="button" class="btn-contact" id="contact-btn" onclick="toggleContactPopover(event)">
         ✉️ Contacto ▾
       </button>
@@ -1171,6 +1222,7 @@
   <button type="button" class="lb-nav next" onclick="stepLightbox(1, event)" title="Imagen siguiente (→)">&#8250;</button>
   <div class="lb-meta" onclick="event.stopPropagation()">
     <div id="lb-cap" class="lb-caption"></div>
+    <div id="lb-desc" class="lb-desc"></div>
     <div class="lb-hint">Usa las flechas <strong>← / →</strong> para cambiar de imagen o presiona <strong>Esc</strong> para volver</div>
   </div>
 </div>
@@ -1179,6 +1231,27 @@
 // =========================================================
 // RUTAS DE IMÁGENES EXTRAÍDAS DE TU CÓDIGO ORIGINAL DE GITHUB
 // =========================================================
+const BI_PLACEHOLDER_SVG = "data:image/svg+xml;utf8," + encodeURIComponent(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380">
+  <rect width="640" height="380" rx="10" fill="#0F172A"/>
+  <rect x="20" y="20" width="600" height="44" rx="6" fill="#1E293B"/>
+  <circle cx="42" cy="42" r="7" fill="#10B981"/>
+  <text x="60" y="47" fill="#F8FAFC" font-family="sans-serif" font-size="14" font-weight="700">ETAPA DE CONTROL — POWER BI (PARTICIPACIÓN PISO vs. ALTURA &amp; FEFO)</text>
+  <rect x="20" y="80" width="188" height="90" rx="8" fill="#1E293B" stroke="#0284C7" stroke-width="1.5"/>
+  <text x="36" y="108" fill="#94A3B8" font-family="monospace" font-size="11">PICKING EN PISO (.001)</text>
+  <text x="36" y="145" fill="#10B981" font-family="sans-serif" font-size="30" font-weight="800">80.4%</text>
+  <rect x="226" y="80" width="188" height="90" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="242" y="108" fill="#94A3B8" font-family="monospace" font-size="11">PRODUCTIVIDAD MEDIA</text>
+  <text x="242" y="145" fill="#38BDF8" font-family="sans-serif" font-size="30" font-weight="800">23 L/HH</text>
+  <rect x="432" y="80" width="188" height="90" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="448" y="108" fill="#94A3B8" font-family="monospace" font-size="11">CUMPLIMIENTO FEFO</text>
+  <text x="448" y="145" fill="#FBBF24" font-family="sans-serif" font-size="30" font-weight="800">98.7%</text>
+  <rect x="20" y="186" width="600" height="174" rx="8" fill="#1E293B" stroke="#334155"/>
+  <text x="320" y="255" text-anchor="middle" fill="#38BDF8" font-family="monospace" font-size="14" font-weight="700">📊 ESPACIO PARA 6TA FOTO: ./YMS/Reporte_BI.png</text>
+  <text x="320" y="282" text-anchor="middle" fill="#CBD5E1" font-family="sans-serif" font-size="12.5">Guarda tu captura de Power BI como "Reporte_BI.png" dentro de la carpeta /YMS/</text>
+  <text x="320" y="305" text-anchor="middle" fill="#94A3B8" font-family="sans-serif" font-size="11.5">(Se mostrará automáticamente en este recuadro al subirla al repositorio)</text>
+</svg>`);
+
 const IMAGES = {
   yms: { 
     asis: "./YMS/reporte_anterior.jpeg", 
@@ -1198,7 +1271,8 @@ const IMAGES = {
     accion_script1: "./YMS/Reabasto ejecución.png",       
     accion_script2: "./YMS/Hoja de trabajo.png",       
     accion_plantilla: "./YMS/HOJA_TRABAJO.jpeg",       
-    accion_paletas: "./YMS/Reabastecimiento.jpeg"
+    accion_paletas: "./YMS/Reabastecimiento.jpeg",
+    control_bi: "./YMS/Reporte_BI.png"
   }
 };
 
@@ -1222,21 +1296,48 @@ const PROJECTS = {
         text: "Al inicio del turno nadie sabía qué ubicaciones asignaría el WMS hasta generar tareas (40% en altura = <strong>1.5 h de espera</strong>). En <strong>NON FOOD</strong>, las paletas bajadas (>50% volumen) se re-elevaban sin saber si servían para otros pedidos pendientes."
       },
       {
-        type: "sol", icon: "⚙️", title: "2. La Solución (Simulador + Plantilla)",
-        text: "Hoja <code>TRABAJO</code> para <strong>adelantar el reabasto futuro</strong> y plantilla que cruza las paletas que bajan en el turno con la bolsa de pendientes, emitiendo etiquetas (<code>P 10 UND | R 3 CJ</code>) para extraer de una sola vez el saldo adicional hacia Mini Rack o Selectivo Simple."
+        type: "sol", icon: "⚙️", title: "2. La Solución (Ejecución Secuencial)",
+        text: "<strong>1° Pre-turno:</strong> Hoja <code>TRABAJO</code> para adelantar reabasto. <strong>2° En turno (secuencial):</strong> Tras reservar stock en WMS (hoja <code>MONTACARGA</code>), se simula con el saldo restante (<code>REABASTO</code>) e imprime solo las ubicaciones de <code>MONTACARGA</code> agregando la <code>R</code> (<code>P 10 UND | R 3 CJ</code>) en la intersección."
       },
       {
         type: "ctrl", icon: "📊", title: "3. Etapa de Control (Power BI)",
         text: "Monitoreo directivo de <strong>participación de inventario (Piso vs. Altura)</strong>, cumplimiento de FEFO, permanencia de stock y productividad horaria para sostener el estándar de <strong>80% picking en piso</strong>."
       }
     ],
+    changeMgmt: "<strong>Liderazgo en Piso &amp; Gestión del Cambio:</strong> Encargado directo de la <strong>capacitación inicial</strong> a operadores de reabasto, montacarguistas y supervisores. Durante la <strong>marcha blanca</strong>, realicé el seguimiento en piso y levanté modificaciones en plantillas y etiquetas a requerimiento de las áreas usuarias.",
     type: "reabasto",
     photos: [
-      { src: IMAGES.reabasto.asis_grafico, label: "[ Análisis ] Valle de Productividad LPNs/hr" },
-      { src: IMAGES.reabasto.accion_script1, label: "[ Script ] Reabastecimiento" },
-      { src: IMAGES.reabasto.accion_script2, label: "[ Output ] Plantilla Final Inyectada" },
-      { src: IMAGES.reabasto.accion_plantilla, label: "[ Output ] Hoja De Trabajo" },
-      { src: IMAGES.reabasto.accion_paletas, label: "[ Operación ] Paletas Reabastecidas" }
+      {
+        src: IMAGES.reabasto.asis_grafico,
+        label: "[ Análisis ] Valle de Productividad (LPNs/hr)",
+        desc: "Curva horaria pre-implementación (medida en LPNs generados/hora) que evidenció el valle improductivo de 1.5 h al arranque del turno; eliminarlo permitió estabilizar la productividad en 23 L/HH."
+      },
+      {
+        src: IMAGES.reabasto.accion_script1,
+        label: "[ Motor ] Ejecución del Simulador",
+        desc: "Procesamiento algorítmico de las hojas PENDIENTE TR, SALDO y KARDEX bajo los 5 criterios operativos (Zonas, FEFO multiformato, Menor Saldo, Cascada UM y Nivel Piso/Altura)."
+      },
+      {
+        src: IMAGES.reabasto.accion_script2,
+        label: "[ Output ] Hoja TRABAJO & Plantilla de Cruce",
+        desc: "Vista de la plantilla en Excel (.xlsm) que ejecuta la intersección secuencial entre las ubicaciones reservadas del turno (MONTACARGA) y el saldo simulado post-reserva (REABASTO)."
+      },
+      {
+        src: IMAGES.reabasto.accion_plantilla,
+        label: "[ Campo ] Hoja de Trabajo y Etiquetas Amarillas",
+        desc: "Formato impreso en operación con código de barras escaneable en terminal RFID para adelantar la bajada de paletas del turno noche o día siguiente."
+      },
+      {
+        src: IMAGES.reabasto.accion_paletas,
+        label: "[ Operación ] Paletas Reabastecidas en Piso",
+        desc: "Ejecución física en el Bloque D (CD10): paletas posicionadas anticipadamente en nivel piso (.001) y extracción de saldos residuales hacia Mini Rack / Selectivo Simple."
+      },
+      {
+        src: IMAGES.reabasto.control_bi,
+        fallback: BI_PLACEHOLDER_SVG,
+        label: "[ Control BI ] Reportería en Power BI",
+        desc: "Tablero de control para seguimiento de participación de stock (Piso vs. Altura), cumplimiento FEFO, obsolescencia y productividad operativa (datos sensibles resguardados)."
+      }
     ]
   },
 
@@ -1245,38 +1346,63 @@ const PROJECTS = {
     subtitle: "Planificación de Capacidades Cencosud 2030 • Herramientas: AppSheet, Excel VBA (Macros) & Tablero de Control",
     status: "● ACTIVO / EN EJECUCIÓN",
     kpis: [
-      { val: "100%", lbl: "Trazabilidad Unitaria", note: "Registro individual por transporte", color: "emerald" },
-      { val: "0%", lbl: "Errores de Tipeo", note: "Estados restrictivos en AppSheet", color: "primary" },
-      { val: "Real-Time", lbl: "Medición Touch Time", note: "Timestamps exactos por rampa", color: "amber" },
-      { val: "Plan 2030", lbl: "Data de Capacidad", note: "Base para expansión de rampas", color: "navy" }
+      { val: "-1.5 h/turno", lbl: "Ahorro Operativo", note: "Elimina armado manual del STATUS y consultas al prevencionista", color: "emerald" },
+      { val: "100%", lbl: "Trazabilidad Unitaria", note: "Registro individual por transporte (flujo variable/día)", color: "primary" },
+      { val: "0%", lbl: "Errores de Tipeo", note: "Flujo de estados restrictivos en AppSheet", color: "amber" },
+      { val: "Touch Time", lbl: "Capacidad de Rampas", note: "Timestamps exactos por hito para el Plan 2030", color: "navy" }
     ],
     brief: [
       {
         type: "prob", icon: "⚠️", title: "1. El Problema (As-Is)",
-        text: "El registro manual agrupaba varios camiones en un solo bloque horario con errores de tipeo y fotos sueltas por WhatsApp, impidiendo medir el <strong>Touch Time real</strong> por rampa."
+        text: "El operador perdía <strong>~1.5 horas por turno</strong> armando manualmente el reporte <code>STATUS</code> para el cliente, consultando horas presencialmente al prevencionista y buscando fotos sueltas en WhatsApp."
       },
       {
         type: "sol", icon: "📱", title: "2. La Solución (AppSheet + VBA)",
-        text: "App móvil con botones de hitos y <strong>estados restrictivos</strong> (<code>PENDIENTE ➔ EN PLAYA ➔ EN RAMPA ➔ ATENDIDO</code>) que captura fotos por SKU y consolida tiempos mediante macros en Excel."
+        text: "App móvil con botones de hitos y <strong>estados restrictivos</strong> (<code>PENDIENTE ➔ EN PLAYA ➔ EN RAMPA ➔ ATENDIDO</code>) que captura tiempos exactos en campo y actualiza automáticamente el <code>STATUS</code> vía macros."
       },
       {
         type: "ctrl", icon: "📊", title: "3. Etapa de Control (Matriz Status)",
-        text: "Tablero de control en back-office que monitorea en tiempo real la ocupación de muelles, cuellos de botella en recepción y capacidad efectiva por turno."
+        text: "Tablero automatizado que reporta al cliente el estatus en vivo sin digitación manual y construye la línea base de <strong>Touch Time real</strong> por muelle para el proyecto Cencosud 2030."
       }
     ],
+    changeMgmt: "<strong>Liderazgo en Piso &amp; Gestión del Cambio:</strong> Capacitación inicial a los operadores de recepción y prevencionistas en el uso de AppSheet en rampa. Durante la <strong>marcha blanca</strong>, levanté e implementé ajustes en la secuencia de estados y en la plantilla <code>STATUS</code> a solicitud de los usuarios.",
     type: "gallery",
     flow: [
-      { step: "ETAPA 01 • CAMPO", title: "Captura en AppSheet", desc: "Registro de llegada, asignación de muelle y sellos de tiempo con un toque desde tablet/móvil." },
-      { step: "ETAPA 02 • BACK-OFFICE", title: "Consolidación VBA", desc: "Macros automatizadas que estructuran la base histórica sin intervención manual." },
-      { step: "ETAPA 03 • CONTROL", title: "Monitoreo de Touch Time", desc: "Matriz de estatus en vivo y cálculo de capacidad real por rampa para el plan Cencosud 2030." }
+      { step: "ETAPA 01 • CAMPO", title: "Captura en AppSheet", desc: "Registro de llegada, asignación de muelle y sellos de tiempo con un toque desde móvil, sin consultar horas manualmente." },
+      { step: "ETAPA 02 • BACK-OFFICE", title: "Consolidación VBA (-1.5 h)", desc: "Macros que estructuran la base histórica y arman el reporte STATUS para el cliente de forma automática." },
+      { step: "ETAPA 03 • CONTROL", title: "Monitoreo de Touch Time", desc: "Matriz de estatus actualizada y medición exacta de estadía por rampa para dimensionar capacidades al 2030." }
     ],
     photos: [
-      { src: IMAGES.yms.asis, label: "[ PRE-IMPLEMENTACIÓN ] As-is" },
-      { src: IMAGES.yms.accion_plantilla, label: "[ Back-office ] Plantilla de Control Excel" },
-      { src: IMAGES.yms.status_plantilla, label: "[ Back-office ] Matriz Status Plantilla" },
-      { src: IMAGES.yms.resultado_menu, label: "[ App UI ] Menú Principal" },
-      { src: IMAGES.yms.resultado_locales, label: "[ App UI ] Pantalla de Locales" },
-      { src: IMAGES.yms.resultado_detalles, label: "[ App UI ] Captura de Detalles" }
+      {
+        src: IMAGES.yms.asis,
+        label: "[ Pre-Implementación ] Registro Manual As-Is",
+        desc: "Esquema anterior donde se agrupaban múltiples camiones en un solo bloque horario y se consultaban las horas manualmente al prevencionista."
+      },
+      {
+        src: IMAGES.yms.accion_plantilla,
+        label: "[ Back-Office ] Plantilla Automatizada Excel",
+        desc: "Repositorio estructurado con macros en VBA que procesa los registros capturados en AppSheet sin redigitación."
+      },
+      {
+        src: IMAGES.yms.status_plantilla,
+        label: "[ Control ] Matriz STATUS para el Cliente",
+        desc: "Reporte ejecutivo de estatus por rampa y transporte generado automáticamente, ahorrando ~1h 30min diarios al operador."
+      },
+      {
+        src: IMAGES.yms.resultado_menu,
+        label: "[ App UI ] Menú Principal en AppSheet",
+        desc: "Interfaz móvil diseñada para los operadores en patio con accesos rápidos por flujo de recepción."
+      },
+      {
+        src: IMAGES.yms.resultado_locales,
+        label: "[ App UI ] Control por Estado y Rampa",
+        desc: "Vista clasificada por estados restrictivos (PENDIENTE, EN PLAYA, EN RAMPA, ATENDIDO) que elimina errores de tipeo."
+      },
+      {
+        src: IMAGES.yms.resultado_detalles,
+        label: "[ App UI ] Timestamps y Evidencia Fotográfica",
+        desc: "Detalle unitario del transporte con sellos de hora exactos (Touch Time) y fotografías vinculadas directamente al registro."
+      }
     ]
   },
 
@@ -1285,35 +1411,48 @@ const PROJECTS = {
     subtitle: "Control de Vida Útil y Abarrotes (Dinet S.A.) • Herramientas: AppSheet, Modelo Relacional & Automatización en Excel",
     status: "● IMPLEMENTADO (Dinet S.A.)",
     kpis: [
-      { val: "-100%", lbl: "Maquetación Manual", note: "Cero horas cuadrando fotos en celdas", color: "emerald" },
-      { val: "100%", lbl: "Trazabilidad Relacional", note: "Contenedor ➔ Producto ➔ Lote ➔ Foto", color: "primary" },
-      { val: "Inmediato", lbl: "Emisión de Reporte", note: "Al finalizar la inspección en rampa", color: "amber" },
-      { val: "FEFO / BPM", lbl: "Control de Vida Útil", note: "Auditoría estandarizada en recepción", color: "navy" }
+      { val: "45m ➔ <5m", lbl: "Tiempo por Reporte", note: "-89% tiempo administrativo del operador de sistemas de calidad", color: "emerald" },
+      { val: "-100%", lbl: "Búsqueda en WhatsApp", note: "Cero horas descargando y cuadrando fotos manualmente en celdas", color: "primary" },
+      { val: "100%", lbl: "Trazabilidad Relacional", note: "Vínculo exacto Contenedor ➔ SKU ➔ Lote ➔ Evidencia", color: "amber" },
+      { val: "Multi-Operador", lbl: "Captura en Rampa", note: "Recolección simultánea en campo y validación centralizada", color: "navy" }
     ],
     brief: [
       {
         type: "prob", icon: "⚠️", title: "1. El Problema (As-Is)",
-        text: "Los inspectores invertían horas redimensionando y pegando fotografías manualmente en Excel, perdiendo el vínculo entre la incidencia, el lote y el contenedor."
+        text: "Al operador de sistemas de calidad le tomaba <strong>~45 minutos por reporte</strong> buscar fotografías sueltas en WhatsApp enviadas por los inspectores, descargarlas y encuadrarlas manualmente en Excel."
       },
       {
         type: "sol", icon: "📱", title: "2. La Solución (App Relacional)",
-        text: "Aplicación en <strong>AppSheet</strong> para captura jerárquica en rampa conectada a un flujo automatizado (<code>OpenPyXL</code>) que inyecta y dimensiona cada foto en su celda exacta."
+        text: "Aplicación en <strong>AppSheet</strong> donde todos los operadores registran en rampa bajo estructura relacional, conectada a un script que inyecta y encuadra cada foto en su celda exacta automáticamente."
       },
       {
-        type: "ctrl", icon: "📊", title: "3. Etapa de Control (Auditoría)",
-        text: "Generación instantánea del <strong>Reporte Oficial de Calidad y Vida Útil</strong> listo para reclamos a proveedores y bloqueo preventivo de lotes con desviación."
+        type: "ctrl", icon: "📊", title: "3. Etapa de Control (Validación < 5 min)",
+        text: "Generación casi instantánea del reporte oficial: el operador de sistemas solo realiza la validación final de la data recolectada y emite el informe en <strong>menos de 5 minutos</strong>."
       }
     ],
+    changeMgmt: "<strong>Liderazgo en Piso &amp; Gestión del Cambio:</strong> Capacitación de inicio a todos los inspectores de calidad en rampa y al operador de sistemas de calidad. Durante la <strong>marcha blanca</strong>, levanté mejoras de usabilidad e integré validaciones de campos a requerimiento del equipo usuario.",
     type: "gallery",
     flow: [
-      { step: "ETAPA 01 • RECEPCIÓN", title: "Inspección Guiada en AppSheet", desc: "Registro estructurado de contenedor, SKU, fecha de vencimiento y captura fotográfica." },
-      { step: "ETAPA 02 • PROCESAMIENTO", title: "Inyección Automática de Fotos", desc: "Script que lee la base relacional y coloca cada evidencia fotográfica en la plantilla oficial." },
-      { step: "ETAPA 03 • CONTROL", title: "Reporte de Auditoría Instantáneo", desc: "Documento estandarizado emitido al instante para control de calidad y proveedores." }
+      { step: "ETAPA 01 • RECEPCIÓN", title: "Captura Multi-Operador en AppSheet", desc: "Todos los inspectores registran en paralelo contenedor, SKU, fecha de vencimiento y fotos desde rampa." },
+      { step: "ETAPA 02 • PROCESAMIENTO", title: "Inyección y Encuadre Automático", desc: "El flujo automatizado lee la base relacional y coloca cada foto en su celda sin pasar por WhatsApp." },
+      { step: "ETAPA 03 • CONTROL", title: "Validación y Emisión en < 5 min", desc: "El operador de sistemas valida la información consolidada y genera el reporte oficial (antes 45 min c/u)." }
     ],
     photos: [
-      { src: IMAGES.calidad.asis, label: "[ PRE-IMPLEMENTACIÓN ] As-is" },
-      { src: IMAGES.calidad.resultado_app, label: "[ App UI ] Captura en Campo" },
-      { src: IMAGES.calidad.resultado_reporte, label: "[ Output ] Reporte Automatizado" }
+      {
+        src: IMAGES.calidad.asis,
+        label: "[ Pre-Implementación ] Maquetación Manual (45 min)",
+        desc: "Proceso anterior donde el operador de sistemas debía buscar fotos en chats de WhatsApp y redimensionarlas manualmente en Excel."
+      },
+      {
+        src: IMAGES.calidad.resultado_app,
+        label: "[ App UI ] Registro Relacional de Contenedores",
+        desc: "Interfaz en AppSheet utilizada por los inspectores en rampa para vincular cada contenedor con sus SKUs, lotes y evidencias."
+      },
+      {
+        src: IMAGES.calidad.resultado_reporte,
+        label: "[ Output ] Captura de Cantidades y Reporte (< 5 min)",
+        desc: "Registro estructurado de cantidades, vida útil (FEFO) y generación automatizada lista para validación rápida del operador de sistemas."
+      }
     ]
   }
 };
@@ -1388,6 +1527,12 @@ function renderProject(id) {
         </div>
       `).join('')}
     </div>
+    ${p.changeMgmt ? `
+      <div class="change-mgmt-bar">
+        <span class="change-mgmt-icon">🤝</span>
+        <div>${p.changeMgmt}</div>
+      </div>
+    ` : ''}
   `;
 
   let contentHtml = '';
@@ -1400,21 +1545,22 @@ function renderProject(id) {
           <span class="stage-step">DINÁMICA OPERATIVA</span>
           <span>Explicación Interactiva del Proyecto (Motion Graphics)</span>
         </div>
-        <span class="stage-caption">5 escenas interactivas • Puedes pausar o saltar a cualquier etapa</span>
+        <span class="stage-caption">5 escenas interactivas • Al elegir una escena se pausa para lectura cómoda</span>
       </div>
 
       <div id="mg-mount"></div>
 
       <details class="evidence-drawer">
         <summary>
-          <span>📷 Ver capturas y fotografías reales de la implementación en piso (${p.photos.length} evidencias)</span>
+          <span>📷 Ver capturas, reportería en Power BI y fotografías reales en piso (${p.photos.length} evidencias)</span>
           <span>▼</span>
         </summary>
         <div class="gallery-grid" style="margin-top:14px;">
           ${p.photos.map((ph, idx) => `
             <div class="shot-card" onclick="openLightbox(${idx})" title="Haz clic para ampliar">
-              <img src="${ph.src}" alt="${ph.label}">
+              <img src="${ph.src}" alt="${ph.label}" ${ph.fallback ? `onerror="this.onerror=null;this.src='${ph.fallback}';"` : ''}>
               <div class="shot-cap">${ph.label}</div>
+              ${ph.desc ? `<div class="shot-desc">${ph.desc}</div>` : ''}
             </div>
           `).join('')}
         </div>
@@ -1449,8 +1595,9 @@ function renderProject(id) {
       <div class="gallery-grid">
         ${p.photos.map((ph, idx) => `
           <div class="shot-card" onclick="openLightbox(${idx})" title="Haz clic para ampliar">
-            <img src="${ph.src}" alt="${ph.label}">
+            <img src="${ph.src}" alt="${ph.label}" ${ph.fallback ? `onerror="this.onerror=null;this.src='${ph.fallback}';"` : ''}>
             <div class="shot-cap">${ph.label}</div>
+            ${ph.desc ? `<div class="shot-desc">${ph.desc}</div>` : ''}
           </div>
         `).join('')}
       </div>
@@ -1822,48 +1969,49 @@ function mgScene3(layer, sub, p, sec) {
 }
 
 function mgScene4(layer, sub, p, sec) {
-  if (p < 0.35) {
-    sub.innerHTML = `<b>Uso 2 — Cruce en Turno (Plantilla Ubicaciones.xlsm):</b> Cruza la hoja <code>MONTACARGA</code> (ubicaciones a bajar por el turno) con <code>REABASTO</code> (data de mi reporte).`;
-  } else if (p < 0.7) {
-    sub.innerHTML = `Al hacer match en la hoja <b>RESUMEN</b>, imprimen la <em>Etiqueta Blanca de Turno</em> que indica <b>P 10 UND</b> (picking turno) y <b>R 3 CJ</b> (extraer para el pendiente).`;
+  if (p < 0.38) {
+    sub.innerHTML = `<b>Ejecución Secuencial:</b> 1° El WMS asigna el turno y emite <code>MONTACARGA</code>. 2° Con la <em>foto del saldo post-reserva</em> se corre el Simulador (<code>REABASTO</code>).`;
+  } else if (p < 0.72) {
+    sub.innerHTML = `<b>Intersección (MONTACARGA ∩ REABASTO):</b> Se imprimen <em>solo las ubicaciones de MONTACARGA</em>, agregando la <b>R (R 3 CJ)</b> si esa ubicación surte al pendiente residual.`;
   } else {
-    sub.innerHTML = `En <b>NON FOOD</b> (donde una paleta &gt;50% no puede quedarse en piso), ese saldo <em>R 3 CJ</em> va a <b>Mini Rack</b> o <b>Selectivo Simple</b>, ahorrando el <b>32% de re-elevaciones</b>.`;
+    sub.innerHTML = `En <b>NON FOOD</b> (donde una paleta &gt;50% no puede quedarse en piso), ese saldo <em>R 3 CJ</em> se extrae a <b>Mini Rack</b> o <b>Selectivo Simple</b> (<em>-32% re-elevaciones</em>).`;
   }
 
   const matchGlow = 0.5 + 0.5 * Math.sin(sec * 6);
 
   layer.innerHTML = `
-    <text x="48" y="46" fill="#F8FAFC" font-size="20" font-weight="700">4. Uso 2: Plantilla de Cruce en Turno y Etiqueta "P 10 UND | R 3 CJ"</text>
-    <text x="48" y="69" fill="#FBBF24" font-size="12" font-family="monospace">4. PLANTILLA UBICACIONES.XLSM (HOJA MONTACARGA × HOJA REABASTO ➔ HOJA RESUMEN)</text>
+    <text x="48" y="46" fill="#F8FAFC" font-size="20" font-weight="700">4. Uso 2: Ejecución Secuencial e Intersección en Turno (P 10 UND | R 3 CJ)</text>
+    <text x="48" y="69" fill="#FBBF24" font-size="11.5" font-family="monospace">SECUENCIA: 1° RESERVA TURNO (MONTACARGA) ➔ 2° SIMULACIÓN POST-RESERVA (REABASTO) ➔ 3° INTERSECCIÓN</text>
 
     <g transform="translate(48, 88)">
       <rect x="0" y="0" width="495" height="195" rx="10" fill="#111827" stroke="#38BDF8" stroke-width="2"/>
       <rect x="0" y="0" width="495" height="30" rx="10" fill="#0F2942"/>
-      <text x="16" y="20" fill="#38BDF8" font-size="11.5" font-weight="700" font-family="monospace">📘 4. PLANTILLA UBICACIONES.xlsm — Cruce Automático con Botón [ Run ]</text>
+      <text x="16" y="20" fill="#38BDF8" font-size="11" font-weight="700" font-family="monospace">📘 4. PLANTILLA UBICACIONES.xlsm — Imprime MONTACARGA enriquecido con "R"</text>
 
       <rect x="16" y="42" width="28" height="24" rx="3" fill="#CBD5E1" stroke="#475569"/>
       <text x="30" y="59" text-anchor="middle" fill="#0F172A" font-size="13" font-weight="900">✕</text>
       <rect x="50" y="42" width="88" height="24" rx="3" fill="#CBD5E1" stroke="#475569"/>
       <text x="94" y="58" text-anchor="middle" fill="#0F172A" font-size="12" font-weight="700">Run</text>
+      <text x="150" y="58" fill="#94A3B8" font-size="10" font-family="monospace">Flujo secuencial (no paralelo)</text>
 
-      <rect x="16" y="76" width="140" height="68" rx="6" fill="#1E293B" stroke="#64748B"/>
-      <text x="86" y="96" text-anchor="middle" fill="#F8FAFC" font-size="11" font-weight="700" font-family="monospace">Hoja MONTACARGA</text>
-      <text x="86" y="114" text-anchor="middle" fill="#94A3B8" font-size="9.5">Ubicaciones generadas</text>
-      <text x="86" y="128" text-anchor="middle" fill="#94A3B8" font-size="9.5">por WMS para el turno</text>
+      <rect x="16" y="76" width="142" height="68" rx="6" fill="#1E293B" stroke="#64748B"/>
+      <text x="87" y="95" text-anchor="middle" fill="#F8FAFC" font-size="10.5" font-weight="700" font-family="monospace">1° Hoja MONTACARGA</text>
+      <text x="87" y="112" text-anchor="middle" fill="#94A3B8" font-size="9.5">Descarga WMS tras</text>
+      <text x="87" y="126" text-anchor="middle" fill="#94A3B8" font-size="9.5">reservar stock del turno</text>
 
-      <text x="168" y="115" text-anchor="middle" fill="#FBBF24" font-size="18" font-weight="900">∩</text>
+      <text x="169" y="115" text-anchor="middle" fill="#FBBF24" font-size="18" font-weight="900">∩</text>
 
-      <rect x="180" y="76" width="140" height="68" rx="6" fill="#1E293B" stroke="#38BDF8"/>
-      <text x="250" y="96" text-anchor="middle" fill="#38BDF8" font-size="11" font-weight="700" font-family="monospace">Hoja REABASTO</text>
-      <text x="250" y="114" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Data pegada del</text>
-      <text x="250" y="128" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Reporte del Simulador</text>
+      <rect x="180" y="76" width="142" height="68" rx="6" fill="#1E293B" stroke="#38BDF8"/>
+      <text x="251" y="95" text-anchor="middle" fill="#38BDF8" font-size="10.5" font-weight="700" font-family="monospace">2° Hoja REABASTO</text>
+      <text x="251" y="112" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Simulación con foto de</text>
+      <text x="251" y="126" text-anchor="middle" fill="#CBD5E1" font-size="9.5">saldo post-reserva</text>
 
-      <text x="333" y="115" text-anchor="middle" fill="#10B981" font-size="16" font-weight="900">➔</text>
+      <text x="334" y="115" text-anchor="middle" fill="#10B981" font-size="16" font-weight="900">➔</text>
 
       <rect x="346" y="76" width="134" height="68" rx="6" fill="#064E3B" stroke="#10B981" stroke-width="2"/>
-      <text x="413" y="96" text-anchor="middle" fill="#6EE7B7" font-size="11" font-weight="800" font-family="monospace">Hoja RESUMEN</text>
-      <text x="413" y="114" text-anchor="middle" fill="#E2E8F0" font-size="9.5">¡Match! Detecta saldo</text>
-      <text x="413" y="128" text-anchor="middle" fill="#FDE68A" font-size="9.5" font-weight="700">extra para pendiente</text>
+      <text x="413" y="95" text-anchor="middle" fill="#6EE7B7" font-size="10.5" font-weight="800" font-family="monospace">3° Hoja RESUMEN</text>
+      <text x="413" y="112" text-anchor="middle" fill="#E2E8F0" font-size="9.5">Imprime MONTACARGA</text>
+      <text x="413" y="126" text-anchor="middle" fill="#FDE68A" font-size="9.5" font-weight="700">+ agrega "R" si cruza</text>
 
       <g transform="translate(16, 158)" font-family="monospace" font-size="10">
         <rect x="0" y="0" width="92" height="22" rx="3" fill="#1E293B"/>
@@ -2025,7 +2173,10 @@ function mgRestart() {
 }
 
 function mgJump(idx) {
-  mgElapsed = idx * MG_SCENE_DUR + 0.05;
+  mgElapsed = idx * MG_SCENE_DUR + 2.0;
+  mgPlaying = false;
+  const btn = document.getElementById('mg-play-btn');
+  if (btn) btn.textContent = "▶ Reproducir";
   mgRenderFrame(mgElapsed);
 }
 
@@ -2033,6 +2184,9 @@ function mgSeek(e) {
   const rect = document.getElementById('mg-scrubber').getBoundingClientRect();
   const clickX = clamp(e.clientX - rect.left, 0, rect.width);
   mgElapsed = (clickX / rect.width) * MG_TOTAL_DUR;
+  mgPlaying = false;
+  const btn = document.getElementById('mg-play-btn');
+  if (btn) btn.textContent = "▶ Reproducir";
   mgRenderFrame(mgElapsed);
 }
 
@@ -2045,8 +2199,19 @@ function updateLightboxView() {
   const photos = PROJECTS[currentProjectId].photos || [];
   if (!photos.length) return;
   const item = photos[lbIndex];
-  document.getElementById('lb-img').src = item.src;
+  const imgEl = document.getElementById('lb-img');
+  if (item.fallback) {
+    imgEl.onerror = function() {
+      this.onerror = null;
+      this.src = item.fallback;
+    };
+  } else {
+    imgEl.onerror = null;
+  }
+  imgEl.src = item.src;
   document.getElementById('lb-cap').textContent = `(${lbIndex + 1} / ${photos.length}) ${item.label}`;
+  const descEl = document.getElementById('lb-desc');
+  if (descEl) descEl.textContent = item.desc || '';
 }
 
 function openLightbox(idx) {
